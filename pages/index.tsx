@@ -1,9 +1,10 @@
-import styles from '@/styles/Home.module.css'
+// import styles from '@/styles/Home.module.css'
+import Auth from '../components/Auth.js'
 
 export default function Home() {
   return (
     <>
-      <h1>Hello Auth</h1>
+      <Auth />
     </>
   )
 }

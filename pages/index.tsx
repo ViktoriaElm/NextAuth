@@ -6,7 +6,7 @@ export default function Home() {
   if (session) {
     return <> <div className="div-container">
 
-      <h4 className="text-sign-out">Вы авторизовались как {session.user.email}</h4> <br />
+      <h4 className="text-sign-out">Вы авторизовались как {session.user?.email}</h4> <br />
       <button className="sign-out" onClick={() => signOut()}>Sign out</button>
       </div>
     </>

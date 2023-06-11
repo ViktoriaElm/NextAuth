@@ -1,7 +1,8 @@
+/* eslint-disable import/no-anonymous-default-export */
 import NextAuth from 'next-auth'
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export default NextAuth({
+export const authOptions = {
   providers: [
     
     CredentialsProvider({
@@ -22,7 +23,16 @@ export default NextAuth({
       })
 
   ]
-})
+};
+
+const r = NextAuth(authOptions);
+
+export default (...params) => {
+  const [req] = params;
+  console.log('pages/api/auth/[...nextauth].js');
+  console.log('>', req.method, 'запрос на', req.url, req.query);
+  return r(...params);
+}
 
 
 

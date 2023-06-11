@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import NextAuth from 'next-auth'
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
   providers: [
@@ -20,6 +21,28 @@ export const authOptions = {
             return null
           }
         }
+      }),
+
+      GoogleProvider({
+        clientId: process.env.GOOGLE_ID,
+        clientSecret: process.env.GOOGLE_SECRET,
+        authorization: {
+          params: {
+            prompt: "consent",
+            access_type: "offline",
+            response_type: "code"
+          },
+
+          callbacks: {
+            async signIn({ account, profile }) {
+              if (account.provider === "google") {
+                return profile.email_verified && profile.email.endsWith("@example.com")
+              }
+              return true // Do different verification for other providers that don't have `email_verified`
+            },
+          }
+          
+        }
       })
 
   ]
@@ -33,6 +56,7 @@ export default (...params) => {
   console.log('>', req.method, 'запрос на', req.url, req.query);
   return r(...params);
 }
+
 
 
 

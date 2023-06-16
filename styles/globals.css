@@ -96,3 +96,8 @@ button {
 .sign-in {
     min-height: 30%;
 }
+
+img {
+    width: 46px;
+    height: 46px;
+}

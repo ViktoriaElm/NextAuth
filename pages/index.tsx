@@ -4,9 +4,14 @@ import { useSession, signIn, signOut } from "next-auth/react"
 export default function Home() {
   const { data: session } = useSession()
   if (session) {
+    console.log('session=', session);
+    console.log('user=',session.user);
     return <> <div className="div-container">
 
       <h4 className="text-sign-out">Вы авторизовались как {session.user?.email}</h4> <br />
+      {session?.user?.image && <img src={session?.user?.image}/>}
+      {session?.user?.name}
+
       <button className="sign-out" onClick={() => signOut()}>Sign out</button>
       </div>
     </>

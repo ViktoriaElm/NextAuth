@@ -3,6 +3,7 @@ import NextAuth from 'next-auth'
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+import YandexProvider from "next-auth/providers/yandex";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 
@@ -27,6 +28,11 @@ export const authOptions = {
           return null
         }
       }
+    }),
+
+    YandexProvider({
+      clientId: process.env.YANDEX_CLIENT_ID,
+      clientSecret: process.env.YANDEX_CLIENT_SECRET
     }),
 
     GoogleProvider({

@@ -37,7 +37,7 @@ body {
 }
 
 .block-inputs {
-    margin: 20px;
+    margin: 15%;
     display: flex;
     flex-direction: column;
     border-top-left-radius: var(--radius-border);
@@ -49,15 +49,17 @@ body {
 h1,
 h4 {
     padding: 0px 18px 10px;
+    color: var(--text-color-dark);
 }
 
 h1 {
     font: 3vmin sans-serif;
     margin-top: 25px;
+    font-weight: 600;
 }
 
 h4 {
-    font: 1.8vmin sans-serif;
+    font: 2vmin sans-serif;
     margin-bottom: 5px;
 }
 
@@ -67,7 +69,7 @@ h4 {
 
 .block-name {
     display: flex;
-    width: 30%;
+    width: 50%;
     border-bottom-right-radius: var(--radius-border);
     border-top-right-radius: var(--radius-border);
     background-color: var(--text-color-dark);
@@ -90,11 +92,15 @@ button {
     border-radius: var(--button-radius);
     font: 2vmin sans-serif;
     font-weight: bold;
-    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 150px;
 }
 
 .sign-in {
-    min-height: 30%;
+    padding: 10px;
 }
 
 img {

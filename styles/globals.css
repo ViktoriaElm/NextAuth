@@ -48,19 +48,22 @@ body {
 
 h1,
 h4 {
+    font-family: sans-serif;
     padding: 0px 18px 10px;
     color: var(--text-color-dark);
 }
 
 h1 {
-    font: 3vmin sans-serif;
+    /* font: 3vmin sans-serif; */
+    font-size: 18px;
     margin-top: 25px;
     font-weight: 600;
 }
 
 h4 {
-    font: 2vmin sans-serif;
+    font-size: 11px;
     margin-bottom: 5px;
+    font-weight: normal;
 }
 
 .text-sign-out {
@@ -90,7 +93,7 @@ button {
     border: none;
     padding: 5px 10px;
     border-radius: var(--button-radius);
-    font: 2vmin sans-serif;
+    /* font: 2vmin sans-serif; */
     font-weight: bold;
     display: flex;
     justify-content: center;

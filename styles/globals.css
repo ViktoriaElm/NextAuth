@@ -25,7 +25,7 @@ body {
 .div-container {
     background-color: whitesmoke;
     display: flex;
-    width: 70vw;
+    width: 90vw;
     max-width: 800px;
     border-radius: var(--radius-border);
     box-shadow: 3px 3px rgba(214, 132, 162, 0.4), -1em 0 .4em rgb(20, 59, 95, 0.1);

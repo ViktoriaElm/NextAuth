@@ -30,13 +30,28 @@ body {
     width: 90vw;
     max-width: 800px;
     border-radius: var(--radius-border);
-    /* box-shadow: 3px 3px rgba(214, 132, 162, 0.4), -1em 0 .4em rgb(20, 59, 95, 0.1); */
     box-shadow: 3px 3px 4px rgba(133, 126, 137, 0.4), -1em 0 0.6em rgb(133, 126, 137, 0.1);
 }
 
 .div-container {
     border-radius: 5px;
     justify-content: space-between;
+}
+
+.div-session-container {
+    display: flex;
+    height: 100vh;
+    height: 100vh;
+}
+
+.div-session {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 10vh;
+    width: 100vw;
+    align-items: center;
+    font-size: 11px;
 }
 
 .block-inputs {
@@ -52,12 +67,10 @@ body {
 h1,
 h4 {
     font-family: sans-serif;
-    padding: 0px 18px 10px;
     color: var(--text-color-dark);
 }
 
 h1 {
-    /* font: 3vmin sans-serif; */
     font-size: 18px;
     margin-top: 25px;
     font-weight: 600;
@@ -69,8 +82,13 @@ h4 {
     font-weight: normal;
 }
 
+.sign-in {
+    padding: 10px;
+}
+
 .text-sign-out {
-    padding: 15px 25px;
+    margin: 0px;
+    padding-bottom: 5px;
 }
 
 .block-name {
@@ -96,7 +114,6 @@ button {
     border: none;
     padding: 5px 10px;
     border-radius: var(--button-radius);
-    /* font: 2vmin sans-serif; */
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -104,14 +121,21 @@ button {
     width: 80%;
     max-width: 150px;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+    margin: 15px;
 }
 
-.sign-in {
-    padding: 10px;
+.btn-esc {
+        width: 35px;
+        height: 28px;
+        background-color: transparent;
+        background-color: var(--background);
+        color: whitesmoke;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-
 img {
-    width: 46px;
-    height: 46px;
+    width: 30px;
+    height: 30px;
     border-radius: 50px;
+    margin: 15px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }

@@ -6,14 +6,17 @@ export default function Home() {
   if (session) {
     console.log('session=', session);
     console.log('user=',session.user);
-    return <> <div className="div-container">
-
-      <h4 className="text-sign-out">Вы авторизовались как {session.user?.email}</h4> <br />
-      {session?.user?.image && <img src={session?.user?.image}/>}
-      {session?.user?.name}
-
-      <button className="sign-out" onClick={() => signOut()}>Sign out</button>
+    return <> 
+    <div className="div-session-container">
+      <div className="div-session">
+        <h4 className="text-sign-out">✓ {session.user?.email}</h4> <br />
+        {session?.user?.image && <img src={session?.user?.image}/>}
+        {session?.user?.name}
+        <button className="sign-out btn-esc" onClick={() => signOut()}>
+          ❘➔
+        </button>
       </div>
+    </div>
     </>
   }
   return <main className="container">

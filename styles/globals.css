@@ -73,7 +73,7 @@ h4 {
 }
 
 h1 {
-    font-size: 18px;
+    font-size: 21px;
     margin-top: 25px;
     font-weight: 600;
 }
@@ -156,4 +156,8 @@ img {
     border-radius: 50px;
     margin: 15px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.action {
+    font-size: 12px;
 }

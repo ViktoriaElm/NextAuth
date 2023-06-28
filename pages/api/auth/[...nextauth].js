@@ -37,15 +37,38 @@ export const authOptions = {
 
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      // profile(profile) {
+      //   return { role: profile.role ?? 'user' };
+      // },
     }),
 
     GitHubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET
     }),
+  ],
 
-  ]
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      console.log('>>> callbacks >> signIn', { user, account, profile, email, credentials });
+      return true
+    },
+    async redirect({ url, baseUrl }) {
+      console.log('>>> callbacks >> redirect', { url, baseUrl });
+      return baseUrl
+    },
+    async session({ session, user, token }) {
+      console.log('>>> callbacks >> session', { session, user, token });
+      session.user.id = user.id;
+      session.user.role = user.role;
+      return session
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      console.log('>>> callbacks >> jwt', { token, user, account, profile, isNewUser });
+      return token
+    }
+}
 };
 
 const r = NextAuth(authOptions);

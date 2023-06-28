@@ -46,6 +46,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
+  role          String?
   accounts      Account[]
   sessions      Session[]
 }
@@ -56,4 +57,19 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Character {
+  id Int @id
+  name String
+  status String
+  species String
+  type String
+  gender String
+  // origin Object
+  // location Object
+  image String
+  // episode String[]
+  url String
+  created String
 }

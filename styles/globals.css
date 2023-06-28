@@ -42,16 +42,18 @@ body {
     display: flex;
     height: 100vh;
     height: 100vh;
+    max-width: 1280px;
 }
 
 .div-session {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: flex-start;
-    height: 10vh;
+    height: 5vh;
     width: 100vw;
     align-items: center;
     font-size: 11px;
+    background-color: rgb(252, 252, 120);
 }
 
 .block-inputs {
@@ -76,10 +78,25 @@ h1 {
     font-weight: 600;
 }
 
+.title-crm {
+    margin: 0;
+    margin-left: 20px;
+}
+
 h4 {
-    font-size: 11px;
-    margin-bottom: 5px;
+    font-size: 12px;
     font-weight: normal;
+}
+
+.div-title {
+    display: flex;
+    align-items: center;
+}
+
+.div-esc {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
 }
 
 .sign-in {
@@ -88,7 +105,7 @@ h4 {
 
 .text-sign-out {
     margin: 0px;
-    padding-bottom: 5px;
+    padding-bottom: 4px;
 }
 
 .block-name {
@@ -125,13 +142,14 @@ button {
 }
 
 .btn-esc {
-        width: 35px;
-        height: 28px;
-        background-color: transparent;
-        background-color: var(--background);
-        color: whitesmoke;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    width: 35px;
+    height: 28px;
+    background-color: transparent;
+    background-color: rgb(66, 118, 150, 0.7);
+    color: whitesmoke;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 img {
     width: 30px;
     height: 30px;

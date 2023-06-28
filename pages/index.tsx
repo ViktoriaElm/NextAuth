@@ -9,12 +9,18 @@ export default function Home() {
     return <> 
     <div className="div-session-container">
       <div className="div-session">
-        <h4 className="text-sign-out">✓ {session.user?.email}</h4> <br />
-        {session?.user?.image && <img src={session?.user?.image}/>}
-        {session?.user?.name}
+        <div className="div-title">
+        <h1 className="title-crm">Название CRM</h1>
+        </div>
+        <div className="div-esc">
+{/* <h4 className="text-sign-out">✓ {session.user?.email}</h4> <br /> */}
+{session?.user?.image && <img src={session?.user?.image}/>}
+        <h4>{session?.user?.name}</h4>
         <button className="sign-out btn-esc" onClick={() => signOut()}>
           ❘➔
         </button>
+        </div>
+        
       </div>
     </div>
     </>

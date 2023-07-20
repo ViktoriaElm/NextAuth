@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from 'next/image';
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Nav() {
   const { data: session } = useSession()

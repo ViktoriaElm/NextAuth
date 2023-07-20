@@ -68,14 +68,14 @@ export const authOptions = {
       console.log('>>> callbacks >> jwt', { token, user, account, profile, isNewUser });
       return token
     }
-}
+  }
 };
 
 const r = NextAuth(authOptions);
 
 export default (...params) => {
   const [req] = params;
-  console.log('pages/api/auth/[...nextauth].js');
+  console.log('pages/api/auth/[...nextauth].js', params.length);
   console.log('>', req.method, 'запрос на', req.url, req.query);
   return r(...params);
 }

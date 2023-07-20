@@ -1,7 +1,6 @@
-import { useSession, signIn} from "next-auth/react";
-import MyAccount from '../pages/myaccount.js'
+import { useSession, signIn } from "next-auth/react";
+import MyAccount from './myaccount.js'
 import Nav from '../components/Nav.js';
-
 
 export default function Home() {
 
@@ -17,14 +16,16 @@ export default function Home() {
     </>)
   }
   return (<>
-    <main className="container">
-      <div className="block-inputs">
-        <h1>RECRUITING AUTOMATION</h1><br />
-        <h4 className="action">Для продолжения работы необходимо авторизоваться</h4>
-      </div>
-      <div className="block-name">
-        <div className="div-name">
-          <button className="sign-in" onClick={() => signIn()}>Sign in</button>
+    <main className="login-container">
+      <div className="login-form">
+        <div className="block-title">
+          <h1 className="login-title">RECRUITING AUTOMATION</h1><br />
+        </div>
+        <div className="login-block-btns">
+          <div className="div-block-btns">
+            <button className="sign-in" onClick={() => signIn()}>Вход</button>
+            <button className="sign-up" onClick={() => signIn()}>Регистрация</button>
+          </div>
         </div>
       </div>
     </main>

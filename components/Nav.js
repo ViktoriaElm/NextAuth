@@ -21,69 +21,38 @@ export default function Nav() {
           <div class="menu-main">
             <div class="menu">
               <Link href="/ListOfCandidates">
-                <Image
-                  src="/11319877.png"
-                  width={30}
-                  height={25}
-                  alt="base" />
-              </Link>
-              <Link href="/ListOfCandidates">
-                <h5>База</h5>
+                <div className="btn-menu">
+                  <h5>База</h5>
+                </div>
               </Link>
             </div>
             <div class="menu">
               <Link href="/">
-                <Image
-                  src="/11319714.png"
-                  width={30}
-                  height={25}
-                  alt="vacancy" />
-              </Link>
-              <Link href="/">
-                <h5>Вакансии</h5>
+                <div className="btn-menu">
+                  <h5>Вакансии</h5>
+                </div>
               </Link>
             </div>
             <div class="menu">
               <Link href="/">
-                <Image
-                  src="/11319834.png"
-                  width={30}
-                  height={25}
-                  alt="reports" />
-              </Link>
-              <Link href="/">
-                <h5>Отчеты</h5>
+                <div className="btn-menu">
+                  <h5>Отчеты</h5>
+                </div>
               </Link>
             </div>
             <div class="menu">
               <Link href="/">
-                <Image
-                  src="/11319735.png"
-                  width={30}
-                  height={25}
-                  alt="templates" />
-              </Link>
-              <Link href="/">
-                <h5>Шаблоны</h5>
+                <div className="btn-menu">
+                  <h5>Шаблоны</h5>
+                </div>
               </Link>
             </div>
           </div>
           <div class="menu-exit">
-
             <h5>{session?.user?.name}</h5>
             <button className="sign-out btn-esc" onClick={() => signOut()}>
               ❘➔
             </button>
-
-            {/* <div>
-          <Link href="/"><b>Админ</b></Link>
-        </div>
-
-        <div>
-          <Link href="/">
-            <img src="imgs/free-icon-logout-158730.png" alt="people" />
-          </Link>
-        </div> */}
           </div>
         </nav>
       </div>

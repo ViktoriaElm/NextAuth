@@ -9,3 +9,11 @@ export default function App({ Component,
     <Component {...pageProps} />
   </SessionProvider>;
 }
+
+const pages = [
+  // { name: 'Home', src: '/' },
+  // { name: 'Rick and Morty Characters', src: '/rickandmorty' },
+  // { name: 'My Account', src: '/myaccount', test(session:any) { return !!session;} },
+  { name: 'Admin', src: '/admin', test(session:any) { return 'admin'===session?.user?.role; } },
+
+];

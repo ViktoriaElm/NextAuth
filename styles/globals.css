@@ -1,7 +1,490 @@
 :root {
+    --background-nav: rgb(231, 230, 220);
+    --background-body: rgb(224, 216, 203);
+    --background-input: rgb(247, 244, 241);
+    --background-border: rgb(218, 211, 201);
+    --border-light: rgb(218, 211, 201, .3);
+    --text-main: rgb(56, 54, 53);
+    --text-second: rgb(175, 169, 160);
+    --shadow: 2px 2px 2px 1px rgba(206, 200, 190, .3);
+    --shadow-strong: 1px 1px 3px 1px rgba(187, 183, 176, 0.7);
+    --shadow-not-strong: 1px 1px 2px 1px rgba(187, 183, 176, 0.3);
+    --shadow-table: 1px 1px 2px 1px rgba(187, 183, 176, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    background-color: var(--background-nav);
+    box-shadow: var(--shadow-strong);
+}
+
+.my-account {
+    display: flex;
+    max-width: 1200px;
+    margin-top: 100px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f6f2;
+    width: 100%;
+}
+
+.logo,
+.menu-main,
+.menu-exit {
+    display: flex;
+
+}
+
+.logo {
+    width: 20%;
+    justify-content: left;
+}
+
+.logo img {
+    width: 30%;
+}
+
+.menu-main {
+    width: 40%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.menu-exit {
+    width: 30%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menu-exit h5 {
+    color: var(--text-main);
+    font-size: 0.85rem;
+    
+}
+
+.menu-exit img {
+    margin-top: 5px;
+    width: 15px;
+    margin-right: 10px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.menu a img {
+    width: 25px;
+    margin-bottom: 5px;
+}
+
+a:hover {
+    color: var(--text-second);
+}
+
+a:active {
+    color: var(--text-second);
+}
+
+main {
+    display: flex;
+    margin-top: 90px;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.div-table {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+table {
+    width: 98vw;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0px 10px 10px 10px;
+}
+
+th {
+    background-color: var(--background-nav);
+}
+
+th,
+td {
+    border: 1px solid var(--background-border);
+    border-radius: 3px;
+    box-shadow: var(--shadow-table);
+}
+
+th,
+td {
+    padding: 3px;
+    text-align: left;
+}
+
+.main-top,
+.main-top-vacancy {
+    
+    display: flex;
+    height: 45px;
+    margin: 10px;
+}
+
+.main-top {
+    align-items: flex-end;
+}
+
+.input-search {
+    outline: none;
+    border: 1px solid var(--background-input);
+    box-shadow: var(--shadow-not-strong);
+    padding-left: 5px;
+    width: 41%;
+}
+
+.input-search,
+.btn-add {
+    border-radius: 3px;
+    height: 30px;
+}
+
+.btn-add {
+    background-color: rgb(247, 244, 241);
+    border: var(--background-border);
+    box-shadow: var(--shadow-strong);
+    font-size: 1.4vmin;
+    width: 20%;
+    margin-right: 20px;
+}
+
+.main-top-input {
+    display: flex;
+    width: 50%;
+}
+
+.main-top-btns {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+}
+
+.span-btn {
+    padding: 3px;
+}
+
+.comment,
+.status {
+    color: var(--text-second);
+}
+
+h4 {
+    color: var(--text-second);
+}
+
+.main-top-vacancy {
+    flex-direction: column;
+}
+
+.container-candidate {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 20%;
+    height: 100vh;
+    border-right: 1px solid var(--background-border);
+    flex-direction: column;
+}
+
+hr {
+    width: 100%;
+    border: 1px solid var(--border-light);
+}
+
+.candidate-sidebar {
+    padding: 5px;
+}
+
+.table-candidate-sidebar {
+    margin: 0;
+    width: 100%;
+}
+
+.img-escape {
+    border-radius: 50px;
+    margin-bottom: 5px;
+}
+
+.menu-exit button {
+    border: none;
+    margin-left: 10px;
+    background-color: transparent;
+    margin-right: 10px;
+    padding: 3px 6px;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+
+/* media */
+
+@media screen and (max-width: 500px) {
+    body {
+        flex-shrink: 1;
+    }
+
+    nav {
+        width: 100%;
+        height: 150px;
+    }
+
+    .menu-main {
+        width: 80%;
+    }
+
+    table {
+        width: 50rem;
+        font-size: 11px;
+        margin-left: 2px;
+    }
+
+    .main-top {
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 100%;
+        height: 30px;
+    }
+
+    .input-search {
+        margin-left: 0px;
+        font-size: 1.7vmin;
+        height: 25px;
+    }
+
+    .btn-add {
+        margin-right: 7px;
+        font-size: 1.7vmin;
+        width: 40%;
+        height: 25px;
+    }
+
+    h5 {
+        font-size: 11px;
+    }
+
+    .logo img {
+        width: 50%;
+    }
+
+    .menu a img {
+        width: 20px;
+    }
+
+    .menu-exit div a {
+        font-size: 11px;
+    }
+
+    .div-table {
+        overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 900px) {
+    body {
+        flex-shrink: 1;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    table {
+        width: 99%;
+        font-size: 11px;
+        margin-left: 2px;
+    }
+
+    .main-top {
+        margin-left: 2px;
+        margin-right: 2px;
+        width: 100%;
+        height: 30px;
+    }
+
+    .input-search {
+        margin-left: 0px;
+        font-size: 1.7vmin;
+        height: 25px;
+    }
+
+    .btn-add {
+        margin-right: 7px;
+        font-size: 1.7vmin;
+        width: 40%;
+        height: 25px;
+    }
+
+    h5 {
+        font-size: 11px;
+    }
+
+    .logo img {
+        width: 50%;
+    }
+
+    .menu a img {
+        width: 25px;
+    }
+
+    .div-table {
+        overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+    }
+}
+
+@media screen and (min-width: 790px) and (max-width: 1143px) {
+
+    .input-search {
+        font-size: 1.5vmin;
+    }
+
+    .btn-add {
+        margin-right: 4px;
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (min-width: 901px) and (max-width: 1143px) {
+
+    .input-search {
+        width: 50%;
+height: 30px;
+    }
+
+    .btn-add {
+        margin-right: 4px;
+        width: 45%;
+        height: 30px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (min-width: 1144px) and (max-width: 1167px) {
+
+    .input-search {
+        font-size: 13px;
+        width: 40%;
+    }
+
+    .btn-add {
+        margin-right: 6px;
+        font-size: 13px;
+        width: 40%;
+    }
+
+}
+
+@media screen and (min-width: 1168px) and (max-width: 1279px) {
+
+    .input-search {
+        font-size: 13px;
+        
+    }
+
+    .btn-add {
+        margin-right: 8px;
+        font-size: 13px;
+        width: 40%;
+    }
+
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1450px) {
+
+    .input-search {
+        font-size: 1.7vmin;
+        font-size: 14px;
+    }
+
+    .btn-add {
+        margin-right: 11px;
+        font-size: 14px;
+        width: 40%;
+    }
+
+}
+
+@media screen and (min-width: 1451px) and (max-width: 1669px) {
+
+    .input-search {
+        font-size: 14px;
+    }
+
+    .btn-add {
+        margin-right: 14px;
+        font-size: 13px;
+        width: 29%;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* :root {
     --radius-border: 15px;
     --border: 1px solid rgb(139, 179, 232, 0.3);
-    /* --text-color-dark: rgb(20, 59, 95); */
     --text-color-dark: rgb(38, 70, 91);
     --background: rgb(66, 118, 150);
     --button-color: rgb(205, 172, 168, 1);
@@ -40,6 +523,7 @@ body {
 
 .div-session-container {
     display: flex;
+    flex-direction: column;
     height: 100vh;
     height: 100vh;
     max-width: 1280px;
@@ -49,11 +533,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    height: 5vh;
+    height: 10vh;
     width: 100vw;
     align-items: center;
     font-size: 11px;
     background-color: rgb(252, 252, 120);
+    border-bottom: 2px solid red;
+    justify-content: space-evenly;
 }
 
 .block-inputs {
@@ -144,8 +630,7 @@ button {
 .btn-esc {
     width: 35px;
     height: 28px;
-    background-color: transparent;
-    background-color: rgb(66, 118, 150, 0.7);
+    background-color: rgb(66, 118, 150, 0.7); 
     color: whitesmoke;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -161,3 +646,25 @@ img {
 .action {
     font-size: 12px;
 }
+
+.nav {
+display: flex;
+height: 100%;
+width: 55%;
+flex-wrap: nowrap;
+justify-content: space-evenly;
+align-items: center;
+align-content: center;
+ }
+
+ .btn-menu {
+    margin: 10px;
+    min-width: 60px;
+    max-width: 100px;
+    min-height: 60px;
+    max-height: 100px;
+    background-color: rgb(66, 118, 150);
+    color: whitesmoke;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+ } */

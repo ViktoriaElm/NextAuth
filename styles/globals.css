@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&family=Lato&family=Montserrat:wght@100;200;300;400;500;700&family=Nunito:wght@200;300;400;500;600;700&family=Roboto+Condensed:wght@300;400&display=swap');
 
 :root {
-    --background-nav: rgb(235, 235, 235);
-    --background-body: rgb(255, 255, 255);
+    --background-nav: rgb(241, 243, 245);
+    ;
+    --background-body: rgb(248, 249, 250);
     --background-input: rgb(247, 244, 241);
     --background-border: rgb(218, 211, 201);
     --border-light: rgb(218, 211, 201, .3);
@@ -127,22 +128,27 @@ a {
 }
 
 a:hover {
-    color: var(--text-second);
+    color: white;
 }
 
 a:active {
-    color: var(--text-second);
+    color: var(--text-middle);
 }
 
 .btn-menu {
     display: flex;
-    border: 1px solid var(--text-middle);
+    border: 1px solid rgb(173, 181, 189);
     border-radius: 50px;
     background-color: transparent;
     padding: 10px 20px;
     text-transform: uppercase;
     min-width: 50px;
     justify-content: center;
+    box-shadow: var(--shadow-strong);
+}
+
+.btn-menu:hover {
+    background-color: rgb(173, 181, 189);
 }
 
 .menu-exit {
@@ -150,6 +156,7 @@ a:active {
     width: 30%;
     justify-content: flex-end;
     align-items: center;
+    padding-left: 10px;
 }
 
 .menu-exit h5 {
@@ -372,10 +379,6 @@ hr {
         width: 100%;
     }
 
-    .menu a img {
-        width: 20px;
-    }
-
     .menu-exit div a {
         font-size: 11px;
     }
@@ -428,10 +431,6 @@ hr {
 
     .logo img {
         width: 50%;
-    }
-
-    .menu a img {
-        width: 25px;
     }
 
     .div-table {

@@ -10,11 +10,10 @@ export default function MyAccount() {
     const sessionHookResult = useSession();
     const storeHookResult = useStore($characters);
     return <>
-    <div className='my-account'>
-
-    </div>
-        <button onClick={() => signIn()}>Добавить аккаунт</button>
-        <pre>{JSON.stringify(sessionHookResult, null, '\t')}</pre>
-        <pre>{JSON.stringify(storeHookResult, null, '\t')}</pre>
+        <div className='my-account'>
+            <button className='add-account-btn' onClick={() => signIn()}>Добавить аккаунт</button>
+            <pre>{JSON.stringify(sessionHookResult, null, '\t')}</pre>
+            <pre>{JSON.stringify(storeHookResult, null, '\t')}</pre>
+        </div>
     </>;
 }

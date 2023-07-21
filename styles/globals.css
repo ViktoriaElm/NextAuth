@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&family=Lato&family=Montserrat:wght@100;200;300;400;500;700&family=Nunito:wght@200;300;400;500;600;700&family=Roboto+Condensed:wght@300;400&display=swap');
 
 :root {
-    --background-nav: rgb(241, 243, 245);
-    ;
+    /* --background-nav: rgb(241, 243, 245); */
+    --background-nav: rgb(0, 0, 0);
     --background-body: rgb(248, 249, 250);
     --background-input: rgb(247, 244, 241);
-    --background-border: rgb(218, 211, 201);
+    --background-border: rgb(209, 206, 202);
     --border-light: rgb(218, 211, 201, .3);
-    --text-main: rgb(56, 54, 53);
+    /* --text-main: rgb(56, 54, 53); */
+    --text-main: rgb(255, 255, 255);
     --text-second: rgb(175, 169, 160);
     --text-middle: rgb(95, 95, 95);
     --shadow: 2px 2px 2px 1px rgba(206, 200, 190, .3);
     --shadow-strong: 1px 1px 3px 1px rgba(187, 183, 176, 0.7);
     --shadow-not-strong: 1px 1px 2px 1px rgba(187, 183, 176, 0.3);
+    --shadow-btns: 2px 2px 3px 1px rgba(255, 255, 255, 0.2);
     --shadow-table: 1px 1px 2px 1px rgba(187, 183, 176, 0.2);
 }
 
@@ -22,6 +24,10 @@
     font-family: 'Roboto Condensed';
     font-weight: 400;
 }
+
+/* header {
+    margin-top: 0px;
+} */
 
 body {
     display: flex;
@@ -108,6 +114,7 @@ nav {
 
 .logo img {
     width: 40%;
+    margin-top: 3px;
 }
 
 .menu-main {
@@ -119,16 +126,12 @@ nav {
 .menu {
     display: flex;
     align-items: center;
-    margin: 3px;
+    margin: 5px 3px;
 }
 
 a {
     text-decoration: none;
     color: var(--text-main);
-}
-
-a:hover {
-    color: white;
 }
 
 a:active {
@@ -140,15 +143,16 @@ a:active {
     border: 1px solid rgb(173, 181, 189);
     border-radius: 50px;
     background-color: transparent;
-    padding: 10px 20px;
+    padding: 9px 20px;
     text-transform: uppercase;
     min-width: 50px;
     justify-content: center;
-    box-shadow: var(--shadow-strong);
+    color: rgb(173, 181, 189);
 }
 
 .btn-menu:hover {
     background-color: rgb(173, 181, 189);
+    color: var(--text-middle);
 }
 
 .menu-exit {
@@ -161,18 +165,27 @@ a:active {
 
 .menu-exit h5 {
     font-size: 0.85rem;
+    color: var(--text-middle);
 }
-
 
 
 /* мой аккаунт */
 
 .my-account {
     display: flex;
-    max-width: 1200px;
-    margin-top: 100px;
+    flex-direction: column;
+    max-width: 100%;
+    margin-top: 10px;
+    padding: 20px;
 }
 
+.add-account-btn {
+    max-width: 150px;
+    padding: 5px 10px;
+    border-radius: 30px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
 
 
 /* база кандидатов - пока только css */
@@ -190,7 +203,7 @@ main {
 }
 
 table {
-    width: 98vw;
+    width: 97vw;
     border-radius: 5px;
     font-size: 14px;
     margin: 0px 10px 10px 10px;
@@ -198,6 +211,8 @@ table {
 
 th {
     background-color: var(--background-nav);
+    color: var(--text-main);
+    height: 20px;
 }
 
 th,
@@ -231,6 +246,7 @@ td {
     box-shadow: var(--shadow-not-strong);
     padding-left: 5px;
     width: 41%;
+    max-width: 250px;
 }
 
 .input-search,
@@ -240,7 +256,7 @@ td {
 }
 
 .btn-add {
-    background-color: rgb(247, 244, 241);
+    background-color: rgb(236, 236, 236);
     border: var(--background-border);
     box-shadow: var(--shadow-strong);
     font-size: 1.4vmin;
@@ -341,6 +357,10 @@ hr {
         height: 170px;
     }
 
+    .my-account {
+        margin-top: 80px;
+    }
+
     .menu-main {
         width: 80%;
     }
@@ -352,7 +372,8 @@ hr {
     }
 
     .main-top {
-        margin-left: 2px;
+        margin-top: 80px;
+        margin-left: 5px;
         margin-right: 2px;
         width: 100%;
         height: 30px;
@@ -414,13 +435,14 @@ hr {
 
     .input-search {
         margin-left: 0px;
-        font-size: 1.7vmin;
+        font-size: 11px;
         height: 25px;
+        width: 150px;
     }
 
     .btn-add {
         margin-right: 7px;
-        font-size: 1.7vmin;
+        font-size: 11px;
         width: 40%;
         height: 25px;
     }
@@ -430,7 +452,7 @@ hr {
     }
 
     .logo img {
-        width: 50%;
+        width: 100%;
     }
 
     .div-table {
@@ -443,12 +465,16 @@ hr {
 @media screen and (min-width: 790px) and (max-width: 1143px) {
 
     .input-search {
-        font-size: 1.5vmin;
+        font-size: 13px;
     }
 
     .btn-add {
         margin-right: 4px;
         font-size: 13px;
+    }
+
+    .logo img {
+        width: 70%;
     }
 
 }
@@ -468,6 +494,10 @@ hr {
 
     table {
         font-size: 13px;
+    }
+
+    .logo img {
+        width: 60%;
     }
 
 }
@@ -500,6 +530,11 @@ hr {
         width: 40%;
     }
 
+    .logo img {
+        width: 50%;
+    }
+
+
 }
 
 @media screen and (min-width: 1280px) and (max-width: 1450px) {
@@ -515,6 +550,10 @@ hr {
         width: 40%;
     }
 
+    .logo img {
+        width: 50%;
+    }
+
 }
 
 @media screen and (min-width: 1451px) and (max-width: 1669px) {
@@ -527,6 +566,25 @@ hr {
         margin-right: 14px;
         font-size: 13px;
         width: 29%;
+    }
+
+    .logo img {
+        width: 40%;
+    }
+
+}
+
+@media screen and (min-width: 1900px) {
+
+    .btn-add {
+        margin-right: 43px;
+        margin-left: -25px;
+        font-size: 13px;
+        width: 22%;
+    }
+
+    .logo img {
+        width: 30%;
     }
 
 }

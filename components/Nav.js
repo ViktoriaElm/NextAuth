@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import { useSession, signOut } from "next-auth/react";
 
+
 export default function Nav() {
   const { data: session } = useSession()
   if (session) {
@@ -15,35 +16,42 @@ export default function Nav() {
             <Image
               src="/лого без названия.png"
               width={100}
-              height={60}
+              height={70}
               alt="logo" />
           </div>
           <div class="menu-main">
             <div class="menu">
-              <Link href="/ListOfCandidates">
+              <Link href="/">
                 <div className="btn-menu">
                   <h5>База</h5>
                 </div>
               </Link>
             </div>
             <div class="menu">
-              <Link href="/">
+              <Link href="/Vacancies">
                 <div className="btn-menu">
                   <h5>Вакансии</h5>
                 </div>
               </Link>
             </div>
             <div class="menu">
-              <Link href="/">
+              <Link href="/Reports">
                 <div className="btn-menu">
                   <h5>Отчеты</h5>
                 </div>
               </Link>
             </div>
-            <div class="menu">
+            {/* <div class="menu">
               <Link href="/">
                 <div className="btn-menu">
                   <h5>Шаблоны</h5>
+                </div>
+              </Link>
+            </div> */}
+            <div class="menu">
+              <Link href="/myaccount">
+                <div className="btn-menu">
+                  <h5>Аккаунт</h5>
                 </div>
               </Link>
             </div>

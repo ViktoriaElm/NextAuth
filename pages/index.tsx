@@ -1,6 +1,5 @@
 import { useSession, signIn } from "next-auth/react";
-import MyAccount from './myaccount.js'
-import Nav from '../components/Nav.js';
+import Base from '../components/Base.js'
 
 export default function Home() {
 
@@ -11,8 +10,7 @@ export default function Home() {
     //   console.log('session=', session);
     //   console.log('user=', session.user);
     return (<>
-      <Nav />
-      <MyAccount />
+      <Base />
     </>)
   }
   return (<>

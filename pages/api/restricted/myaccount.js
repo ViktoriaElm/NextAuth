@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         }
     } else {
         res.send({
-            error: 'Войдите, чтобы просмотреть контент',
+            error: 'Войдите, чтобы продолжить работу',
         });
     }
 }

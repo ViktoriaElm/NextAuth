@@ -25,9 +25,9 @@
     font-weight: 400;
 }
 
-/* header {
-    margin-top: 0px;
-} */
+header {
+    margin-top: -90px;
+}
 
 body {
     display: flex;

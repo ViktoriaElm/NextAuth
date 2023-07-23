@@ -2,7 +2,7 @@
 
 :root {
     /* --background-nav: rgb(241, 243, 245); */
-    --background-nav: rgb(0, 0, 0);
+    --background-nav: #202124;
     --background-body: rgb(248, 249, 250);
     --background-input: rgb(247, 244, 241);
     --background-border: rgb(209, 206, 202);
@@ -71,7 +71,7 @@ body {
     padding: 10px 20px;
     min-width: 130px;
     margin: 5px 10px 5px 5px;
-    border: 1.5px solid black;
+    border: 1.5px solid #202124;
     border-radius: 50px;
     box-shadow: var(--shadow-not-strong);
 }
@@ -82,7 +82,7 @@ body {
 
 .sign-up {
     color: white;
-    background-color: black;
+    background-color: #202124;
 }
 
 
@@ -140,19 +140,20 @@ a:active {
 
 .btn-menu {
     display: flex;
-    border: 1px solid rgb(173, 181, 189);
+    border: none;
+    box-shadow: var(--shadow-strong);
     border-radius: 50px;
     background-color: transparent;
     padding: 9px 20px;
     text-transform: uppercase;
     min-width: 50px;
     justify-content: center;
-    color: rgb(173, 181, 189);
+    color: rgb(223, 225, 226);
 }
 
 .btn-menu:hover {
-    background-color: rgb(173, 181, 189);
-    color: var(--text-middle);
+    background-color: rgb(0, 0, 0);
+    color: white;
 }
 
 .menu-exit {
@@ -183,7 +184,7 @@ a:active {
     max-width: 150px;
     padding: 5px 10px;
     border-radius: 30px;
-    border: 1px solid black;
+    border: 1px solid #202124;
     margin-bottom: 20px;
 }
 
@@ -211,7 +212,7 @@ table {
 
 th {
     background-color: var(--background-nav);
-    color: var(--text-main);
+    color: rgb(223, 225, 226);
     height: 20px;
 }
 
@@ -256,7 +257,8 @@ td {
 }
 
 .btn-add {
-    background-color: rgb(236, 236, 236);
+    background-color: var(--background-nav);
+    color: rgb(223, 225, 226);
     border: var(--background-border);
     box-shadow: var(--shadow-strong);
     font-size: 1.4vmin;

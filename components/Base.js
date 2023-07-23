@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Fragment } from "react";
 import AddCandidate from "./AddCandidate";
 // import Input from "../components/__Input"
+// import EditTableData "../components/EditTableData.js"
 
 
 export default function Base() {
@@ -93,7 +94,7 @@ export default function Base() {
                     // eslint-disable-next-line react/jsx-key
                     return (<tbody>
                         <Fragment>
-                            {editUserId === user.id ? <EditTableData editFormData={editFormData} handleEdit={handleEdit} /> : <tr>
+                            {editUserId === user.id ? <tr/> : <tr>
                                 {/* <td onDoubleClick={_ => {
 
                                     setEditUserId(user.id)

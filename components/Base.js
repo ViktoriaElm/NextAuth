@@ -76,7 +76,7 @@ export default function Base() {
 
                 <thead>
                     <tr>
-                        <th onClick={_ => { sortUsers('name') }}>ФИО</th>
+                        <th className="th-base" onClick={_ => { sortUsers('name') }}>ФИО</th>
                         <th>Должность</th>
                         <th onClick={handleSortCity}>Город</th>
                         <th onClick={_ => { sortUsers('phone') }}>Телефон</th>
@@ -93,19 +93,19 @@ export default function Base() {
                         <Fragment>
                             <tr>
                                 {/* имя */}
-                                <td>{user.name}</td>
+                                <td className="td-base">{user.name}</td>
                                 {/* должность */}
-                                <td>/* должность */</td>
+                                <td className="td-base">/* должность */</td>
                                 {/* адрес */}
-                                <td>{user.address.city}</td>
+                                <td className="td-base">{user.address.city}</td>
                                 {/* телефон */}
-                                <td>{user.phone}</td>
+                                <td className="td-base">{user.phone}</td>
                                 {/* почта */}
-                                <td>{user.email}</td>
+                                <td className="td-base">{user.email}</td>
                                 {/* статус */}
-                                <td className="status">/* статус */</td>
+                                <td className="status td-base">/* статус */</td>
                                 {/* комментарий */}
-                                <td className="comment">/* комментарий */</td>
+                                <td className="comment td-base">/* комментарий */</td>
                             </tr>
                         </Fragment>
 

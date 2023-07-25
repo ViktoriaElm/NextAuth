@@ -10,7 +10,6 @@ import AddCandidate from "./AddCandidate";
 export default function Base() {
     const [users, setUsers] = useState([]);
     const [value, setValue] = useState('');
-    const [editUserId, setEditUserId] = useState(null);
 
     const api = 'https://jsonplaceholder.typicode.com/users';
 
@@ -92,11 +91,7 @@ export default function Base() {
                     // eslint-disable-next-line react/jsx-key
                     return (<tbody>
                         <Fragment>
-                            {editUserId === user.id ? <tr/> : <tr>
-                                {/* <td onDoubleClick={_ => {
-
-                                    setEditUserId(user.id)
-                                }} className="td-id">{user.id}</td> */}
+                            <tr>
                                 {/* имя */}
                                 <td>{user.name}</td>
                                 {/* должность */}
@@ -112,7 +107,6 @@ export default function Base() {
                                 {/* комментарий */}
                                 <td className="comment">/* комментарий */</td>
                             </tr>
-                            }
                         </Fragment>
 
                     </tbody>)

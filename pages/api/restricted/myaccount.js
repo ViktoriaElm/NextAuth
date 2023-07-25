@@ -24,7 +24,7 @@ export default async function handler(req, res) {
             res.status(500).send({ error });
         }
     } else {
-        res.send({
+        res.status(401).send({
             error: 'Войдите, чтобы продолжить работу',
         });
     }

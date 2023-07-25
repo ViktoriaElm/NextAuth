@@ -85,6 +85,44 @@ body {
     background-color: #202124;
 }
 
+/* админ */
+
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+}
+
+.admin-title {
+    margin: 20px 0px;
+}
+
+.admin-table {
+    margin: 0px;
+}
+
+.icon {
+    border-radius: 50%;
+    width: 30px;
+}
+
+.admin-table {
+    width: 100%;
+}
+
+.admin-th,
+.admin-td {
+    width: 15%;
+}
+
+.admin-table th {
+    padding: 10px;
+}
+
+.admin-table td {
+    padding-left: 10px;
+}
+
 
 /* навигация */
 

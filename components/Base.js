@@ -49,9 +49,7 @@ export default function Base() {
         return user.name.toLowerCase().includes(value.toLocaleLowerCase()) ||
             user.email.toLowerCase().includes(value.toLocaleLowerCase()) ||
             user.address.city.toLowerCase().includes(value.toLocaleLowerCase()) ||
-            user.phone.toLowerCase().includes(value.toLocaleLowerCase()) ||
-            user.website.toLowerCase().includes(value.toLocaleLowerCase()) ||
-            user.company.name.toLowerCase().includes(value.toLocaleLowerCase())
+            user.phone.toLowerCase().includes(value.toLocaleLowerCase())
     })
 
     return (<>

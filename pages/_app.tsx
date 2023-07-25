@@ -10,9 +10,9 @@ export default function App({ Component,
     <header>
       <Nav />
     </header>
-    <main>
+    <main className="login-container">
       <Component {...pageProps} />
-    </main>
+ </main>
   </SessionProvider>;
 }
 

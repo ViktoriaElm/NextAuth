@@ -190,7 +190,7 @@ a:active {
 
 
 /* база кандидатов - пока только css */
-main {
+.login-container {
     display: flex;
     margin-top: 90px;
     width: 100%;
@@ -231,7 +231,9 @@ td {
 
 .main-top,
 .main-top-vacancy {
-
+    width: 97%;
+    align-items: stretch;
+/* margin-top: 190px; */
     display: flex;
     height: 45px;
     margin: 10px;

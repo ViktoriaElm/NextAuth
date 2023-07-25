@@ -5,9 +5,10 @@ import { useSession, signOut } from "next-auth/react";
 
 export default function Nav() {
   const { data: session } = useSession()
+  // const { role: admin } = useSession()
   if (session) {
-    console.log('session=', session);
-    console.log('user=', session.user);
+    // console.log('session=', session);
+    // console.log('user=', session.user);
 
     return (<>
       <div className="div-session-container">
@@ -55,6 +56,17 @@ export default function Nav() {
                 </div>
               </Link>
             </div>
+           
+            {'admin' === session?.user?.role ?
+             <div class="menu">
+              <Link href="/admin">
+                <div className="btn-menu">
+                <h5>Админ</h5>
+                </div>
+              </Link>
+            </div> : ''
+             }    
+
           </div>
           <div class="menu-exit">
             <h5>{session?.user?.name}</h5>

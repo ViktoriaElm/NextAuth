@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import Base from '../components/Base.js'
+import Candidate from '../pages/candidate.js'
 import SignIn from '../components/SignIn.js'
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
   if (session) {
     //   console.log('session=', session);
     //   console.log('user=', session.user);
-    return <Base />;
+    return <Candidate />;
   }
   return <SignIn />;
 }

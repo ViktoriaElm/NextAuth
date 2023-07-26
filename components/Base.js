@@ -1,10 +1,6 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
-
 import { useEffect, useState } from "react";
 import { Fragment } from "react";
-import AddCandidate from "./AddCandidate";
-// import Input from "../components/__Input"
-// import EditTableData "../components/EditTableData.js"
+// import AddCandidate from "./AddCandidate";
 
 
 export default function Base() {
@@ -95,7 +91,7 @@ export default function Base() {
                                 {/* имя */}
                                 <td className="td-base">{user.name}</td>
                                 {/* должность */}
-                                <td className="td-base">/* должность */</td>
+                                <td className="td-base">должность</td>
                                 {/* адрес */}
                                 <td className="td-base">{user.address.city}</td>
                                 {/* телефон */}
@@ -103,9 +99,9 @@ export default function Base() {
                                 {/* почта */}
                                 <td className="td-base">{user.email}</td>
                                 {/* статус */}
-                                <td className="status td-base">/* статус */</td>
+                                <td className="status td-base">статус</td>
                                 {/* комментарий */}
-                                <td className="comment td-base">/* комментарий */</td>
+                                <td className="comment td-base">комментарий</td>
                             </tr>
                         </Fragment>
 

@@ -29,7 +29,7 @@ export default function Nav() {
               </Link>
             </div>
             <div class="menu">
-              <Link href="/Vacancies">
+              <Link href="/vacancy">
                 <div className="btn-menu">
                   <h5>Вакансии</h5>
                 </div>

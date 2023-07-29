@@ -15,9 +15,9 @@ export default function Nav() {
         <nav className="nav">
           <div class="logo">
             <Image
-              src="/лого без названия.png"
-              width={100}
-              height={70}
+              src="/Безымянный-1.png"
+              width={35}
+              height={30}
               alt="logo" />
           </div>
           <div class="menu-main">

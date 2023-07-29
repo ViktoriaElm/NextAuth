@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&family=Lato&family=Montserrat:wght@100;200;300;400;500;700&family=Nunito:wght@200;300;400;500;600;700&family=Roboto+Condensed:wght@300;400&display=swap');
 
 :root {
-    /* --background-nav: rgb(241, 243, 245); */
     --background-nav: #202124;
     --background-body: rgb(248, 249, 250);
     --background-input: rgb(247, 244, 241);
     --background-border: rgb(209, 206, 202);
     --border-light: rgb(218, 211, 201, .3);
-    /* --text-main: rgb(56, 54, 53); */
     --text-main: rgb(255, 255, 255);
     --text-second: rgb(175, 169, 160);
     --text-middle: rgb(95, 95, 95);
@@ -35,6 +33,163 @@ body {
     background-color: var(--background-body);
     width: 100%;
 }
+
+/* modal */
+
+.modal {
+height: 100vh;
+width: 100vw;
+padding-top: 10px;
+background-color: rgba(0, 0, 0, 0.4);
+position: fixed;
+top: 0px;
+left: 0;
+display: flex;
+align-items: center;
+justify-content: end;
+opacity: 0;
+pointer-events: none;
+transition: 0.5s;
+
+}
+
+.content {
+padding: 20px;
+border-radius: 12px;
+background-color: rgb(255, 255, 255);
+transform: scale(0.2);
+transition: 0.2s all;
+height: 95%;
+width: 70%;
+overflow: scroll;
+}
+
+.content.active {
+    transform: scale(1);
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+    
+}
+
+.cv-modal, .add-modal {
+    display: flex;
+    flex-direction: column;
+    white-space: normal;
+    width: 98%;
+    margin: 15px;
+}
+
+.cv-modal {
+    height: 90%;
+}
+
+.add-modal {
+    height: 100%;
+}
+
+.discription {
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+
+.cv-modal h4 {
+margin-bottom: 5px;
+font-size: 15px;
+}
+
+.discription h4 {
+    font-weight: 600;
+    color: rgb(43, 43, 43);
+}
+
+.add-candidate {
+margin-bottom: 10px;
+width: 98%;
+justify-content: space-between;
+}
+
+.add-candidate input {
+    width: 47%;
+    padding: 8px;
+}
+
+.add-candidate button {
+    width: 25%;
+    height: 30px;
+    padding: 6px;
+}
+
+.head-candidate, .add-candidate {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.add-input.text {
+    height: 40px;
+}
+.add-input.comment {
+    height: 30px;
+    width: 100%;
+}
+
+.head-candidate h3 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.head-candidate h4 {
+    margin-bottom: 10px;
+}
+
+.head-candidate h5 {
+    font-size: 15px;
+    margin-bottom: 3px;
+}
+
+.head-candidate span {
+    margin-bottom: 3px;
+}
+
+.head-candidate a {
+    margin-bottom: 3px;
+    color: rgb(48, 48, 212);
+}
+
+.discription p {
+    margin-bottom: 15px;
+    }
+
+    /* кандидат */
+
+    .edit-candidate {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .edit-candidate input, .edit-candidate button {
+        padding: 5px 7px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        margin-right: 7px;
+        background-color: rgb(255, 255, 255);
+    }
+    .edit-candidate input {
+        outline: none;
+    }
+
+    .edit-candidate button, .edit-candidate input {
+        /* border: 1px solid rgb(72, 72, 72); */
+        border: none;
+        box-shadow: var(--shadow-strong);
+    }
+
 
 /* загрузка template */
 
@@ -163,8 +318,7 @@ justify-content: space-between;
 
 .icon {
     border-radius: 50%;
-    width: 23px;
-    padding-top: 3px;
+    width: 17px;
 }
 
 .admin-table {
@@ -174,6 +328,8 @@ justify-content: space-between;
 .admin-th,
 .admin-td {
     width: 15%;
+    height: 19px;
+    padding: 6px;
 }
 
 .admin-table th {
@@ -201,8 +357,10 @@ nav {
 }
 
 .logo {
-    width: 20%;
-    justify-content: left;
+    width: 10%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo,
@@ -212,7 +370,6 @@ nav {
 }
 
 .logo img {
-    width: 40%;
     margin-top: 3px;
 }
 
@@ -333,64 +490,50 @@ td {
     padding: 6px 5px;
 }
 
-.main-top,
-.main-top-vacancy {
-    width: 97%;
-    align-items: stretch;
-/* margin-top: 190px; */
-    display: flex;
-    height: 45px;
-    margin: 10px;
-}
+/* поиск и добавление */
 
 .main-top {
-    align-items: flex-end;
-}
-
-.form {
-height: 25px;
-width: 100%;
-}
-
-.input-search {
-    outline: none;
-    border: 1px solid var(--background-input);
-    box-shadow: var(--shadow-not-strong);
-    padding-left: 5px;
-    width: 100%;
-    max-width: 250px;
-    max-height: 100%;
-}
-
-.input-search,
-.btn-add {
-    border-radius: 3px;
-    height: 30px;
-}
-
-.btn-add {
-    background-color: var(--background-nav);
-    color: rgb(223, 225, 226);
-    border: var(--background-border);
-    box-shadow: var(--shadow-strong);
-    font-size: 1.4vmin;
-    width: 20%;
-    margin-right: 20px;
-}
-
-.main-top-input {
     display: flex;
-    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .main-top-btns {
     display: flex;
-    width: 50%;
     justify-content: flex-end;
+    width: 50%;
+    margin-left: -5px;
 }
 
-.span-btn {
-    padding: 3px;
+.main-top-input {
+    width: 50%;
+}
+
+.btn-add {
+    width: 50%;
+    margin-left: 8px;
+    background-color: white;
+    border-color: var(--background-border);
+    border-radius: 5px;
+}
+
+.form {
+    width: 80%;
+}
+
+.input-search, .btn-add {
+padding: 7px 5px ;
+}
+
+.input-search {
+    width: 50%;
+    border-color: var(--border-light);
+    border-radius: 5px;
+    outline: none;
 }
 
 .comment,
@@ -501,7 +644,7 @@ hr {
     }
 
     .btn-add {
-        margin-right: 7px;
+        /* margin-right: 7px; */
         font-size: 1.7vmin;
         width: 40%;
         height: 25px;
@@ -552,15 +695,17 @@ hr {
     .input-search {
         margin-left: 0px;
         font-size: 11px;
-        height: 25px;
+        height: 16px;
         width: 150px;
     }
 
     .btn-add {
-        margin-right: 7px;
+        /* margin-right: 7px; */
         font-size: 11px;
-        width: 40%;
-        height: 25px;
+        width: 50%;
+        height: 33px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
     h5 {
@@ -582,11 +727,15 @@ hr {
 
     .input-search {
         font-size: 13px;
+        height: 16px;
     }
 
     .btn-add {
-        margin-right: 4px;
+        /* margin-right: 4px; */
         font-size: 13px;
+        height: 33px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
     .logo img {
@@ -599,11 +748,11 @@ hr {
 
     .input-search {
         width: 50%;
-        height: 30px;
+        height: 16px;
     }
 
     .btn-add {
-        margin-right: 4px;
+        /* margin-right: 4px; */
         width: 45%;
         height: 30px;
     }
@@ -623,10 +772,11 @@ hr {
     .input-search {
         font-size: 13px;
         width: 40%;
+        height: 16px;
     }
 
     .btn-add {
-        margin-right: 6px;
+        /* margin-right: 6px; */
         font-size: 13px;
         width: 40%;
     }
@@ -641,7 +791,7 @@ hr {
     }
 
     .btn-add {
-        margin-right: 8px;
+        /* margin-right: 8px; */
         font-size: 13px;
         width: 40%;
     }
@@ -661,7 +811,7 @@ hr {
     }
 
     .btn-add {
-        margin-right: 11px;
+        /* margin-right: 11px; */
         font-size: 14px;
         width: 40%;
     }
@@ -679,7 +829,7 @@ hr {
     }
 
     .btn-add {
-        margin-right: 14px;
+        /* margin-right: 14px; */
         font-size: 13px;
         width: 29%;
     }
@@ -693,8 +843,8 @@ hr {
 @media screen and (min-width: 1900px) {
 
     .btn-add {
-        margin-right: 43px;
-        margin-left: -25px;
+        /* margin-right: 43px; */
+        /* margin-left: -25px; */
         font-size: 13px;
         width: 22%;
     }

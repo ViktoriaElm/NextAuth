@@ -15,5 +15,8 @@ export type columnsElement<objType extends rowObj> = {
   setVal?: (_: Value) => ({})
 };
 
+interface hasAccordion {
+  [accordionSymbol]?:Function;
+}
 
-export type columnsArray<objType extends rowObj> = columnsElement<objType>;
+export type columnsArray<objType extends rowObj> = columnsElement<objType> & hasAccordion;

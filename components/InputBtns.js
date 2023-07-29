@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function Actions() {
+export default function InputBtns() {
 
     const [users, setUsers] = useState([]);
     const [value, setValue] = useState('');
@@ -29,6 +29,7 @@ export default function Actions() {
                 {/* при клике на кнопку попап */}
                 <button class="btn-add"><span class="span-btn">Добавить вакансию</span></button>
             </div>
+            
     </div>
     </>)
 }

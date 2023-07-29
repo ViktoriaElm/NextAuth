@@ -54,10 +54,10 @@ export const authOptions = {
       console.log('>>> callbacks >> signIn', { user, account, profile, email, credentials });
       return true
     },
-    async redirect({ url, baseUrl }) {
-      console.log('>>> callbacks >> redirect', { url, baseUrl });
-      return baseUrl
-    },
+    // async redirect({ url, baseUrl }) {
+    //   console.log('>>> callbacks >> redirect', { url, baseUrl });
+    //   return baseUrl
+    // },
     async session({ session, user, token }) {
       console.log('>>> callbacks >> session', { session, user, token });
       session.user.id = user.id;

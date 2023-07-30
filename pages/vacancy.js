@@ -5,7 +5,7 @@ import { useStore } from '@nanostores/react';
 import { columns } from '../datatypes/users';
 import VacancyTHead from '../components/headers/VacancyTHead';
 import TBody from '../components/TBody.js'
-import InputBtns from '../components/InputBtns.js'
+// import InputBtns from '../components/InputBtns.js'
 import Loading from '../components/Loading.js'
 
 const
@@ -18,7 +18,7 @@ export default function Vacancy() {
         { data: rows, loading, error } = useStore($users);
     if (error) return <>Error={error}</>;
     if (rows) return <div className='admin-container'>
-        <InputBtns />
+        {/* <InputBtns /> */}
         <table className='admin-table'>
             {Array.isArray(rows) && <VacancyTHead {...{ columns, rows }} />}
             {Array.isArray(rows) && <TBody {...{ columns, rows }} />}

@@ -3,7 +3,7 @@ export default function CandidateTHead({sortCandidates}) {
     <thead className='admin-table'>
                     <tr className='admin-table'>
                         <th onClick={_ => { sortCandidates('lastName') }}>ФИО</th>
-                        <th>Должность</th>
+                        <th>Вакансия</th>
                         <th onClick={sortCandidates}>Город</th>
                         <th onClick={_ => { sortCandidates('phoneNumber') }}>Телефон</th>
                         <th onClick={_ => { sortCandidates('email') }}>E-mail</th>

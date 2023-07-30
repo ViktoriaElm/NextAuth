@@ -55,8 +55,6 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                         name="fullName"
                         placeholder='Полное имя'
                     />
-                {/* </div>
-                <div className="add-candidate"> */}
                     <input className="add-input"
                         type="text"
                         value={value}
@@ -73,8 +71,6 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                         name="phoneNumber"
                         placeholder='Телефон'
                     />
-                {/* </div>
-                <div className="add-candidate"> */}
                     <input className="add-input"
                         type="text"
                         value={value}
@@ -91,9 +87,6 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                         name="email"
                         placeholder='E-mail'
                     />
-                {/* </div>
-
-                <div className="add-candidate"> */}
                     <input className="add-input"
                         type="text"
                         value={value}
@@ -110,8 +103,6 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                         name="profile"
                         placeholder='О себе:'
                     />
-                {/* </div>
-                <div className="add-candidate"> */}
                     <input className="add-input text"
                         type="text"
                         value={value}
@@ -128,8 +119,6 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                         name="education"
                         placeholder='Образование:'
                     />
-                {/* </div>
-                <div className="add-candidate"> */}
                     <input className="add-input text"
                         type="text"
                         value={value}
@@ -146,8 +135,6 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                         name="languages"
                         placeholder='Языки:'
                     />
-                {/* </div>
-                <div className="add-candidate"> */}
                     <input className="add-input text"
                         type="text"
                         value={value}
@@ -164,8 +151,6 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                         name="sertificates"
                         placeholder='Сертификаты:'
                     />
-                {/* </div>
-                <div className="add-candidate"> */}
                     <input className="add-input text"
                         type="text"
                         value={value}
@@ -187,6 +172,7 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                     <button onSubmit={handleOnSubmit} className="add-button" type="submit">Сохранить кандидата</button>
                 </div>
             </form>
+            
         </div>
     </>)
 }

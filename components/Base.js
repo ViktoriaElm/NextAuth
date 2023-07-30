@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { Fragment } from "react";
 import Modal from '../components/modal/Modal';
 import AddModal from '../components/modal/AddModal';
-import AddCandidate from '../components/AddCandidate'
+import AddCandidate from '../components/AddCandidate';
+import SearchPanel from '../components/SearchPanel';
+import CandidateTHead from '../components/headers/CandidateTHead';
 
 export default function Base() {
     const [candidates, setCandidates] = useState([]);
@@ -11,20 +13,7 @@ export default function Base() {
     const [modalAdd, setModalAdd] = useState(false);
     const [selectedCandidate, setSelectedCandidate] = useState(null);
 
-    // const handleClick = () => {
-    //     setSelectedCandidate({ address, fullName, age, email, phoneNumber, telegram, urls, body, comment });
-    // };
-
     const api = 'http://localhost:3001/candidate';
-
-    // const candidateFetch = async () => {
-    //     await fetch(api)
-    //         .then((res) => res.json())
-    //         .then((candidates) => setCandidates(candidates))
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    // }
 
     const candidateFetch = async () => {
         try {
@@ -46,13 +35,6 @@ export default function Base() {
         setCandidates(sortCandidates)
     }
 
-    const handleSortCity = () => {
-        const sorted = [...candidates].sort((a, b) =>
-            a.address.localeCompare(b.address.name)
-        );
-        setCandidates(sorted);
-    };
-
     const handleChange = (e) => {
         e.preventDefault();
         setValue(e.target.value)
@@ -65,63 +47,50 @@ export default function Base() {
         );
     });
 
-    const onAdd = async (address, fullName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
-        await fetch('http://localhost:3001/candidate', {
-            method: 'POST',
-            body: JSON.stringify({
-                address: address,
-                fullName: fullName,
-                email: email,
-                phoneNumber: phoneNumber,
-                telegram: telegram,
-                urls: urls,
-                profile: profile,
-                experience: experience,
-                education: education,
-                skills: skills,
-                languages: languages,
-                projects: projects,
-                sertificates: sertificates,
-                hobby: hobby,
-                comment: comment
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
-            .then((res) => {
-                if (res.status !== 201) {
-                    return
-                } else {
-                    return res.json();
-                }
-            })
-            .then(() => {
-                setCandidates((candidates) => [...candidates, candidates]);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
+    const onAdd = async (address, fullName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => { 
+        await fetch('http://localhost:3001/candidate', { 
+            method: 'POST', 
+            body: JSON.stringify({ 
+                address: address, 
+                fullName: fullName, 
+                email: email, 
+                phoneNumber: phoneNumber, 
+                telegram: telegram, 
+                urls: urls, 
+                profile: profile, 
+                experience: experience, 
+                education: education, 
+                skills: skills, 
+                languages: languages, 
+                projects: projects, 
+                sertificates: sertificates, 
+                hobby: hobby, 
+                comment: comment 
+            }), 
+            headers: { 
+                "Content-type": "application/json; charset=UTF-8" 
+            } 
+        }) 
+            .then((res) => { 
+                if (res.status !== 201) { 
+                    return 
+                } else { 
+                    return res.json(); 
+                } 
+            }) 
+            .then((newCandidate) => { 
+                setCandidates((candidates) => [...candidates, newCandidate]); 
+            }) 
+            .catch((err) => { 
+                console.log(err); 
+            }) 
+    };
 
     return (<>
 
         <div class="main-top">
-            <div class="main-top-input">
-                <form className="form">
-                    <input
-                        type="text"
-                        onChange={handleChange}
-                        value={value}
-                        placeholder='Введите запрос...'
-                        className="input-search"
-                    />
-                </form>
-            </div>
-            <div class="main-top-btns">
-                <button onClick={() => setModalAdd(true)} class="btn-add"><span class="span-btn">Добавить кандидата</span></button>
-                <button class="btn-add"><span class="span-btn">Добавить вакансию</span></button>
-            </div>
+
+            <SearchPanel handleChange={handleChange} setModalAdd={setModalAdd} />
 
             <AddModal add={modalAdd} setAdd={setModalAdd}>
                 <AddCandidate onAdd={onAdd} />
@@ -130,17 +99,7 @@ export default function Base() {
         </div>
         <div class="div-table">
             <table>
-                <thead className='admin-table'>
-                    <tr className='admin-table'>
-                        <th onClick={_ => { sortCandidates('lastName') }}>ФИО</th>
-                        <th>Должность</th>
-                        <th onClick={handleSortCity}>Город</th>
-                        <th onClick={_ => { sortCandidates('phoneNumber') }}>Телефон</th>
-                        <th onClick={_ => { sortCandidates('email') }}>E-mail</th>
-                        <th>Статус</th>
-                        <th>Комментарий</th>
-                    </tr>
-                </thead>
+                <CandidateTHead sortCandidates={sortCandidates} />
 
                 {candidates === null ? ("Загружаю") : (filteredCandidates.map((candidate) => (
                     // eslint-disable-next-line react/jsx-key
@@ -163,7 +122,7 @@ export default function Base() {
             </table>
 
             {selectedCandidate && (
-            <Modal active={modalActive} setActive={setModalActive}>
+                <Modal active={modalActive} setActive={setModalActive}>
                     <div className="cv-modal">
                         <div className="head-candidate"><h3>{selectedCandidate.fullName}</h3></div>
                         <div className="head-candidate"><h4>Frontend разработчик</h4></div>
@@ -198,7 +157,7 @@ export default function Base() {
                             <p>{selectedCandidate.hobby}</p>
                         </div>
                     </div>
-            </Modal>
+                </Modal>
             )}
         </div>
     </>)

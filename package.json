@@ -2,6 +2,9 @@
   "name": "nextauth",
   "version": "0.1.0",
   "private": true,
+  "prisma": {
+    "seed": "node prisma/seed.mjs"
+  },
   "scripts": {
     "go": "concurrently \"pnpm run server\" \"pnpm dev\"",
     "server": "json-server -w server/db.json -p 3001",

@@ -32,13 +32,13 @@ export default function Base() {
     });
     const [editing, setEditing] = useState(false);
 
-    const api = 'http://localhost:3001/candidate';
+    const api = '/api/restricted/candidate';
 
     const candidateFetch = async () => {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            setCandidates(data);
+            if (response.ok && !data?.error) setCandidates(data);
         } catch (error) {
             console.log(error);
         }
@@ -65,11 +65,12 @@ export default function Base() {
         const sortCandidates = copyCandidates.sort((a, b) => { return a[coll] > b[coll] ? 1 : -1 });
         setCandidates(sortCandidates)
     }
-
-    const filteredCandidates = candidates.filter(candidate => {
+    console.debug('candidates=',candidates);
+    const filteredCandidates = candidates.filter(candidate => { // надо переделать
         return (
-            candidate.fullName.toLowerCase().includes(value.toLocaleLowerCase()) ||
-            candidate.address.toLowerCase().includes(value.toLocaleLowerCase())
+            !value 
+            || candidate?.fullName?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.address?.toLowerCase().includes(value.toLocaleLowerCase())
         );
     });
 
@@ -226,23 +227,17 @@ export default function Base() {
         <div class="div-table">
             <table>
                 <CandidateTHead sortCandidates={sortCandidates} />
-                {candidates === null ? ("Загружаю") : (filteredCandidates.map((candidate) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <tbody key={candidate.id} onClick={() => setSelectedCandidate(candidate)}>
-                        <Fragment>
-                            <tr onClick={() => setModalActive(true)}>
-                                <td className="td-base">{candidate.fullName}</td>
-                                <td className="td-base">должность</td>
-                                <td className="td-base">{candidate.address}</td>
-                                <td className="td-base">{candidate.phoneNumber}</td>
-                                <td className="td-base">{candidate.email}</td>
-                                <td className="status td-base">статус</td>
-                                <td className="comment td-base">{candidate.comment}</td>
-                            </tr>
-                        </Fragment>
-                    </tbody>
-                ))
-                )}
+                {filteredCandidates && filteredCandidates.map((candidate) => (
+                    <tr key={candidate.id} onClick={() => setModalActive(true)}>
+                        <td className="td-base">{candidate.fullName}</td>
+                        <td className="td-base">должность</td>
+                        <td className="td-base">{candidate.address}</td>
+                        <td className="td-base">{candidate.phoneNumber}</td>
+                        <td className="td-base">{candidate.email}</td>
+                        <td className="status td-base">статус</td>
+                        <td className="comment td-base">{candidate.comment}</td>
+                    </tr>
+                ))}
             </table>
             {selectedCandidate && (
                 <Modal active={modalActive} setActive={setModalActive}>

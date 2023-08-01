@@ -3,8 +3,6 @@ import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react';
 import Nav from '@/components/Nav';
 
-// import { useState } from 'react';
-
 export default function App({ Component,
   pageProps: { session, ...pageProps }
 }: AppProps) {

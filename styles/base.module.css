@@ -1,0 +1,19 @@
+.main_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+
+.div_table {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.td_base {
+    padding: 6px 5px;
+}

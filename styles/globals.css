@@ -42,31 +42,31 @@ body {
 /* modal */
 
 .modal {
-height: 100vh;
-width: 100vw;
-padding-top: 10px;
-background-color: rgba(0, 0, 0, 0.4);
-position: fixed;
-top: 0px;
-left: 0;
-display: flex;
-align-items: center;
-justify-content: end;
-opacity: 0;
-pointer-events: none;
-transition: 0.5s;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
 
 }
 
 .content {
-padding: 20px;
-border-radius: 12px;
-background-color: rgb(255, 255, 255);
-transform: scale(0.2);
-transition: 0.2s all;
-height: 95%;
-width: 70%;
-overflow: scroll;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: rgb(255, 255, 255);
+    transform: scale(0.2);
+    transition: 0.2s all;
+    height: 95%;
+    width: 70%;
+    overflow: scroll;
 }
 
 .content.active {
@@ -76,10 +76,11 @@ overflow: scroll;
 .modal.active {
     opacity: 1;
     pointer-events: all;
-    
+
 }
 
-.cv-modal, .add-modal {
+.cv-modal,
+.add-modal {
     display: flex;
     flex-direction: column;
     white-space: normal;
@@ -96,14 +97,14 @@ overflow: scroll;
 }
 
 .discription {
-display: flex;
-flex-direction: column;
-width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .cv-modal h4 {
-margin-bottom: 5px;
-font-size: 15px;
+    margin-bottom: 5px;
+    font-size: 15px;
 }
 
 .discription h4 {
@@ -112,9 +113,9 @@ font-size: 15px;
 }
 
 .add-candidate {
-margin-bottom: 10px;
-width: 98%;
-justify-content: space-between;
+    margin-bottom: 10px;
+    width: 98%;
+    justify-content: space-between;
 }
 
 .add-candidate input {
@@ -128,78 +129,79 @@ justify-content: space-between;
     padding: 6px;
 }
 
-.head-candidate, .add-candidate {
+.head_candidate,
+.add-candidate,
+.input_fullname {
     display: flex;
     flex-wrap: nowrap;
+
 }
 
-.input-fullname {
+.input_fullname {
     font-size: 17px;
     margin-bottom: 10px;
 }
 
-.head-candidate a {
+.head_candidate a {
     font-size: 13px;
 }
 
 .add-input.text {
     height: 40px;
 }
+
 .add-input.comment {
     height: 30px;
     width: 100%;
 }
 
-/* .head-candidate.input-head {
-    margin-bottom: 10px;
-    font-weight: 600;
-    font-size: 20px;
-} */
-
-.head-candidate h4 {
+.head_candidate h4 {
     margin-bottom: 10px;
 }
 
-.head-candidate h5 {
+.head_candidate h5 {
     font-size: 15px;
     margin-bottom: 3px;
 }
 
-.head-candidate span {
+.head_candidate span {
     margin-bottom: 3px;
 }
 
-.head-candidate a {
+.head_candidate a {
     margin-bottom: 3px;
     color: rgb(48, 48, 212);
 }
 
 .discription p {
     margin-bottom: 15px;
-    }
+}
 
-    /* кандидат */
+/* кандидат */
 
-    .edit-candidate {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    .edit-candidate input, .edit-candidate button {
-        padding: 5px 7px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        margin-right: 7px;
-        background-color: rgb(255, 255, 255);
-        border: none;
-        box-shadow: var(--shadow-strong);
-    }
-    .edit-candidate input {
-        outline: none;
-    }
+.edit-candidate {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.edit-candidate input,
+.edit-candidate button {
+    padding: 5px 7px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-right: 7px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    box-shadow: var(--shadow-strong);
+}
+
+.edit-candidate input {
+    outline: none;
+}
 
 /* загрузка template */
 
@@ -213,7 +215,7 @@ justify-content: space-between;
 
 .loading-common {
     display: flex;
-justify-content: space-between;
+    justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 10px;
     width: 98%;
@@ -535,8 +537,9 @@ td {
     width: 80%;
 }
 
-.input-search, .btn-add {
-padding: 7px 5px ;
+.input-search,
+.btn-add {
+    padding: 7px 5px;
 }
 
 .input-search {

@@ -5,13 +5,13 @@ import AddModal from '../components/modal/AddModal';
 import AddCandidate from '../components/AddCandidate';
 import SearchPanel from '../components/SearchPanel';
 import CandidateTHead from '../components/headers/CandidateTHead';
+import { Candidate } from '@prisma/client';
 
 export default function Base() {
     const [candidates, setCandidates] = useState([]);
     const [value, setValue] = useState('');
     const [modalActive, setModalActive] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
-    const [selectedCandidate, setSelectedCandidate] = useState(null);
     const [currentCandidate, setCurrentCandidate] = useState({
         id: "",
         address: "",
@@ -31,14 +31,21 @@ export default function Base() {
         comment: ""
     });
     const [editing, setEditing] = useState(false);
+    const [selectedCandidate, setSelectedCandidate] = useState(null);
 
-    const api = '/api/restricted/candidate';
+    const api = '/api/restricted/candidate'; // раскладываем по трем папкам - админ (есть), кандидаты, вакансии. Все в рестриктед.
+
+    const handleClick = async (id) => {
+        const response = await fetch(`${api}/${id}`);
+        const data = await response.json();
+        setSelectedCandidate(data);
+    };
 
     const candidateFetch = async () => {
         try {
             const response = await fetch(api);
             const data = await response.json();
-            if (response.ok && !data?.error) setCandidates(data);
+            if (response.ok && !data?.error) setCandidates(data); // проверка, что респонз ок, и дата не содержит эррор
         } catch (error) {
             console.log(error);
         }
@@ -65,14 +72,26 @@ export default function Base() {
         const sortCandidates = copyCandidates.sort((a, b) => { return a[coll] > b[coll] ? 1 : -1 });
         setCandidates(sortCandidates)
     }
-    console.debug('candidates=',candidates);
-    const filteredCandidates = candidates.filter(candidate => { // надо переделать
+    console.debug('candidates=', candidates); //отладочный лог можно убрать потом
+    const filteredCandidates = Array.isArray(candidates) ? candidates?.filter(candidate => { // вроде пока работает
         return (
-            !value 
-            || candidate?.fullName?.toLowerCase().includes(value.toLocaleLowerCase())
+            !value
+            || candidate?.lastName?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.firstName?.toLowerCase().includes(value.toLocaleLowerCase())
             || candidate?.address?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.email?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.phoneNumber?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.telegram?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.profile?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.experience?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.education?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.skills?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.languages?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.projects?.toLowerCase().includes(value.toLocaleLowerCase())
         );
-    });
+    }) : [];
+
+
 
     // редактирование
     const handleEditClick = (candidate) => {
@@ -80,7 +99,7 @@ export default function Base() {
         setCurrentCandidate({
             id: candidate.id,
             address: candidate.address,
-            fullName: candidate.fullName,
+            lastName: candidate.lastName,
             email: candidate.email,
             phoneNumber: candidate.phoneNumber,
             telegram: candidate.telegram,
@@ -119,7 +138,7 @@ export default function Base() {
                     setCurrentCandidate({
                         id: null,
                         address: "",
-                        fullName: "",
+                        lastName: "",
                         email: "",
                         phoneNumber: "",
                         telegram: "",
@@ -157,7 +176,7 @@ export default function Base() {
                     setCurrentCandidate({
                         id: null,
                         address: "",
-                        fullName: "",
+                        lastName: "",
                         email: "",
                         phoneNumber: "",
                         telegram: "",
@@ -178,12 +197,12 @@ export default function Base() {
     };
 
     // добавление
-    const onAdd = async (address, fullName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
+    const onAdd = async (address, lastName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
         await fetch(``, {
             method: 'POST',
             body: JSON.stringify({
                 address: address,
-                fullName: fullName,
+                lastName: lastName,
                 email: email,
                 phoneNumber: phoneNumber,
                 telegram: telegram,
@@ -228,33 +247,39 @@ export default function Base() {
             <table>
                 <CandidateTHead sortCandidates={sortCandidates} />
                 {filteredCandidates && filteredCandidates.map((candidate) => (
-                    <tr key={candidate.id} onClick={() => setModalActive(true)}>
-                        <td className="td-base">{candidate.fullName}</td>
-                        <td className="td-base">должность</td>
+                    <tr key={candidate.id}
+                        onClick={() => {
+                            // handleClick(setSelectedCandidate);
+                            // setSelectedCandidate(candidate);
+                            setModalActive(true);
+                        }}
+                    >
+                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">{candidate.lastName + ' ' + candidate.firstName}</td>
+                        <td className="td-base">вакансия</td>
                         <td className="td-base">{candidate.address}</td>
                         <td className="td-base">{candidate.phoneNumber}</td>
                         <td className="td-base">{candidate.email}</td>
                         <td className="status td-base">статус</td>
-                        <td className="comment td-base">{candidate.comment}</td>
+                        <td className="comment td-base">{candidate.comment}
+                        </td>
                     </tr>
                 ))}
             </table>
             {selectedCandidate && (
-                <Modal active={modalActive} setActive={setModalActive}>
+                <Modal key={selectedCandidate.id} active={modalActive} setActive={setModalActive}>
                     <div className="cv-modal">
-
                         <div className="head-candidate input-fullname"
                             onDoubleClick={() => handleEditClick(selectedCandidate)}>
                             {editing && currentCandidate.id === selectedCandidate.id ?
                                 <input
                                     onKeyDown={handleKeyPress}
                                     type="text"
-                                    value={currentCandidate.fullName}
-                                    onChange={(e) => setCurrentCandidate({ ...currentCandidate, fullName: e.target.value })}
+                                    value={selectedCandidate.lastName + ' ' + selectedCandidate.firstName}
+                                    onChange={(e) => setCurrentCandidate({ ...currentCandidate, lastName: e.target.value, firstName: e.target.value })}
                                 />
-                                : selectedCandidate.fullName}
+                                : (selectedCandidate.lastName + ' ' + selectedCandidate.firstName)}
                         </div>
-                        
+
                         <div className="head-candidate">
                             <h4>Frontend разработчик</h4>
                         </div>
@@ -279,20 +304,20 @@ export default function Base() {
                             <a>{selectedCandidate.urls}</a>
                         </div>
                         <div className="edit-candidate">
-                            <input 
-                            value={value} 
-                            type="text" placeholder="Статус" 
-                            onChange={null}/>
-                            <input 
-                            value={value} 
-                            type="text" 
-                            placeholder="Взят на вакансию" 
-                            onChange={null}/>
-                            <input 
-                            value={value} 
-                            type="text" 
-                            placeholder="Рекрутер" 
-                            onChange={null}/>
+                            <input
+                                value={value}
+                                type="text" placeholder="Статус"
+                                onChange={null} />
+                            <input
+                                value={value}
+                                type="text"
+                                placeholder="Взят на вакансию"
+                                onChange={null} />
+                            <input
+                                value={value}
+                                type="text"
+                                placeholder="Рекрутер"
+                                onChange={null} />
                             <button>Редактировать</button>
                             <button>Прикрепить к другой вакансии</button>
                         </div>

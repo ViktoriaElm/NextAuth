@@ -266,6 +266,10 @@ transition: 0.5s;
 
 /* вход */
 
+.login-form {
+    margin-top: -90px;
+}
+
 .login-container {
     display: flex;
     width: 100%;

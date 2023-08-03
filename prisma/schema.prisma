@@ -41,18 +41,18 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String      @id @default(cuid())
   image         String?
   name          String?
-  email         String?   @unique
+  email         String?     @unique
   phoneNumber   String?
-  telegram      String?   
+  telegram      String?
   emailVerified DateTime?
   role          String?
   accounts      Account[]
   sessions      Session[]
   Candidate     Candidate[]
-    Vacancy       Vacancy[]
+  Vacancy       Vacancy[]
   Comment       Comment[]
   Templates     Templates[]
 }
@@ -97,6 +97,14 @@ model Candidate {
   telegram        String?          @unique
   urls            Urls[]
   body            String?
+  profile         String?
+  experience      String?
+  education       String?
+  skills          String?
+  languages       String?
+  projects        String?
+  sertificates    String?
+  hobby           String?
   comment         Comment?         @relation(fields: [commentId], references: [id])
   vacancyId       String?
   userId          String
@@ -107,7 +115,7 @@ model Customer {
   id        String  @id @unique @default(cuid())
   idVacancy Vacancy @relation(fields: [vacancyId], references: [id])
   email     String? @unique
-  name      String?  @unique
+  name      String? @unique
   vacancyId String  @unique
 }
 
@@ -122,7 +130,7 @@ model Comment {
 
 model Tag {
   id          String     @id @unique @default(cuid())
-  label       String?     @unique
+  label       String?    @unique
   createdAt   DateTime   @default(now())
   Vacancy     Vacancy?   @relation(fields: [vacancyId], references: [id])
   vacancyId   String?

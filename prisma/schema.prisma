@@ -76,6 +76,9 @@ model Vacancy {
   salaryFrom String?
   salaryTo   String?
   body       String?
+  duties      String?
+  requirement String?
+  conditions String?
   userId     String
   Candidate  Candidate[]
 }
@@ -87,7 +90,7 @@ model Candidate {
   pinnedToVacancy Vacancy?         @relation(fields: [vacancyId], references: [id])
   author          User             @relation(fields: [userId], references: [id])
   createdAt       DateTime         @default(now())
-  Address         String?
+  address         String?
   lastName        String?
   firstName       String?
   patronymic      String?

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Fragment } from "react";
-import Modal from '../components/modal/Modal';
-import AddModal from '../components/modal/AddModal';
-import AddCandidate from '../components/AddCandidate';
-import SearchPanel from '../components/SearchPanel';
-import CandidateTHead from '../components/headers/CandidateTHead';
-import { Candidate } from '@prisma/client';
+import Modal from '../modal/Modal';
+import AddModal from '../modal/AddModal';
+import AddCandidate from '../candidates/AddCandidate';
+import SearchPanel from '../SearchPanel';
+import CandidateTHead from '../headers/CandidateTHead';
+// import ReadOnlyCandidate from './ReadOnlyCandidate'
+// import { Candidate } from '@prisma/client';
 
 export default function Base() {
     const [candidates, setCandidates] = useState([]);
@@ -15,7 +16,8 @@ export default function Base() {
     const [currentCandidate, setCurrentCandidate] = useState({
         id: "",
         address: "",
-        fullName: "",
+        lastName: "",
+        firstName: "",
         email: "",
         phoneNumber: "",
         telegram: "",
@@ -34,12 +36,6 @@ export default function Base() {
     const [selectedCandidate, setSelectedCandidate] = useState(null);
 
     const api = '/api/restricted/candidate'; // раскладываем по трем папкам - админ (есть), кандидаты, вакансии. Все в рестриктед.
-
-    const handleClick = async (id) => {
-        const response = await fetch(`${api}/${id}`);
-        const data = await response.json();
-        setSelectedCandidate(data);
-    };
 
     const candidateFetch = async () => {
         try {
@@ -66,14 +62,13 @@ export default function Base() {
         }
     }
 
-    // сортировка
     const sortCandidates = (coll) => {
         let copyCandidates = candidates.concat();
         const sortCandidates = copyCandidates.sort((a, b) => { return a[coll] > b[coll] ? 1 : -1 });
         setCandidates(sortCandidates)
     }
-    console.debug('candidates=', candidates); //отладочный лог можно убрать потом
-    const filteredCandidates = Array.isArray(candidates) ? candidates?.filter(candidate => { // вроде пока работает
+    console.debug('candidates=', candidates);
+    const filteredCandidates = Array.isArray(candidates) ? candidates?.filter(candidate => {
         return (
             !value
             || candidate?.lastName?.toLowerCase().includes(value.toLocaleLowerCase())
@@ -90,7 +85,6 @@ export default function Base() {
             || candidate?.projects?.toLowerCase().includes(value.toLocaleLowerCase())
         );
     }) : [];
-
 
 
     // редактирование
@@ -196,13 +190,13 @@ export default function Base() {
         }
     };
 
-    // добавление
-    const onAdd = async (address, lastName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
+    const onAdd = async (address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
         await fetch(``, {
             method: 'POST',
             body: JSON.stringify({
-                address: address,
                 lastName: lastName,
+                firstName: firstName,
+                address: address,
                 email: email,
                 phoneNumber: phoneNumber,
                 telegram: telegram,
@@ -236,6 +230,8 @@ export default function Base() {
             })
     };
 
+
+
     return (<>
         <div class="main-top">
             <SearchPanel handleChange={handleChange} setModalAdd={setModalAdd} />
@@ -243,28 +239,43 @@ export default function Base() {
                 <AddCandidate onAdd={onAdd} />
             </AddModal>
         </div>
+
         <div class="div-table">
             <table>
                 <CandidateTHead sortCandidates={sortCandidates} />
+
                 {filteredCandidates && filteredCandidates.map((candidate) => (
-                    <tr key={candidate.id}
-                        onClick={() => {
-                            // handleClick(setSelectedCandidate);
-                            // setSelectedCandidate(candidate);
-                            setModalActive(true);
-                        }}
-                    >
-                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">{candidate.lastName + ' ' + candidate.firstName}</td>
-                        <td className="td-base">вакансия</td>
-                        <td className="td-base">{candidate.address}</td>
-                        <td className="td-base">{candidate.phoneNumber}</td>
-                        <td className="td-base">{candidate.email}</td>
-                        <td className="status td-base">статус</td>
-                        <td className="comment td-base">{candidate.comment}
-                        </td>
-                    </tr>
+                    <Fragment key={candidate.id}>
+                        <tr key={candidate.id} onClick={() => { setModalActive(true) }}>
+                            <td onClick={() => {
+                                setSelectedCandidate(candidate)
+                            }}
+                                className="td-base">
+                                {candidate.lastName + ' ' + candidate.firstName}
+                            </td>
+                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">
+                                вакансия
+                            </td>
+                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">
+                                {candidate.address}
+                            </td>
+                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">
+                                {candidate.phoneNumber}
+                            </td>
+                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">
+                                {candidate.email}
+                            </td>
+                            <td onClick={() => setSelectedCandidate(candidate)} className="status td-base">
+                                статус
+                            </td>
+                            <td onClick={() => setSelectedCandidate(candidate)} className="comment td-base">
+                                {candidate.comment}
+                            </td>
+                        </tr>
+                    </Fragment>
                 ))}
             </table>
+
             {selectedCandidate && (
                 <Modal key={selectedCandidate.id} active={modalActive} setActive={setModalActive}>
                     <div className="cv-modal">
@@ -337,7 +348,20 @@ export default function Base() {
                             <h4>Прочее:</h4>
                             <p>{selectedCandidate.hobby}</p>
                         </div>
+
+
+                        
                     </div>
+
+                    {/* <table>
+                        <tbody >
+                            <Fragment key={selectedCandidate.id}>
+                                <div className="cv-modal">
+                                    <ReadOnlyCandidate selectedCandidate={selectedCandidate} value={value} />
+                                </div>
+                            </Fragment>
+                        </tbody>
+                    </table> */}
                 </Modal>
             )}
         </div>

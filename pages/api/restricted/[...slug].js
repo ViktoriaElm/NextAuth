@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   console.debug('>> ', req.method, ' запрос на', req.url, 'slug =', { table, id });
   if (req.body) console.debug('req.body=', JSON.stringify(req.body)); 
   if (!session) throw new Error('Вы должны залогиниться для доступа к этому API'); 
-  if (!['candidate'].includes(table)) throw new Error('Доступ к неизвестной таблице'); 
+  if (!['candidate', 'vacancy'].includes(table)) throw new Error('Доступ к неизвестной таблице'); 
   switch (req.method) { 
     // case 'OPTIONS':  // это может потребоваться для доступа с другого домена
     //   return res.status(200).send(''); 

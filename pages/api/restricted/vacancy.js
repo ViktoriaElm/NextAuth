@@ -1,10 +1,10 @@
-import Base from '../components/candidates/Base';
+import Vacancies from "../../../components/vacancies/Vacancies";
 
-export default function Candidate() {
+export default function Vacancy() {
     return(<>
     <div className='admin-container'>
         <table className='admin-table'>
-            <Base/>
+        <Vacancies/>
         </table>
     </div>
     </>);

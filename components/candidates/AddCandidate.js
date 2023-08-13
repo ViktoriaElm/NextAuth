@@ -6,8 +6,9 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
     const handleOnSubmit = (e) => {
         e.preventDefault();
         onAdd(
+            e.target.lastName.value,
+            e.target.firstName.value,
             e.target.address.value,
-            e.target.fullName.value,
             e.target.email.value,
             e.target.phoneNumber.value,
             e.target.telegram.value,
@@ -22,8 +23,9 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
             e.target.hobby.value,
             e.target.comment.value);
 
+        e.target.lastName.value = "";
+        e.target.firstName.value = "";
         e.target.address.value = "";
-        e.target.fullName.value = "";
         e.target.email.value = "";
         e.target.phoneNumber.value = "";
         e.target.telegram.value = "";
@@ -39,6 +41,7 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
         e.target.comment.value = "";
 
     }
+    // console.log(handleOnSubmit);
 
     return (<>
         <div className="add-modal">
@@ -52,8 +55,15 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                         type="text"
                         value={value}
                         onChange={handleChange}
-                        name="fullName"
-                        placeholder='Полное имя'
+                        name="lastName"
+                        placeholder='Фамилия'
+                    />
+                    <input className="add-input"
+                        type="text"
+                        value={value}
+                        onChange={handleChange}
+                        name="firstName"
+                        placeholder='Имя'
                     />
                     <input className="add-input"
                         type="text"
@@ -172,7 +182,7 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
                     <button onSubmit={handleOnSubmit} className="add-button" type="submit">Сохранить кандидата</button>
                 </div>
             </form>
-            
+
         </div>
     </>)
 }

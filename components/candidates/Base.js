@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { Fragment } from "react";
+
 import Modal from '../modal/Modal';
 import AddModal from '../modal/AddModal';
-import AddCandidate from '../candidates/AddCandidate';
+
 import SearchPanel from '../SearchPanel';
 import CandidateTHead from '../headers/CandidateTHead';
-// import ReadOnlyCandidate from './ReadOnlyCandidate'
-// import { Candidate } from '@prisma/client';
+
+import FilteredCandidates from '../candidates/FilteredCandidates';
+import AddCandidate from '../candidates/AddCandidate';
+import EditModalCandidate from '../candidates/EditModalCandidate';
+
 
 export default function Base() {
     const [candidates, setCandidates] = useState([]);
@@ -94,6 +98,7 @@ export default function Base() {
             id: candidate.id,
             address: candidate.address,
             lastName: candidate.lastName,
+            firstName: candidate.firstName,
             email: candidate.email,
             phoneNumber: candidate.phoneNumber,
             telegram: candidate.telegram,
@@ -111,7 +116,7 @@ export default function Base() {
     };
 
     // сохранение
-    const handleSaveClick = () => {
+    const handleSaveClick = (candidate, id) => {
         if (editing) {
             fetch(`${api}/${currentCandidate.id}`, {
                 method: 'PUT',
@@ -130,9 +135,10 @@ export default function Base() {
                 .then(data => {
                     setCandidates(candidates.map(candidate => candidate.id === currentCandidate.id ? currentCandidate : candidate));
                     setCurrentCandidate({
-                        id: null,
+                        id: "",
                         address: "",
                         lastName: "",
+                        firstName: "",
                         email: "",
                         phoneNumber: "",
                         telegram: "",
@@ -151,7 +157,7 @@ export default function Base() {
                 })
                 .catch(error => console.log(error));
         } else {
-            fetch(api, {
+            fetch(`${api}`, {
                 method: 'POST',
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
@@ -165,12 +171,13 @@ export default function Base() {
                         throw new Error('Error creating candidate');
                     }
                 })
-                .then(data => {
+                .then(() => {
                     setCandidates([...candidates]);
                     setCurrentCandidate({
-                        id: null,
+                        id: "",
                         address: "",
                         lastName: "",
+                        firstName: "",
                         email: "",
                         phoneNumber: "",
                         telegram: "",
@@ -190,10 +197,11 @@ export default function Base() {
         }
     };
 
-    const onAdd = async (address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
-        await fetch(``, {
+    const onAdd = async (id, address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
+        await fetch(`${api}`, {
             method: 'POST',
             body: JSON.stringify({
+                id: id,
                 lastName: lastName,
                 firstName: firstName,
                 address: address,
@@ -245,123 +253,19 @@ export default function Base() {
                 <CandidateTHead sortCandidates={sortCandidates} />
 
                 {filteredCandidates && filteredCandidates.map((candidate) => (
-                    <Fragment key={candidate.id}>
-                        <tr key={candidate.id} onClick={() => { setModalActive(true) }}>
-                            <td onClick={() => {
-                                setSelectedCandidate(candidate)
-                            }}
-                                className="td-base">
-                                {candidate.lastName + ' ' + candidate.firstName}
-                            </td>
-                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">
-                                вакансия
-                            </td>
-                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">
-                                {candidate.address}
-                            </td>
-                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">
-                                {candidate.phoneNumber}
-                            </td>
-                            <td onClick={() => setSelectedCandidate(candidate)} className="td-base">
-                                {candidate.email}
-                            </td>
-                            <td onClick={() => setSelectedCandidate(candidate)} className="status td-base">
-                                статус
-                            </td>
-                            <td onClick={() => setSelectedCandidate(candidate)} className="comment td-base">
-                                {candidate.comment}
-                            </td>
-                        </tr>
+                    <Fragment key={setSelectedCandidate.id}>
+                        <FilteredCandidates setModalActive={setModalActive} setSelectedCandidate={setSelectedCandidate} candidate={candidate}/>
                     </Fragment>
                 ))}
             </table>
 
             {selectedCandidate && (
                 <Modal key={selectedCandidate.id} active={modalActive} setActive={setModalActive}>
+                    {/* <h5 onClick={e => e.stopPropagation()} className={active ? "content active" : "content"}>🠔 Назад</h5><br/> */}
                     <div className="cv-modal">
-                        <div className="head-candidate input-fullname"
-                            onDoubleClick={() => handleEditClick(selectedCandidate)}>
-                            {editing && currentCandidate.id === selectedCandidate.id ?
-                                <input
-                                    onKeyDown={handleKeyPress}
-                                    type="text"
-                                    value={selectedCandidate.lastName + ' ' + selectedCandidate.firstName}
-                                    onChange={(e) => setCurrentCandidate({ ...currentCandidate, lastName: e.target.value, firstName: e.target.value })}
-                                />
-                                : (selectedCandidate.lastName + ' ' + selectedCandidate.firstName)}
-                        </div>
+                        <EditModalCandidate handleSaveClick={handleSaveClick} handleKeyPress={handleKeyPress} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} currentCandidate={currentCandidate} setCurrentCandidate={setCurrentCandidate}/>
 
-                        <div className="head-candidate">
-                            <h4>Frontend разработчик</h4>
-                        </div>
-                        <div className="head-candidate">
-                            <h4>{selectedCandidate.address}</h4>
-                        </div>
-                        <div className="head-candidate">
-                            <h5>Телефон / WhatsApp:&nbsp;</h5>
-                            <span>{selectedCandidate.phoneNumber}</span>
-                        </div>
-                        <div className="head-candidate">
-                            <h5>Telegram:&nbsp;</h5>
-                            <a href="https://t.me/">
-                                <span>{selectedCandidate.telegram}</span>
-                            </a>
-                        </div>
-                        <div className="head-candidate">
-                            <h5>E-mail:&nbsp;</h5>
-                            <span>{selectedCandidate.email}</span>
-                        </div>
-                        <div className="head-candidate">
-                            <a>{selectedCandidate.urls}</a>
-                        </div>
-                        <div className="edit-candidate">
-                            <input
-                                value={value}
-                                type="text" placeholder="Статус"
-                                onChange={null} />
-                            <input
-                                value={value}
-                                type="text"
-                                placeholder="Взят на вакансию"
-                                onChange={null} />
-                            <input
-                                value={value}
-                                type="text"
-                                placeholder="Рекрутер"
-                                onChange={null} />
-                            <button>Редактировать</button>
-                            <button>Прикрепить к другой вакансии</button>
-                        </div>
-                        <div className="discription" >
-                            <h4>О себе:</h4>
-                            <p>{selectedCandidate.profile}</p>
-                            <h4>Опыт:</h4>
-                            <p>{selectedCandidate.experience}</p>
-                            <h4>Образование:</h4>
-                            <p>{selectedCandidate.education}</p>
-                            <h4>Навыки:</h4>
-                            <p>{selectedCandidate.skills}</p>
-                            <h4>Языки:</h4>
-                            <p>{selectedCandidate.languages}</p>
-                            <h4>Сертификаты:</h4>
-                            <p>{selectedCandidate.sertificates}</p>
-                            <h4>Прочее:</h4>
-                            <p>{selectedCandidate.hobby}</p>
-                        </div>
-
-
-                        
                     </div>
-
-                    {/* <table>
-                        <tbody >
-                            <Fragment key={selectedCandidate.id}>
-                                <div className="cv-modal">
-                                    <ReadOnlyCandidate selectedCandidate={selectedCandidate} value={value} />
-                                </div>
-                            </Fragment>
-                        </tbody>
-                    </table> */}
                 </Modal>
             )}
         </div>

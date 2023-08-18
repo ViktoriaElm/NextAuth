@@ -13,29 +13,29 @@ export default function Nav() {
     return (<>
       <div className="div-session-container">
         <nav className="nav">
-          <div class="logo">
+          <div className="logo">
             <Image
               src="/Безымянный-1.png"
               width={35}
               height={30}
               alt="logo" />
           </div>
-          <div class="menu-main">
-            <div class="menu">
+          <div className="menu-main">
+            <div className="menu">
               <Link href="/">
                 <div className="btn-menu">
                   <h5>База</h5>
                 </div>
               </Link>
             </div>
-            <div class="menu">
+            <div className="menu">
               <Link href="/vacancy">
                 <div className="btn-menu">
                   <h5>Вакансии</h5>
                 </div>
               </Link>
             </div>
-            <div class="menu">
+            <div className="menu">
               <Link href="/Reports">
                 <div className="btn-menu">
                   <h5>Отчеты</h5>
@@ -49,7 +49,7 @@ export default function Nav() {
                 </div>
               </Link>
             </div> */}
-            <div class="menu">
+            <div className="menu">
               <Link href="/myaccount">
                 <div className="btn-menu">
                   <h5>Аккаунт</h5>
@@ -58,7 +58,7 @@ export default function Nav() {
             </div>
            
             {'admin' === session?.user?.role ?
-             <div class="menu">
+             <div className="menu">
               <Link href="/admin">
                 <div className="btn-menu">
                 <h5>Админ</h5>
@@ -68,7 +68,7 @@ export default function Nav() {
              }    
 
           </div>
-          <div class="menu-exit">
+          <div className="menu-exit">
             <h5>{session?.user?.name}</h5>
             <button className="sign-out btn-esc" onClick={() => signOut()}>
               ❘➔

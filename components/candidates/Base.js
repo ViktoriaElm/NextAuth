@@ -241,28 +241,28 @@ export default function Base() {
 
 
     return (<>
-        <div class="main-top">
+        <div className="main-top">
             <SearchPanel handleChange={handleChange} setModalAdd={setModalAdd} />
             <AddModal add={modalAdd} setAdd={setModalAdd}>
                 <AddCandidate onAdd={onAdd} />
             </AddModal>
         </div>
 
-        <div class="div-table">
+        <div className="div-table">
             <table>
                 <CandidateTHead sortCandidates={sortCandidates} />
 
                 {filteredCandidates && filteredCandidates.map((candidate) => (
-                    <Fragment key={setSelectedCandidate.id}>
+                    <tbody key={setSelectedCandidate.id}>
                         <FilteredCandidates setModalActive={setModalActive} setSelectedCandidate={setSelectedCandidate} candidate={candidate}/>
-                    </Fragment>
+                    </tbody>
                 ))}
             </table>
 
             {selectedCandidate && (
-                <Modal key={selectedCandidate.id} active={modalActive} setActive={setModalActive}>
+                <Modal active={modalActive} setActive={setModalActive}>
                     {/* <h5 onClick={e => e.stopPropagation()} className={active ? "content active" : "content"}>🠔 Назад</h5><br/> */}
-                    <div className="cv-modal">
+                    <div key={selectedCandidate.id} className="cv-modal">
                         <EditModalCandidate handleSaveClick={handleSaveClick} handleKeyPress={handleKeyPress} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} currentCandidate={currentCandidate} setCurrentCandidate={setCurrentCandidate}/>
 
                     </div>

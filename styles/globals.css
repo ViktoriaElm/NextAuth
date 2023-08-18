@@ -134,6 +134,13 @@ transition: 0.5s;
     font-size: 15px;
 }
 
+.head-candidate h6 {
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 5px;
+    /* margin-top: 10px; */
+}
+
 .discription-container {
     display: flex;
     width: 98%;
@@ -143,6 +150,7 @@ transition: 0.5s;
 
 .discription h4 {
     font-weight: 600;
+    font-size: 13px;
     color: rgb(43, 43, 43);
 }
 
@@ -163,16 +171,25 @@ transition: 0.5s;
     padding: 6px;
 }
 
+.input-fullname {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
 .head_candidate,
-.add-candidate,
-.input_fullname {
+.add-candidate {
     display: flex;
     flex-wrap: nowrap;
 
 }
 
 .input_fullname {
-    font-size: 17px;
+    /* font-size: 27px; */
+    margin-bottom: 10px;
+}
+
+.input-firstname {
     margin-bottom: 10px;
 }
 
@@ -641,6 +658,25 @@ hr {
     padding: 3px 6px;
     font-size: 1rem;
     color: var(--text-main);
+}
+
+.input-status-row {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-status-td {
+    border: none;
+    box-shadow: none;
+    /* margin: 0; */
+    padding: 0;
+}
+
+.input-status {
+padding: 5px;
+margin-right: 5px;
+width: 30%;
 }
 
 

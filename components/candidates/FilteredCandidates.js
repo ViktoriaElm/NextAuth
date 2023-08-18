@@ -4,7 +4,7 @@ export default function FilteredCandidates({setModalActive, setSelectedCandidate
                             <td onClick={() => {
                                 setSelectedCandidate(candidate)}}
                                 className="td-base">
-                                {candidate.lastName} {candidate.firstName}
+                                {candidate && candidate.lastName} {candidate.firstName}
                             </td>
                             <td onClick={() => setSelectedCandidate(candidate)} className="td-base">
                                 вакансия

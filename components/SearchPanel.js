@@ -1,6 +1,6 @@
 export default function SearchPanel({handleChange, setModalAdd, value}) {
     return(<>
-    <div class="main-top-input">
+    <div className="main-top-input">
                 <form className="form">
                     <input
                         type="text"
@@ -11,9 +11,9 @@ export default function SearchPanel({handleChange, setModalAdd, value}) {
                     />
                 </form>
             </div>
-            <div class="main-top-btns">
-                <button onClick={() => setModalAdd(true)} class="btn-add"><span class="span-btn">Добавить кандидата</span></button>
-                <button class="btn-add"><span class="span-btn">Добавить вакансию</span></button>
+            <div className="main-top-btns">
+                <button onClick={() => setModalAdd(true)} className="btn-add"><span className="span-btn">Добавить кандидата</span></button>
+                <button className="btn-add"><span className="span-btn">Добавить вакансию</span></button>
             </div>
     </>)
 }

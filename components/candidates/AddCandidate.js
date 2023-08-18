@@ -6,6 +6,7 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
     const handleOnSubmit = (e) => {
         e.preventDefault();
         onAdd(
+            e.target.id.value,
             e.target.lastName.value,
             e.target.firstName.value,
             e.target.address.value,
@@ -23,6 +24,7 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
             e.target.hobby.value,
             e.target.comment.value);
 
+            // e.target.id.value = "";
         e.target.lastName.value = "";
         e.target.firstName.value = "";
         e.target.address.value = "";

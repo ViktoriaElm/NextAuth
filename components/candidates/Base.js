@@ -11,7 +11,7 @@ import AddCandidate from '../candidates/AddCandidate';
 import EditModalCandidate from '../candidates/EditModalCandidate';
 
 
-export default function Base(candidate, id) {
+export default function Base() {
     const [candidates, setCandidates] = useState({
         id: "",
         address: "",
@@ -34,7 +34,7 @@ export default function Base(candidate, id) {
     const [value, setValue] = useState('');
     const [modalActive, setModalActive] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
-    const [currentCandidate, setCurrentCandidate] = useState({
+    const [editedCandidate, setEditedCandidate] = useState({
         id: "",
         address: "",
         lastName: "",
@@ -111,7 +111,7 @@ export default function Base(candidate, id) {
     // редактирование
     const handleEditClick = (candidate) => {
         setEditing(true);
-        setCurrentCandidate({
+        setEditedCandidate({
             id: candidate.id,
             address: candidate.address,
             lastName: candidate.lastName,
@@ -135,12 +135,12 @@ export default function Base(candidate, id) {
     // сохранение
     const handleSaveClick = () => {
         if (editing) {
-            fetch(`${api}/${currentCandidate.id}`, {
+            fetch(`${api}/${editedCandidate.id}`, {
                 method: 'PUT',
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 },
-                body: JSON.stringify(currentCandidate)
+                body: JSON.stringify(editedCandidate)
             })
                 .then(res => {
                     if (res.ok) {
@@ -150,26 +150,27 @@ export default function Base(candidate, id) {
                     }
                 })
                 .then(() => {
-                    setCandidates(candidates.map(candidate => candidate.id === currentCandidate.id ? currentCandidate : candidate));
-                    setCurrentCandidate({
-                        id: "",
-                        address: "",
-                        lastName: "",
-                        firstName: "",
-                        email: "",
-                        phoneNumber: "",
-                        telegram: "",
-                        urls: "",
-                        profile: "",
-                        experience: "",
-                        education: "",
-                        skills: "",
-                        languages: "",
-                        projects: "",
-                        sertificates: "",
-                        hobby: "",
-                        comment: ""
-                    });
+                    setCandidates(candidates.map(candidate => candidate.id === editedCandidate.id ? editedCandidate : candidate));
+                    setSelectedCandidate(editedCandidate)
+                    // setEditedCandidate({
+                    //     id: "",
+                    //     address: "",
+                    //     lastName: "",
+                    //     firstName: "+++",
+                    //     email: "",
+                    //     phoneNumber: "",
+                    //     telegram: "",
+                    //     urls: "",
+                    //     profile: "",
+                    //     experience: "",
+                    //     education: "",
+                    //     skills: "",
+                    //     languages: "",
+                    //     projects: "",
+                    //     sertificates: "",
+                    //     hobby: "",
+                    //     comment: ""
+                    // });
                     setEditing(false);
                 })
                 .catch(error => console.log(error));
@@ -179,7 +180,7 @@ export default function Base(candidate, id) {
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
                 },
-                body: JSON.stringify(currentCandidate)
+                body: JSON.stringify(editedCandidate)
             })
                 .then(res => {
                     if (res.ok) {
@@ -190,7 +191,7 @@ export default function Base(candidate, id) {
                 })
                 .then(() => {
                     setCandidates([...candidates]);
-                    setCurrentCandidate({
+                    setEditedCandidate({
                         id: "",
                         address: "",
                         lastName: "",
@@ -259,7 +260,7 @@ export default function Base(candidate, id) {
         <div className="main-top">
             <SearchPanel handleChange={handleChange} setModalAdd={setModalAdd} />
             <AddModal add={modalAdd} setAdd={setModalAdd}>
-                <AddCandidate onAdd={onAdd} currentCandidate={currentCandidate}/>
+                <AddCandidate onAdd={onAdd} currentCandidate={editedCandidate}/>
             </AddModal>
         </div>
 
@@ -278,7 +279,7 @@ export default function Base(candidate, id) {
                 <Modal active={modalActive} setActive={setModalActive}>
                     <div key={selectedCandidate.id} className="cv-modal">
 
-                        <EditModalCandidate handleSaveClick={handleSaveClick} handleKeyPress={handleKeyPress} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} currentCandidate={currentCandidate} setCurrentCandidate={setCurrentCandidate} />
+                        <EditModalCandidate handleSaveClick={handleSaveClick} handleKeyPress={handleKeyPress} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} />
 
                     </div>
                 </Modal>

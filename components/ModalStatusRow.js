@@ -31,7 +31,6 @@ export default function ModalStatusRow() {
                         <option value={PrismaEnum.Value14}>{PrismaEnum.Value14}</option>
                         <option value={PrismaEnum.Value15}>{PrismaEnum.Value15}</option>
                         <option value={PrismaEnum.Value16}>{PrismaEnum.Value16}</option>
-                        <option value={PrismaEnum.Value17}>{PrismaEnum.Value17}</option>
                     </select>
 
                     {/* <input

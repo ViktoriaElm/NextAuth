@@ -28,13 +28,13 @@ export default async function handler(req, res) {
     case 'DELETE': //удаляет запись из таблицы table на основе идентификатора id и возвращает статус 204 (без содержимого).
       return res.status(204).json(await prisma[table].delete({
         where: {
-          id: +id
+          id: id
         }
       }));
     case 'PUT': //обновляет запись в таблице table на основе данных из тела запроса, исключая поле с именем "id", и возвращает обновленную запись в формате JSON.
       return res.status(201).json(await prisma[table].update({
         where: {
-          id: +id
+          id: id
         },
         data: Object.fromEntries([...new URLSearchParams(req.body).entries()].filter(([n]) => 'id' !== n))
       }));

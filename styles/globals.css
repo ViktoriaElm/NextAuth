@@ -23,11 +23,15 @@
     font-weight: 400;
 }
 
+h2 {
+    font-size: 20px;
+}
+
 .save,
 .cancel {
-    width: 20px;
-    /* height: 20px; */
-    max-height: 30px;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
     border: none;
     border-bottom: 1px dotted rgb(214, 214, 214);
     padding: 3px;
@@ -36,19 +40,34 @@
     color: gray;
 }
 
+.save, .cancel, .input-status {
+    border: none;
+    border-bottom: 1px dotted rgb(214, 214, 214);
+    outline: none;
+}
+
+.input-status {
+    background-color: rgb(243, 243, 243);
+    border-radius: 3px;
+}
+
+.save {
+    color: rgb(19, 200, 19);
+}
+
+.cancel {
+    color: rgb(252, 97, 97);
+}
+
 .edit-name-container {
     display: flex;
     width: 100%;
     justify-content: flex-start;
 }
 
-.edit-input {
-    width: 90%;
-}
-
-.edit-input-last,
-.edit-input-first {
-    font-size: 20px;
+.edit-buttons {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .edit-input {
@@ -57,6 +76,17 @@
     padding: 5px;
     border: 1px dotted rgb(214, 214, 214);
     border-radius: 3px;
+    width: 100%;
+}
+
+textarea {
+    height: 85px;
+}
+
+.edit-input-last,
+.edit-input-first {
+    font-size: 20px;
+    width: 98%;
 }
 
 body {
@@ -226,6 +256,7 @@ transition: 0.5s;
 
 .discription p {
     margin-bottom: 15px;
+    font-size: 13px;
 }
 
 /* кандидат */

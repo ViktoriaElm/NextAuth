@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Fragment } from "react";
 
 import Modal from '../modal/Modal';
 import AddModal from '../modal/AddModal';
@@ -12,8 +11,26 @@ import AddCandidate from '../candidates/AddCandidate';
 import EditModalCandidate from '../candidates/EditModalCandidate';
 
 
-export default function Base() {
-    const [candidates, setCandidates] = useState([]);
+export default function Base(candidate, id) {
+    const [candidates, setCandidates] = useState({
+        id: "",
+        address: "",
+        lastName: "",
+        firstName: "",
+        email: "",
+        phoneNumber: "",
+        telegram: "",
+        urls: "",
+        profile: "",
+        experience: "",
+        education: "",
+        skills: "",
+        languages: "",
+        projects: "",
+        sertificates: "",
+        hobby: "",
+        comment: "",
+    });
     const [value, setValue] = useState('');
     const [modalActive, setModalActive] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
@@ -43,7 +60,7 @@ export default function Base() {
 
     const candidateFetch = async () => {
         try {
-            const response = await fetch(api);
+            const response = await fetch(`${api}`);
             const data = await response.json();
             if (response.ok && !data?.error) setCandidates(data); // проверка, что респонз ок, и дата не содержит эррор
         } catch (error) {
@@ -116,7 +133,7 @@ export default function Base() {
     };
 
     // сохранение
-    const handleSaveClick = (candidate, id) => {
+    const handleSaveClick = () => {
         if (editing) {
             fetch(`${api}/${currentCandidate.id}`, {
                 method: 'PUT',
@@ -132,7 +149,7 @@ export default function Base() {
                         throw new Error('Error updating candidate');
                     }
                 })
-                .then(data => {
+                .then(() => {
                     setCandidates(candidates.map(candidate => candidate.id === currentCandidate.id ? currentCandidate : candidate));
                     setCurrentCandidate({
                         id: "",
@@ -157,7 +174,7 @@ export default function Base() {
                 })
                 .catch(error => console.log(error));
         } else {
-            fetch(`${api}`, {
+            fetch(`/candidate`, {
                 method: 'POST',
                 headers: {
                     "Content-type": "application/json; charset=UTF-8"
@@ -197,8 +214,8 @@ export default function Base() {
         }
     };
 
-    const onAdd = async (id, address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
-        await fetch(`${api}`, {
+    const onAdd = async (candidate, id, address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
+        await fetch(`/candidate`, {
             method: 'POST',
             body: JSON.stringify({
                 id: id,
@@ -238,13 +255,11 @@ export default function Base() {
             })
     };
 
-
-
     return (<>
         <div className="main-top">
             <SearchPanel handleChange={handleChange} setModalAdd={setModalAdd} />
             <AddModal add={modalAdd} setAdd={setModalAdd}>
-                <AddCandidate onAdd={onAdd} />
+                <AddCandidate onAdd={onAdd} currentCandidate={currentCandidate}/>
             </AddModal>
         </div>
 
@@ -253,17 +268,17 @@ export default function Base() {
                 <CandidateTHead sortCandidates={sortCandidates} />
 
                 {filteredCandidates && filteredCandidates.map((candidate) => (
-                    <tbody key={setSelectedCandidate.id}>
-                        <FilteredCandidates setModalActive={setModalActive} setSelectedCandidate={setSelectedCandidate} candidate={candidate}/>
+                    <tbody key={filteredCandidates.id}>
+                        <FilteredCandidates key={filteredCandidates.id} setModalActive={setModalActive} setSelectedCandidate={setSelectedCandidate} candidate={candidate} />
                     </tbody>
                 ))}
             </table>
 
             {selectedCandidate && (
                 <Modal active={modalActive} setActive={setModalActive}>
-                    {/* <h5 onClick={e => e.stopPropagation()} className={active ? "content active" : "content"}>🠔 Назад</h5><br/> */}
                     <div key={selectedCandidate.id} className="cv-modal">
-                        <EditModalCandidate handleSaveClick={handleSaveClick} handleKeyPress={handleKeyPress} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} currentCandidate={currentCandidate} setCurrentCandidate={setCurrentCandidate}/>
+
+                        <EditModalCandidate handleSaveClick={handleSaveClick} handleKeyPress={handleKeyPress} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} currentCandidate={currentCandidate} setCurrentCandidate={setCurrentCandidate} />
 
                     </div>
                 </Modal>

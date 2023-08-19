@@ -2,6 +2,17 @@ import ModalStatusRow from '../ModalStatusRow'
 
 export default function EditModalCandidate({ handleSaveClick, handleKeyPress, handleEditClick, selectedCandidate, editing, setEditing, currentCandidate, setCurrentCandidate }) {
     return (<>
+        <div className='edit-buttons'>
+            {editing && currentCandidate.id === selectedCandidate.id ? (
+                <>
+                    <button className="save"
+                        onClick={handleSaveClick}>✔</button>
+                    <button className="cancel"
+                        onClick={() => setEditing(false)}>✘</button>
+                </>
+            ) : ('')}
+        </div>
+
         <div
             className="head-candidate input-lastname"
             onDoubleClick={() => handleEditClick(selectedCandidate)}>
@@ -15,15 +26,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                     onChange={e => setCurrentCandidate({ ...currentCandidate, lastName: e.target.value })} />
 
             ) : selectedCandidate.lastName !== '' && <h2>{selectedCandidate.lastName}</h2>}
-            {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')}
-
         </div>
 
         <div
@@ -36,24 +38,13 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                     type="text"
                     value={currentCandidate.firstName}
                     placeholder='Add first name...'
-                    onChange={e => setCurrentCandidate({ ...currentCandidate, lastName: e.target.value })} />
+                    onChange={e => setCurrentCandidate({ ...currentCandidate, firstName: e.target.value })} />
             ) : selectedCandidate.firstName !== '' && <h2>{selectedCandidate.firstName}</h2>}
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
-
         </div>
-
 
         <div className="head-candidate">
             <h6>Frontend разработчик</h6>
         </div>
-
 
         <div
             className="head-candidate input-fullname"
@@ -67,15 +58,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                     placeholder='Add city...'
                     onChange={e => setCurrentCandidate({ ...currentCandidate, address: e.target.value })} />
             ) : selectedCandidate.address !== '' && <h6>{selectedCandidate.address}</h6>}
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
-
         </div>
 
         <div
@@ -91,15 +73,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                     placeholder='Add phone number...'
                     onChange={e => setCurrentCandidate({ ...currentCandidate, phoneNumber: e.target.value })} />
             ) : selectedCandidate.phoneNumber !== '' && <h5>{selectedCandidate.phoneNumber}</h5>}
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
-
         </div>
 
         <div
@@ -115,15 +88,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                     placeholder='Add telegram accaunt...'
                     onChange={e => setCurrentCandidate({ ...currentCandidate, telegram: e.target.value })} />
             ) : selectedCandidate.telegram !== '' && <h5>{selectedCandidate.telegram}</h5>}
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
-
         </div>
 
         <div
@@ -139,15 +103,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                     placeholder='Add email...'
                     onChange={e => setCurrentCandidate({ ...currentCandidate, email: e.target.value })} />
             ) : selectedCandidate.email !== '' && <h5>{selectedCandidate.email}</h5>}
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
-
         </div>
 
         <div
@@ -162,18 +117,20 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                     placeholder='Add some link to account...'
                     onChange={e => setCurrentCandidate({ ...currentCandidate, urls: e.target.value })} />
             ) : selectedCandidate.urls !== '' && <h5>{selectedCandidate.urls}</h5>}
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
+        </div>
+
+        <ModalStatusRow />
+
+        <div className='edit-buttons'>
+            {editing && currentCandidate.id === selectedCandidate.id ? (
                 <>
                     <button className="save"
                         onClick={handleSaveClick}>✔</button>
                     <button className="cancel"
                         onClick={() => setEditing(false)}>✘</button>
                 </>
-            ) : ('')} */}
-
+            ) : ('')}
         </div>
-
-        <ModalStatusRow />
 
         <div className='discription-container'>
             <div
@@ -190,14 +147,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                         onChange={e => setCurrentCandidate({ ...currentCandidate, profile: e.target.value })} />
                 ) : selectedCandidate.profile !== '' && <p>{selectedCandidate.profile}</p>}
             </div>
-            {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')}
         </div>
 
         <div className='discription-container'>
@@ -215,14 +164,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                         onChange={e => setCurrentCandidate({ ...currentCandidate, experience: e.target.value })} />
                 ) : selectedCandidate.experience !== '' && <p>{selectedCandidate.experience}</p>}
             </div>
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
         </div>
 
         <div className='discription-container'>
@@ -241,14 +182,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                         onChange={e => setCurrentCandidate({ ...currentCandidate, education: e.target.value })} />
                 ) : selectedCandidate.education !== '' && <p>{selectedCandidate.education}</p>}
             </div>
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
         </div>
 
         <div className='discription-container'>
@@ -266,14 +199,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                         onChange={e => setCurrentCandidate({ ...currentCandidate, skills: e.target.value })} />
                 ) : selectedCandidate.skills !== '' && <p>{selectedCandidate.skills}</p>}
             </div>
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
         </div>
 
         <div className='discription-container'>
@@ -291,14 +216,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                         onChange={e => setCurrentCandidate({ ...currentCandidate, languages: e.target.value })} />
                 ) : selectedCandidate.languages !== '' && <p>{selectedCandidate.languages}</p>}
             </div>
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
         </div>
 
         <div className='discription-container'>
@@ -316,14 +233,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                         onChange={e => setCurrentCandidate({ ...currentCandidate, sertificates: e.target.value })} />
                 ) : selectedCandidate.sertificates !== '' && <p>{selectedCandidate.sertificates}</p>}
             </div>
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
         </div>
 
         <div className='discription-container'>
@@ -340,16 +249,7 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                         placeholder='Hobby...'
                         onChange={e => setCurrentCandidate({ ...currentCandidate, hobby: e.target.value })} />
                 ) : selectedCandidate.hobby !== '' && <p>{selectedCandidate.hobby}</p>}
-
             </div>
-            {/* {editing && currentCandidate.id === selectedCandidate.id ? (
-                <>
-                    <button className="save"
-                        onClick={handleSaveClick}>✔</button>
-                    <button className="cancel"
-                        onClick={() => setEditing(false)}>✘</button>
-                </>
-            ) : ('')} */}
         </div>
     </>)
 }

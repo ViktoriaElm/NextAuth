@@ -10,8 +10,8 @@ export default function ModalStatusRow() {
 
     return (
         <>
-            <tr className="input-status-row">
-                <td className="input-status-td">
+            <div className="input-status-row">
+                <div className="input-status-td">
                     <select 
                     className="input-status"
                     value={selectedValue} onChange={handleChange}>
@@ -34,20 +34,20 @@ export default function ModalStatusRow() {
                         <option value={PrismaEnum.Value17}>{PrismaEnum.Value17}</option>
                     </select>
 
-                    <input
+                    {/* <input
                         className="input-status"
                         type="text"
                         placeholder="Взят на вакансию"
-                    />
+                    /> */}
 
-                    <input
+                    {/* <input
                         className="input-status"
                         type="text"
                         placeholder="Рекрутер"
-                    />
+                    /> */}
 
-                </td>
-            </tr>
+                </div>
+            </div>
         </>
     )
 }

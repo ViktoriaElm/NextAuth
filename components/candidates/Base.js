@@ -77,12 +77,6 @@ export default function Base() {
         setValue(e.target.value)
     }
 
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            handleSaveClick();
-        }
-    }
-
     const sortCandidates = (coll) => {
         let copyCandidates = candidates.concat();
         const sortCandidates = copyCandidates.sort((a, b) => { return a[coll] > b[coll] ? 1 : -1 });
@@ -152,25 +146,6 @@ export default function Base() {
                 .then(() => {
                     setCandidates(candidates.map(candidate => candidate.id === editedCandidate.id ? editedCandidate : candidate));
                     setSelectedCandidate(editedCandidate)
-                    // setEditedCandidate({
-                    //     id: "",
-                    //     address: "",
-                    //     lastName: "",
-                    //     firstName: "+++",
-                    //     email: "",
-                    //     phoneNumber: "",
-                    //     telegram: "",
-                    //     urls: "",
-                    //     profile: "",
-                    //     experience: "",
-                    //     education: "",
-                    //     skills: "",
-                    //     languages: "",
-                    //     projects: "",
-                    //     sertificates: "",
-                    //     hobby: "",
-                    //     comment: ""
-                    // });
                     setEditing(false);
                 })
                 .catch(error => console.log(error));
@@ -215,7 +190,7 @@ export default function Base() {
         }
     };
 
-    const onAdd = async (candidate, id, address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
+    const onAdd = async (id, address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
         await fetch(`/candidate`, {
             method: 'POST',
             body: JSON.stringify({
@@ -279,7 +254,8 @@ export default function Base() {
                 <Modal active={modalActive} setActive={setModalActive}>
                     <div key={selectedCandidate.id} className="cv-modal">
 
-                        <EditModalCandidate handleSaveClick={handleSaveClick} handleKeyPress={handleKeyPress} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} />
+                        <EditModalCandidate handleSaveClick={handleSaveClick} 
+                        handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} />
 
                     </div>
                 </Modal>

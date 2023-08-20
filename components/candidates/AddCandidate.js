@@ -41,7 +41,6 @@ export default function AddCandidate({ onAdd, value, handleChange }) {
         e.target.comment.value = "";
 
     }
-    // console.log(handleOnSubmit);
 
     return (<>
         <div className="add-modal">

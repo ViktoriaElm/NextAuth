@@ -1,5 +1,5 @@
 {
-  "recruiter": [
+  "user": [
     {
       "id": 1,
       "fullname": "Горкина В.М.",
@@ -105,61 +105,8 @@
       "sertificates": "Сертификат по Frontend разработке, Udemy, Сертификат по HTML и CSS, Codecademy",
       "hobby": "В свободное время увлекаюсь чтением книг, изучением новых технологий и посещением технических конференций. Люблю заниматься спортом и путешествоват.",
       "comment": ""
-    },
-    {
-      "id": 4,
-      "address": "Коммуны",
-      "fullName": "Виктория ",
-      "email": "v9218743998@yandex.ru",
-      "phoneNumber": "+79218743998",
-      "telegram": "",
-      "urls": "",
-      "profile": "",
-      "experience": "",
-      "education": "",
-      "skills": "",
-      "languages": "",
-      "projects": "",
-      "sertificates": "",
-      "hobby": "",
-      "comment": ""
-    },
-    {
-      "address": "Позвоните мне по телефону",
-      "fullName": "Вика",
-      "email": "v.gorkina.job@gmail.com",
-      "phoneNumber": "+79218743998",
-      "telegram": "",
-      "urls": "",
-      "profile": "",
-      "experience": "",
-      "education": "",
-      "skills": "",
-      "languages": "",
-      "projects": "",
-      "sertificates": "",
-      "hobby": "",
-      "comment": "",
-      "id": 5
-    },
-    {
-      "address": "Коммуны",
-      "fullName": "Гребнева Анна",
-      "email": "v9218743998@yandex.ru",
-      "phoneNumber": "+79218743998",
-      "telegram": "",
-      "urls": "",
-      "profile": "цукен",
-      "experience": "цсжмщвмгпрол",
-      "education": "цукенро",
-      "skills": "цукенро",
-      "languages": "ывапр",
-      "projects": "",
-      "sertificates": "",
-      "hobby": "",
-      "comment": "",
-      "id": 6
     }
+  
   ],
   "comments": [
     {

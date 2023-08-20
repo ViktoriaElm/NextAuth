@@ -1,0 +1,20 @@
+
+export enum StatusCandidate {
+  new = 'Новый',
+  firstLetter = 'Первое письмо',
+  secondLetter = 'Второе письмо',
+  screeningInterview = 'Интервью с рекрутером',
+  underConsideration = 'Отправлен на рассмотрение',
+  technicalInterview = 'Тех интервью',
+  testTask = 'Тестовое',
+  lifeCoding = 'Лайф коддинг',
+  securityCheck = 'Проверка СБ',
+  waitingOffer = 'Ожидает оффер',
+  signedOffer = 'Оффер подписан',
+  notAcceptedOffer = 'Оффер не принят',
+  hired = 'Принят',
+  completedTrialPeriod = 'ИС пройден',
+  notCompletedTrialPeriod = 'ИС не пройден',
+  rejection = 'Отказ',
+  reserve = 'Резерв',
+}

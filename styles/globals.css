@@ -46,9 +46,29 @@ h2 {
     outline: none;
 }
 
-.input-status {
-    background-color: rgb(243, 243, 243);
+.input-status-td {
+    display: flex;
+    align-items: center;
+}
+
+.input-status, .span-status {
     border-radius: 3px;
+}
+
+.input-status {
+    padding: 5px;
+    margin-right: 5px;
+    background-color: rgb(243, 243, 243);
+    }
+
+.span-status {
+    margin-left: 3px;
+    padding: 6px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: -1px;
+    background-color: rgb(223, 245, 229);
+    font-size: 13px;
 }
 
 .save {
@@ -702,12 +722,6 @@ hr {
     box-shadow: none;
     /* margin: 0; */
     padding: 0;
-}
-
-.input-status {
-padding: 5px;
-margin-right: 5px;
-width: 30%;
 }
 
 

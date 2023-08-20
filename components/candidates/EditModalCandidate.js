@@ -1,6 +1,6 @@
 import ModalStatusRow from '../ModalStatusRow'
 
-export default function EditModalCandidate({ handleSaveClick, handleKeyPress, handleEditClick, selectedCandidate, editing, setEditing, editedCandidate, setEditedCandidate }) {
+export default function EditModalCandidate({ handleSaveClick, handleEditClick, selectedCandidate, editing, setEditing, editedCandidate, setEditedCandidate }) {
     return (<>
         <div className='edit-buttons'>
             {editing && editedCandidate.id === selectedCandidate.id ? (
@@ -19,7 +19,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
             {editing && editedCandidate.id === selectedCandidate.id ? (
                 <input
                     className='edit-input edit-input-last'
-                    onKeyDown={handleKeyPress}
                     type="text"
                     value={editedCandidate.lastName}
                     placeholder='Add last name...'
@@ -34,7 +33,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
             {editing && editedCandidate.id === selectedCandidate.id ? (
                 <input
                     className='edit-input edit-input-first'
-                    onKeyDown={handleKeyPress}
                     type="text"
                     value={editedCandidate.firstName}
                     placeholder='Add first name...'
@@ -52,7 +50,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
             {editing && editedCandidate.id === selectedCandidate.id ? (
                 <input
                     className='edit-input'
-                    onKeyDown={handleKeyPress}
                     type="text"
                     value={editedCandidate.address}
                     placeholder='Add city...'
@@ -67,7 +64,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
             {editing && editedCandidate.id === selectedCandidate.id ? (
                 <input
                     className='edit-input'
-                    onKeyDown={handleKeyPress}
                     type="text"
                     value={editedCandidate.phoneNumber}
                     placeholder='Add phone number...'
@@ -82,7 +78,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
             {editing && editedCandidate.id === selectedCandidate.id ? (
                 <input
                     className='edit-input'
-                    onKeyDown={handleKeyPress}
                     type="text"
                     value={editedCandidate.telegram}
                     placeholder='Add telegram accaunt...'
@@ -97,7 +92,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
             {editing && editedCandidate.id === selectedCandidate.id ? (
                 <input
                     className='edit-input'
-                    onKeyDown={handleKeyPress}
                     type="text"
                     value={editedCandidate.email}
                     placeholder='Add email...'
@@ -111,7 +105,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
             {editing && editedCandidate.id === selectedCandidate.id ? (
                 <input
                     className='edit-input'
-                    onKeyDown={handleKeyPress}
                     type="text"
                     value={editedCandidate.urls}
                     placeholder='Add some link to account...'
@@ -119,7 +112,7 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
             ) : selectedCandidate.urls !== '' && <h5>{selectedCandidate.urls}</h5>}
         </div>
 
-        <ModalStatusRow />
+        <ModalStatusRow selectedCandidate={selectedCandidate}/>
 
         <div className='edit-buttons'>
             {editing && editedCandidate.id === selectedCandidate.id ? (
@@ -140,7 +133,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                 {editing && editedCandidate.id === selectedCandidate.id ? (
                     <textarea
                         className='edit-input textarea'
-                        onKeyDown={handleKeyPress}
                         type="text"
                         value={editedCandidate.profile}
                         placeholder='Discribe profile...'
@@ -157,7 +149,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                 {editing && editedCandidate.id === selectedCandidate.id ? (
                     <textarea
                         className='edit-input textarea'
-                        onKeyDown={handleKeyPress}
                         type="text"
                         value={editedCandidate.experience}
                         placeholder='Discribe experience...'
@@ -174,7 +165,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                 {editing && editedCandidate.id === selectedCandidate.id ? (
                     <textarea
                         className='edit-input textarea'
-                        onKeyDown={handleKeyPress}
                         type="text"
                         cols={100}
                         value={editedCandidate.education}
@@ -192,7 +182,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                 {editing && editedCandidate.id === selectedCandidate.id ? (
                     <textarea
                         className='edit-input textarea'
-                        onKeyDown={handleKeyPress}
                         type="text"
                         value={editedCandidate.skills}
                         placeholder='Discribe skills...'
@@ -209,7 +198,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                 {editing && editedCandidate.id === selectedCandidate.id ? (
                     <textarea
                         className='edit-input textarea'
-                        onKeyDown={handleKeyPress}
                         type="text"
                         value={editedCandidate.languages}
                         placeholder='Languages...'
@@ -226,7 +214,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                 {editing && editedCandidate.id === selectedCandidate.id ? (
                     <textarea
                         className='edit-input textarea'
-                        onKeyDown={handleKeyPress}
                         type="text"
                         value={editedCandidate.sertificates}
                         placeholder='Certificates...'
@@ -243,7 +230,6 @@ export default function EditModalCandidate({ handleSaveClick, handleKeyPress, ha
                 {editing && editedCandidate.id === selectedCandidate.id ? (
                     <textarea
                         className='edit-input textarea'
-                        onKeyDown={handleKeyPress}
                         type="text"
                         value={editedCandidate.hobby}
                         placeholder='Hobby...'

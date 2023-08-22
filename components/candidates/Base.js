@@ -10,30 +10,13 @@ import FilteredCandidates from '../candidates/FilteredCandidates';
 import AddCandidate from '../candidates/AddCandidate';
 import EditModalCandidate from '../candidates/EditModalCandidate';
 
-
 export default function Base() {
-    const [candidates, setCandidates] = useState({
-        id: "",
-        address: "",
-        lastName: "",
-        firstName: "",
-        email: "",
-        phoneNumber: "",
-        telegram: "",
-        urls: "",
-        profile: "",
-        experience: "",
-        education: "",
-        skills: "",
-        languages: "",
-        projects: "",
-        sertificates: "",
-        hobby: "",
-        comment: "",
-    });
     const [value, setValue] = useState('');
     const [modalActive, setModalActive] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
+    const [candidates, setCandidates] = useState({});
+    const [selectedCandidate, setSelectedCandidate] = useState(null);
+    const [editing, setEditing] = useState(false);
     const [editedCandidate, setEditedCandidate] = useState({
         id: "",
         address: "",
@@ -51,10 +34,47 @@ export default function Base() {
         projects: "",
         sertificates: "",
         hobby: "",
-        comment: ""
+        comment: "",
+        statusCandidate: "",
     });
-    const [editing, setEditing] = useState(false);
-    const [selectedCandidate, setSelectedCandidate] = useState(null);
+    // const [addNewCandidate, setAddNewCandidate] = useState({
+    //     id: "",
+    //     address: "",
+    //     lastName: "",
+    //     firstName: "",
+    //     email: "",
+    //     phoneNumber: "",
+    //     telegram: "",
+    //     urls: "",
+    //     profile: "",
+    //     experience: "",
+    //     education: "",
+    //     skills: "",
+    //     languages: "",
+    //     projects: "",
+    //     sertificates: "",
+    //     hobby: "",
+    //     comment: "",
+    //     statusCandidate: "",
+    // });
+
+    const [id, setId] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [address, setAddress] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [telegram, setTelegram] = useState('');
+    const [email, setEmail] = useState('');
+    const [urls, setUrls] = useState('');
+    const [profile, setProfile] = useState('');
+    const [experience, setExperience] = useState('');
+    const [education, setEducation] = useState('');
+    const [skills, setSkills] = useState('');
+    const [languages, setLanguages] = useState('');
+    const [projects, setProjects] = useState('');
+    const [sertificates, setSertificates] = useState('');
+    const [hobby, setHobby] = useState('');
+    const [comment, setComment] = useState('');
 
     const api = '/api/restricted/candidate'; // раскладываем по трем папкам - админ (есть), кандидаты, вакансии. Все в рестриктед.
 
@@ -122,7 +142,8 @@ export default function Base() {
             projects: candidate.projects,
             sertificates: candidate.sertificates,
             hobby: candidate.hobby,
-            comment: candidate.comment
+            comment: candidate.comment,
+            statusCandidate: candidate.statusCandidate,
         });
     };
 
@@ -183,59 +204,180 @@ export default function Base() {
                         projects: "",
                         sertificates: "",
                         hobby: "",
-                        comment: ""
+                        comment: "",
+                        statusCandidate: "",
                     });
                 })
                 .catch(error => console.log(error));
         }
     };
 
-    const onAdd = async (id, address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment) => {
-        await fetch(`/candidate`, {
+    // const handleAddNewCandidate = async () => {
+
+    //     const res = await fetch(`${api}/${addNewCandidate.id}`, {
+    //         method: 'POST',
+    //         headers: {
+    //             "Content-type": "application/json; charset=UTF-8",
+    //         },
+    //         body: JSON.stringify(addNewCandidate),
+    //     })
+
+    //     setAddNewCandidate(prevState => ({
+    //         ...prevState,
+    //         id: "",
+    //         address: "",
+    //         lastName: "",
+    //         firstName: "",
+    //         email: "",
+    //         phoneNumber: "",
+    //         telegram: "",
+    //         urls: "",
+    //         profile: "",
+    //         experience: "",
+    //         education: "",
+    //         skills: "",
+    //         languages: "",
+    //         projects: "",
+    //         sertificates: "",
+    //         hobby: "",
+    //         comment: "",
+    //         statusCandidate: "",
+    //     }));
+
+
+    //     const data = await res.json()
+
+    //     return NextResponse.json(data)
+    // };
+
+    // const onAdd = async (id, address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment, statusCandidate) => {
+    //     await fetch(`/candidate`, {
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             id: id,
+    //             lastName: lastName,
+    //             firstName: firstName,
+    //             address: address,
+    //             email: email,
+    //             phoneNumber: phoneNumber,
+    //             telegram: telegram,
+    //             urls: urls,
+    //             profile: profile,
+    //             experience: experience,
+    //             education: education,
+    //             skills: skills,
+    //             languages: languages,
+    //             projects: projects,
+    //             sertificates: sertificates,
+    //             hobby: hobby,
+    //             comment: comment,
+    //             statusCandidate: statusCandidate,
+    //         }),
+    //         headers: {
+    //             "Content-type": "application/json; charset=UTF-8"
+    //         }
+    //     })
+    //         .then((res) => {
+    //             if (res.status !== 201) {
+    //                 return
+    //             } else {
+    //                 return res.json();
+    //             }
+    //         })
+    //         .then((newCandidate) => {
+    //             setCandidates((candidates) => [...candidates, newCandidate]);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         })
+    // };
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        console.log(lastName, firstName, address, phoneNumber, telegram, email, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment);
+
+        
+
+        const candidateData = {
+            id: id,
+            lastName: lastName, 
+            firstName: firstName, 
+            address: address, 
+            phoneNumber: phoneNumber, 
+            telegram: telegram, 
+            email: email, 
+            urls: urls, 
+            profile: profile, 
+            experience: experience, 
+            education: education, 
+            skills: skills, 
+            languages: languages, 
+            projects: projects, 
+            sertificates: sertificates, 
+            hobby: hobby, 
+            comment: comment,
+        }
+
+        const candidate = await fetch('/candidate', {
             method: 'POST',
-            body: JSON.stringify({
-                id: id,
-                lastName: lastName,
-                firstName: firstName,
-                address: address,
-                email: email,
-                phoneNumber: phoneNumber,
-                telegram: telegram,
-                urls: urls,
-                profile: profile,
-                experience: experience,
-                education: education,
-                skills: skills,
-                languages: languages,
-                projects: projects,
-                sertificates: sertificates,
-                hobby: hobby,
-                comment: comment
-            }),
             headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
+                "Content-type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify(candidateData),
         })
-            .then((res) => {
-                if (res.status !== 201) {
-                    return
-                } else {
-                    return res.json();
-                }
-            })
-            .then((newCandidate) => {
-                setCandidates((candidates) => [...candidates, newCandidate]);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    };
+        // const candidate = await fetch(api, candidateData); 
+            // console.log(candidateData);
+            .then((candidate) => {
+                            if (candidate.status !== 201) {
+                                return
+                            } else {
+                                return candidate.json();
+                            }
+                        })
+                        .then((newCandidate) => {
+                                        setCandidates((candidates) => [...candidates, newCandidate]);
+                                    })
+                                    .catch((err) => {
+                                        console.log(err);
+                                    })
+    }
 
     return (<>
         <div className="main-top">
             <SearchPanel handleChange={handleChange} setModalAdd={setModalAdd} />
             <AddModal add={modalAdd} setAdd={setModalAdd}>
-                <AddCandidate onAdd={onAdd} currentCandidate={editedCandidate}/>
+
+                <div className="add-modal">
+                    <div className="head-candidate">
+                        <h3>Добавить кандидата</h3>
+                    </div>
+
+                    <form method="post" className="add-form"
+                        onSubmit={handleSubmit}>
+                        <AddCandidate
+                        setId={setId}
+                            setLastName={setLastName}
+                            setFirstName={setFirstName}
+                            setAddress={setAddress}
+                            setPhoneNumber={setPhoneNumber}
+                            setTelegram={setTelegram}
+                            setEmail={setEmail}
+                            setUrls={setUrls}
+                            setProfile={setProfile}
+                            setExperience={setExperience}
+                            setEducation={setEducation}
+                            setSkills={setSkills}
+                            setLanguages={setLanguages}
+                            setProjects={setProjects}
+                            setSertificates={setSertificates}
+                            setHobby={setHobby}
+                            setComment={setComment}
+                        />
+                    </form>
+                </div>
+
             </AddModal>
         </div>
 
@@ -245,7 +387,7 @@ export default function Base() {
 
                 {filteredCandidates && filteredCandidates.map((candidate) => (
                     <tbody key={filteredCandidates.id}>
-                        <FilteredCandidates key={filteredCandidates.id} setModalActive={setModalActive} setSelectedCandidate={setSelectedCandidate} candidate={candidate} />
+                        <FilteredCandidates key={filteredCandidates.id} filteredCandidates={filteredCandidates} setModalActive={setModalActive} setSelectedCandidate={setSelectedCandidate} candidate={candidate} lastName={lastName} firstName={firstName} address={address} phoneNumber={phoneNumber} email={email} selectedCandidate={selectedCandidate}/>
                     </tbody>
                 ))}
             </table>
@@ -254,8 +396,8 @@ export default function Base() {
                 <Modal active={modalActive} setActive={setModalActive}>
                     <div key={selectedCandidate.id} className="cv-modal">
 
-                        <EditModalCandidate handleSaveClick={handleSaveClick} 
-                        handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} />
+                        <EditModalCandidate handleSaveClick={handleSaveClick}
+                            handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} />
 
                     </div>
                 </Modal>

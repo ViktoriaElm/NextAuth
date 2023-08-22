@@ -1,25 +1,25 @@
-import { statuses } from "../ModalStatusRow"
+// import { statuses } from "../ModalStatusRow"
 
 export default function FilteredCandidates({ setModalActive, setSelectedCandidate, candidate }) {
     return (<>
-        <tr>
+        <tr onClick={() => setSelectedCandidate(candidate)} >
             <td onClick={() => {
                 setModalActive(true);
-                setSelectedCandidate(candidate);
+                // setSelectedCandidate(candidate);
             }}
                 className="td-base">
                 {candidate.lastName} {candidate && candidate.firstName}
             </td>
             <td onClick={() => {
                 setModalActive(true);
-                setSelectedCandidate(candidate);
+                // setSelectedCandidate(candidate);
             }}
                 className="td-base">
                 вакансия
             </td>
             <td onClick={() => {
                 setModalActive(true);
-                setSelectedCandidate(candidate);
+                // setSelectedCandidate(candidate);
             }} className="td-base">
                 {candidate.address}
             </td>
@@ -31,11 +31,14 @@ export default function FilteredCandidates({ setModalActive, setSelectedCandidat
             </td>
             <td onClick={() => {
                 setModalActive(true);
-                setSelectedCandidate(candidate);
+                // setSelectedCandidate(candidate);
             }} className="status td-base">
-               {statuses}
+               {/* {statuses} */}
+               Статус
             </td>
-            <td onClick={() => setSelectedCandidate(candidate)} className="comment td-base">
+            <td 
+            // onClick={() => setSelectedCandidate(candidate)} 
+            className="comment td-base">
                 {candidate.comment}
             </td>
         </tr>

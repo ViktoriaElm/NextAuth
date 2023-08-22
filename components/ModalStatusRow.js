@@ -1,35 +1,47 @@
 import { useState } from "react"
 import { StatusCandidate as PrismaStatusCandidate } from "../prisma/Enums"
 
-export const statuses = Object.values(PrismaStatusCandidate).map((value) => (
-    <option key={value} value={value}>{value}</option>
-));
-
-export default function ModalStatusRow({ selectedCandidate, username }) {
+export default function ModalStatusRow({ handleSaveClick }) {
 
     const [selectedValue, setSelectedValue] = useState(PrismaStatusCandidate.new);
+    const [editing, setEditing] = useState(false);
 
-    const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-    }
+    const statuses = Object.values(PrismaStatusCandidate).map((value) => (
+        <option key={value} value={value}>{value}</option>
+    ));
 
-    
+    const handleInputClick = () => {
+        setEditing(!editing);
+    };
+
+    const handleItemClick = (value) => {
+        setSelectedValue(value);
+        setEditing(false);
+        handleSaveClick();
+    };
 
     return (
         <>
             <div className="input-status-row">
                 <div className="input-status-td">
-                    <select
+
+                    <input
+                        type="text"
+                        value={selectedValue}
+                        onClick={handleInputClick}
                         className="input-status"
-                        value={selectedValue} onChange={handleChange}>
-                        {statuses}
-                    </select>
-
-                    <span className="span-status">{selectedCandidate.comment}</span>
-
-                    {/* <span className="span-status">{username}</span> */}
-
+                        onChange={handleItemClick}
+                    />
+                    {editing && (
+                        <ul onClick={(e) => handleItemClick(e.target.value)}>
+                            <li >{statuses}</li>
+                        </ul>
+                    )}
                 </div>
+
+                <div className='edit-buttons'>
+                </div>
+
             </div>
         </>
     )

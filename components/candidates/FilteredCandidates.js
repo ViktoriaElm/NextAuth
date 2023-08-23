@@ -5,21 +5,18 @@ export default function FilteredCandidates({ setModalActive, setSelectedCandidat
         <tr onClick={() => setSelectedCandidate(candidate)} >
             <td onClick={() => {
                 setModalActive(true);
-                // setSelectedCandidate(candidate);
             }}
                 className="td-base">
                 {candidate.lastName} {candidate && candidate.firstName}
             </td>
             <td onClick={() => {
                 setModalActive(true);
-                // setSelectedCandidate(candidate);
             }}
                 className="td-base">
                 вакансия
             </td>
             <td onClick={() => {
                 setModalActive(true);
-                // setSelectedCandidate(candidate);
             }} className="td-base">
                 {candidate.address}
             </td>
@@ -31,13 +28,11 @@ export default function FilteredCandidates({ setModalActive, setSelectedCandidat
             </td>
             <td onClick={() => {
                 setModalActive(true);
-                // setSelectedCandidate(candidate);
             }} className="status td-base">
                {/* {statuses} */}
                Статус
             </td>
             <td 
-            // onClick={() => setSelectedCandidate(candidate)} 
             className="comment td-base">
                 {candidate.comment}
             </td>

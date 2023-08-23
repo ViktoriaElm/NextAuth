@@ -298,8 +298,6 @@ export default function Base() {
 
         console.log(lastName, firstName, address, phoneNumber, telegram, email, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment);
 
-        
-
         const candidateData = {
             id: id,
             lastName: lastName, 
@@ -327,8 +325,6 @@ export default function Base() {
             },
             body: JSON.stringify(candidateData),
         })
-        // const candidate = await fetch(api, candidateData); 
-            // console.log(candidateData);
             .then((candidate) => {
                             if (candidate.status !== 201) {
                                 return

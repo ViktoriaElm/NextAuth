@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import SearchPanel from '../SearchPanel';
 import VacancyTHead from '../headers/VacancyTHead';
 
-export default function Vacancies() {
+export default function Vacancies({handleChange, setModalAdd}) {
     const [vacancies, setVacancies] = useState([]);
     const [value, setValue] = useState('');
 

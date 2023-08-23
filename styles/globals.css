@@ -71,6 +71,11 @@ h2 {
     font-size: 13px;
 }
 
+.li-comments {
+    font-size: 12px;
+    list-style-type: none;
+}
+
 .save {
     color: rgb(19, 200, 19);
 }

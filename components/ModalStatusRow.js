@@ -1,23 +1,23 @@
 import { useState } from "react"
 import { StatusCandidate as PrismaStatusCandidate } from "../prisma/Enums"
 
-export default function ModalStatusRow({ handleSaveClick }) {
+export default function ModalStatusRow(props) {
+
+    const { selectedCandidate } = props;
 
     const [selectedValue, setSelectedValue] = useState(PrismaStatusCandidate.new);
-    const [editing, setEditing] = useState(false);
+    // const [editing, setEditing] = useState(false);
 
     const statuses = Object.values(PrismaStatusCandidate).map((value) => (
         <option key={value} value={value}>{value}</option>
     ));
 
-    const handleInputClick = () => {
-        setEditing(!editing);
-    };
+    // const handleInputClick = () => {
+    //     setEditing(!editing);
+    // };
 
-    const handleItemClick = (value) => {
-        setSelectedValue(value);
-        setEditing(false);
-        handleSaveClick();
+    const handleItemClick = (e, value) => {
+        setSelectedValue(e.target.value);
     };
 
     return (
@@ -25,22 +25,26 @@ export default function ModalStatusRow({ handleSaveClick }) {
             <div className="input-status-row">
                 <div className="input-status-td">
 
-                    <input
+                    <select
                         type="text"
                         value={selectedValue}
-                        onClick={handleInputClick}
+                        onClick={handleItemClick}
                         className="input-status"
                         onChange={handleItemClick}
-                    />
-                    {editing && (
-                        <ul onClick={(e) => handleItemClick(e.target.value)}>
-                            <li >{statuses}</li>
-                        </ul>
-                    )}
+                    >
+                        {statuses}
+                    </select>
+
+
+                    <span
+                        className='span-status'>
+                        {selectedCandidate.comment}
+                    </span>
                 </div>
 
                 <div className='edit-buttons'>
                 </div>
+
 
             </div>
         </>

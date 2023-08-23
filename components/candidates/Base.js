@@ -40,26 +40,6 @@ export default function Base() {
         comment: "",
         statusCandidate: "",
     });
-    // const [addNewCandidate, setAddNewCandidate] = useState({
-    //     id: "",
-    //     address: "",
-    //     lastName: "",
-    //     firstName: "",
-    //     email: "",
-    //     phoneNumber: "",
-    //     telegram: "",
-    //     urls: "",
-    //     profile: "",
-    //     experience: "",
-    //     education: "",
-    //     skills: "",
-    //     languages: "",
-    //     projects: "",
-    //     sertificates: "",
-    //     hobby: "",
-    //     comment: "",
-    //     statusCandidate: "",
-    // });
 
     const [id, setId] = useState('');
     const [lastName, setLastName] = useState('');
@@ -214,87 +194,6 @@ export default function Base() {
                 .catch(error => console.log(error));
         }
     };
-
-    // const handleAddNewCandidate = async () => {
-
-    //     const res = await fetch(`${api}/${addNewCandidate.id}`, {
-    //         method: 'POST',
-    //         headers: {
-    //             "Content-type": "application/json; charset=UTF-8",
-    //         },
-    //         body: JSON.stringify(addNewCandidate),
-    //     })
-
-    //     setAddNewCandidate(prevState => ({
-    //         ...prevState,
-    //         id: "",
-    //         address: "",
-    //         lastName: "",
-    //         firstName: "",
-    //         email: "",
-    //         phoneNumber: "",
-    //         telegram: "",
-    //         urls: "",
-    //         profile: "",
-    //         experience: "",
-    //         education: "",
-    //         skills: "",
-    //         languages: "",
-    //         projects: "",
-    //         sertificates: "",
-    //         hobby: "",
-    //         comment: "",
-    //         statusCandidate: "",
-    //     }));
-
-
-    //     const data = await res.json()
-
-    //     return NextResponse.json(data)
-    // };
-
-    // const onAdd = async (id, address, lastName, firstName, email, phoneNumber, telegram, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment, statusCandidate) => {
-    //     await fetch(`/candidate`, {
-    //         method: 'POST',
-    //         body: JSON.stringify({
-    //             id: id,
-    //             lastName: lastName,
-    //             firstName: firstName,
-    //             address: address,
-    //             email: email,
-    //             phoneNumber: phoneNumber,
-    //             telegram: telegram,
-    //             urls: urls,
-    //             profile: profile,
-    //             experience: experience,
-    //             education: education,
-    //             skills: skills,
-    //             languages: languages,
-    //             projects: projects,
-    //             sertificates: sertificates,
-    //             hobby: hobby,
-    //             comment: comment,
-    //             statusCandidate: statusCandidate,
-    //         }),
-    //         headers: {
-    //             "Content-type": "application/json; charset=UTF-8"
-    //         }
-    //     })
-    //         .then((res) => {
-    //             if (res.status !== 201) {
-    //                 return
-    //             } else {
-    //                 return res.json();
-    //             }
-    //         })
-    //         .then((newCandidate) => {
-    //             setCandidates((candidates) => [...candidates, newCandidate]);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    // };
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();

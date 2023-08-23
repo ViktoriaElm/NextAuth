@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
+import { useSession} from "next-auth/react";
+
 
 import Modal from '../modal/Modal';
 import AddModal from '../modal/AddModal';
@@ -11,6 +13,7 @@ import AddCandidate from '../candidates/AddCandidate';
 import EditModalCandidate from '../candidates/EditModalCandidate';
 
 export default function Base() {
+    const { data: session } = useSession();
     const [value, setValue] = useState('');
     const [modalActive, setModalActive] = useState(false);
     const [modalAdd, setModalAdd] = useState(false);
@@ -102,7 +105,7 @@ export default function Base() {
         const sortCandidates = copyCandidates.sort((a, b) => { return a[coll] > b[coll] ? 1 : -1 });
         setCandidates(sortCandidates)
     }
-    console.debug('candidates=', candidates);
+    console.debug('before filteredCandidates, candidates=', candidates);
     const filteredCandidates = Array.isArray(candidates) ? candidates?.filter(candidate => {
         return (
             !value
@@ -298,48 +301,54 @@ export default function Base() {
 
         console.log(lastName, firstName, address, phoneNumber, telegram, email, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment);
 
+
+
         const candidateData = {
-            id: id,
-            lastName: lastName, 
-            firstName: firstName, 
-            address: address, 
-            phoneNumber: phoneNumber, 
-            telegram: telegram, 
-            email: email, 
-            urls: urls, 
-            profile: profile, 
-            experience: experience, 
-            education: education, 
-            skills: skills, 
-            languages: languages, 
-            projects: projects, 
-            sertificates: sertificates, 
-            hobby: hobby, 
+            // id: id,
+            lastName: lastName,
+            firstName: firstName,
+            address: address,
+            phoneNumber: phoneNumber,
+            telegram: telegram,
+            email: email,
+            urls: urls,
+            profile: profile,
+            experience: experience,
+            education: education,
+            skills: skills,
+            languages: languages,
+            projects: projects,
+            sertificates: sertificates,
+            hobby: hobby,
             comment: comment,
+            userId : session.user.id
         }
 
-        const candidate = await fetch('/candidate', {
+        const postCandidate = await fetch('/api/restricted/candidate', {
+            
             method: 'POST',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             },
             body: JSON.stringify(candidateData),
         })
-            .then((candidate) => {
-                            if (candidate.status !== 201) {
-                                return
-                            } else {
-                                return candidate.json();
-                            }
-                        })
-                        .then((newCandidate) => {
-                                        setCandidates((candidates) => [...candidates, newCandidate]);
-                                    })
-                                    .catch((err) => {
-                                        console.log(err);
-                                    })
+            // const candidate = await fetch(api, candidateData); 
+            // console.log(candidateData);
+            .then(response => {
+                if (response.status !== 201) {
+                    return
+                } else {
+                    return response.json();
+                }
+            })
+            .then((newCandidate/* пока не берем */) => {
+                setCandidates((candidates) => [...candidates, candidateData]);
+            })
+            .catch((err) => {
+                console.error('postCandidate err=',err);
+            })
     }
-
+    console.debug('Base.js render filteredCandidates=',filteredCandidates);
     return (<>
         <div className="main-top">
             <SearchPanel handleChange={handleChange} setModalAdd={setModalAdd} />
@@ -353,7 +362,7 @@ export default function Base() {
                     <form method="post" className="add-form"
                         onSubmit={handleSubmit}>
                         <AddCandidate
-                        setId={setId}
+                            setId={setId}
                             setLastName={setLastName}
                             setFirstName={setFirstName}
                             setAddress={setAddress}
@@ -382,9 +391,9 @@ export default function Base() {
                 <CandidateTHead sortCandidates={sortCandidates} />
 
                 {filteredCandidates && filteredCandidates.map((candidate) => (
-                    <tbody key={filteredCandidates.id}>
-                        <FilteredCandidates key={filteredCandidates.id} filteredCandidates={filteredCandidates} setModalActive={setModalActive} setSelectedCandidate={setSelectedCandidate} candidate={candidate} lastName={lastName} firstName={firstName} address={address} phoneNumber={phoneNumber} email={email} selectedCandidate={selectedCandidate}/>
-                    </tbody>
+                    <Fragment key={candidate?.id}>
+                        <FilteredCandidates key={filteredCandidates.id} filteredCandidates={filteredCandidates} setModalActive={setModalActive} setSelectedCandidate={setSelectedCandidate} candidate={candidate} lastName={lastName} firstName={firstName} address={address} phoneNumber={phoneNumber} email={email} selectedCandidate={selectedCandidate} />
+                    </Fragment>
                 ))}
             </table>
 

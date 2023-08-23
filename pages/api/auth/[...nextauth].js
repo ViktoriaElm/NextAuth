@@ -51,7 +51,7 @@ export const authOptions = {
 
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log('>>> callbacks >> signIn', { user, account, profile, email, credentials });
+      // console.log('>>> callbacks >> signIn', { user, account, profile, email, credentials });
       return true
     },
     // async redirect({ url, baseUrl }) {
@@ -59,13 +59,13 @@ export const authOptions = {
     //   return baseUrl
     // },
     async session({ session, user, token }) {
-      console.log('>>> callbacks >> session', { session, user, token });
+      // console.log('>>> callbacks >> session', { session, user, token });
       session.user.id = user.id;
       session.user.role = user.role;
       return session
     },
     async jwt({ token, user, account, profile, isNewUser }) {
-      console.log('>>> callbacks >> jwt', { token, user, account, profile, isNewUser });
+      // console.log('>>> callbacks >> jwt', { token, user, account, profile, isNewUser });
       return token
     }
   }
@@ -75,7 +75,7 @@ const r = NextAuth(authOptions);
 
 export default (...params) => {
   const [req] = params;
-  console.log('pages/api/auth/[...nextauth].js', params.length);
-  console.log('>', req.method, 'запрос на', req.url, req.query);
+  // console.log('pages/api/auth/[...nextauth].js', params.length);
+  // console.log('>', req.method, 'запрос на', req.url, req.query);
   return r(...params);
 }

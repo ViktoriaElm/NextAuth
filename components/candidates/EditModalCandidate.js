@@ -112,7 +112,7 @@ export default function EditModalCandidate({ candidates, setCandidates, setSelec
             ) : selectedCandidate.urls !== '' && <h5>{selectedCandidate.urls}</h5>}
         </div>
 
-        <ModalStatusRow handleSaveClick={handleSaveClick} candidates={candidates} setCandidates={setCandidates}  setSelectedCandidate={setSelectedCandidate} handleSaveClick={handleSaveClick} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate}/>
+        <ModalStatusRow handleSaveClick={handleSaveClick} candidates={candidates} setCandidates={setCandidates}  setSelectedCandidate={setSelectedCandidate} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate}/>
 
         <div className='edit-buttons'>
             {editing && editedCandidate.id === selectedCandidate.id ? (

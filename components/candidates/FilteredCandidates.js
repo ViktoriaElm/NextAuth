@@ -1,7 +1,7 @@
 // import { statuses } from "../ModalStatusRow"
 
 export default function FilteredCandidates({ setModalActive, setSelectedCandidate, candidate }) {
-    return (<>
+    return (<tbody>
         <tr onClick={() => setSelectedCandidate(candidate)} >
             <td onClick={() => {
                 setModalActive(true);
@@ -37,5 +37,5 @@ export default function FilteredCandidates({ setModalActive, setSelectedCandidat
                 {candidate.comment}
             </td>
         </tr>
-    </>)
+    </tbody>)
 }

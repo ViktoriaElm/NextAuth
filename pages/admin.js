@@ -30,8 +30,11 @@ export default function Admin() {
                     <th>Роль пользователя</th>
                 </tr>
             </thead>
-            {Array.isArray(rows) && <TBody {...{ columns, rows }} />}
+            {rows && Array.isArray(rows) && <TBody {...{ columns, rows }} />}
         </table>
     </div>;
-    if (loading) return <h4 className='admin-title'>Проверка прав, подождите...{loading}</h4>;
+    if (loading) return (<>
+
+    <h4 className='admin-title'>Проверка прав, подождите...{loading}</h4>
+    </>);
 }

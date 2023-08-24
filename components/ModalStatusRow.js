@@ -6,15 +6,16 @@ export default function ModalStatusRow(props) {
     const { selectedCandidate } = props;
 
     const [selectedValue, setSelectedValue] = useState(PrismaStatusCandidate.new);
-    // const [editing, setEditing] = useState(false);
+    const [editing, setEditing] = useState(false);
+    
 
     const statuses = Object.values(PrismaStatusCandidate).map((value) => (
         <option key={value} value={value}>{value}</option>
     ));
 
-    // const handleInputClick = () => {
-    //     setEditing(!editing);
-    // };
+    const handleInputClick = () => {
+        setEditing(!editing);
+    };
 
     const handleItemClick = (e, value) => {
         setSelectedValue(e.target.value);
@@ -28,7 +29,7 @@ export default function ModalStatusRow(props) {
                     <select
                         type="text"
                         value={selectedValue}
-                        onClick={handleItemClick}
+                        onClick={handleInputClick}
                         className="input-status"
                         onChange={handleItemClick}
                     >

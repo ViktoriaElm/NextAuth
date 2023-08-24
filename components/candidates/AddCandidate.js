@@ -9,20 +9,17 @@ export default function AddCandidate(props) {
                     <input className="add-input"
                         type="text"
                         name="lastName"
-                        // value={value}
                         onChange={(e) => setLastName(e.target.value)}
                         placeholder='Фамилия'
                     />
                     <input className="add-input"
                         type="text"
-                        // value={value}
                         onChange={(e) => setFirstName(e.target.value)}
                         name="firstName"
                         placeholder='Имя'
                     />
                     <input className="add-input"
                         type="text"
-                        // value={value}
                         onChange={(e) => setAddress(e.target.value)}
                         name="address"
                         placeholder='Город проживания'
@@ -31,14 +28,12 @@ export default function AddCandidate(props) {
                 <div className="add-candidate">
                     <input className="add-input"
                         type="tel"
-                        // value={value}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         name="phoneNumber"
                         placeholder='Телефон'
                     />
                     <input className="add-input"
                         type="text"
-                        // value={value}
                         onChange={(e) => setTelegram(e.target.value)}
                         name="telegram"
                         placeholder='Телеграм'
@@ -47,14 +42,12 @@ export default function AddCandidate(props) {
                 <div className="add-candidate">
                     <input className="add-input"
                         type="text"
-                        // value={value}
                         onChange={(e) => setEmail(e.target.value)}
                         name="email"
                         placeholder='E-mail'
                     />
                     <input className="add-input"
                         type="text"
-                        // value={value}
                         onChange={(e) => setUrls(e.target.value)}
                         name="urls"
                         placeholder='URLs'
@@ -63,14 +56,12 @@ export default function AddCandidate(props) {
                 <div className="add-candidate">
                     <input className="add-input text"
                         type="text"
-                        // value={value}
                         onChange={(e) => setProfile(e.target.value)}
                         name="profile"
                         placeholder='О себе:'
                     />
                     <input className="add-input text"
                         type="text"
-                        // value={value}
                         onChange={(e) => setExperience(e.target.value)}
                         name="experience"
                         placeholder='Опыт:'
@@ -79,14 +70,12 @@ export default function AddCandidate(props) {
                 <div className="add-candidate">
                     <input className="add-input text"
                         type="text"
-                        // value={value}
                         onChange={(e) => setEducation(e.target.value)}
                         name="education"
                         placeholder='Образование:'
                     />
                     <input className="add-input text"
                         type="text"
-                        // value={value}
                         onChange={(e) => setSkills(e.target.value)}
                         name="skills"
                         placeholder='Навыки:'
@@ -95,14 +84,12 @@ export default function AddCandidate(props) {
                 <div className="add-candidate">
                     <input className="add-input text"
                         type="text"
-                        // value={value}
                         onChange={(e) => setLanguages(e.target.value)}
                         name="languages"
                         placeholder='Языки:'
                     />
                     <input className="add-input text"
                         type="text"
-                        // value={value}
                         onChange={(e) => setProjects(e.target.value)}
                         name="projects"
                         placeholder='Проекты:'
@@ -111,14 +98,12 @@ export default function AddCandidate(props) {
                 <div className="add-candidate">
                     <input className="add-input text"
                         type="text"
-                        // value={value}
                         onChange={(e) => setSertificates(e.target.value)}
                         name="sertificates"
                         placeholder='Сертификаты:'
                     />
                     <input className="add-input text"
                         type="text"
-                        // value={value}
                         onChange={(e) => setHobby(e.target.value)}
                         name="hobby"
                         placeholder='Прочее:'
@@ -127,7 +112,6 @@ export default function AddCandidate(props) {
                 <div className="add-candidate">
                     <input className="add-input comment"
                         type="text"
-                        // value={value}
                         onChange={(e) => setComment(e.target.value)}
                         name="comment"
                         placeholder='Комментарии:'

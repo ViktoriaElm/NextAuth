@@ -1,5 +1,5 @@
 import { useEffect, useState, Fragment } from "react";
-import { useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 
 import Modal from '../modal/Modal';
@@ -221,11 +221,11 @@ export default function Base() {
             sertificates: sertificates,
             hobby: hobby,
             comment: comment,
-            userId : session.user.id
+            userId: session.user.id
         }
 
         const postCandidate = await fetch('/api/restricted/candidate', {
-            
+
             method: 'POST',
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -245,10 +245,10 @@ export default function Base() {
                 setCandidates((candidates) => [...candidates, candidateData]);
             })
             .catch((err) => {
-                console.error('postCandidate err=',err);
+                console.error('postCandidate err=', err);
             })
     }
-    console.debug('Base.js render filteredCandidates=',filteredCandidates);
+    console.debug('Base.js render filteredCandidates=', filteredCandidates);
     return (<>
         <div className="main-top">
             <SearchPanel handleChange={handleChange} setModalAdd={setModalAdd} />
@@ -301,10 +301,10 @@ export default function Base() {
                 <Modal active={modalActive} setActive={setModalActive}>
                     <div key={selectedCandidate.id} className="cv-modal">
 
-                        <EditModalCandidate candidates={candidates} setCandidates={setCandidates} 
-                        handleSaveClick={handleSaveClick}
-                            handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} 
-                            setEditing={setEditing} 
+                        <EditModalCandidate candidates={candidates} setCandidates={setCandidates}
+                            handleSaveClick={handleSaveClick}
+                            handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing}
+                            setEditing={setEditing}
                             editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} setSelectedCandidate={setSelectedCandidate} />
 
                     </div>

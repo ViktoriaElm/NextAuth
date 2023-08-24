@@ -1,6 +1,6 @@
 import ModalStatusRow from '../ModalStatusRow'
 
-export default function EditModalCandidate({ handleSaveClick, handleEditClick, selectedCandidate, editing, setEditing, editedCandidate, setEditedCandidate }) {
+export default function EditModalCandidate({ candidates, setCandidates, setSelectedCandidate, handleSaveClick, handleEditClick, selectedCandidate, editing, setEditing, editedCandidate, setEditedCandidate }) {
     return (<>
         <div className='edit-buttons'>
             {editing && editedCandidate.id === selectedCandidate.id ? (
@@ -112,7 +112,7 @@ export default function EditModalCandidate({ handleSaveClick, handleEditClick, s
             ) : selectedCandidate.urls !== '' && <h5>{selectedCandidate.urls}</h5>}
         </div>
 
-        <ModalStatusRow handleSaveClick={handleSaveClick} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate}/>
+        <ModalStatusRow handleSaveClick={handleSaveClick} candidates={candidates} setCandidates={setCandidates}  setSelectedCandidate={setSelectedCandidate} handleSaveClick={handleSaveClick} handleEditClick={handleEditClick} selectedCandidate={selectedCandidate}/>
 
         <div className='edit-buttons'>
             {editing && editedCandidate.id === selectedCandidate.id ? (

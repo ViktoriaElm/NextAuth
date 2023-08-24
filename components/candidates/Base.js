@@ -101,6 +101,7 @@ export default function Base() {
             || candidate?.skills?.toLowerCase().includes(value.toLocaleLowerCase())
             || candidate?.languages?.toLowerCase().includes(value.toLocaleLowerCase())
             || candidate?.projects?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.comment?.toLowerCase().includes(value.toLocaleLowerCase())
         );
     }) : [];
 
@@ -300,8 +301,8 @@ export default function Base() {
                 <Modal active={modalActive} setActive={setModalActive}>
                     <div key={selectedCandidate.id} className="cv-modal">
 
-                        <EditModalCandidate handleSaveClick={handleSaveClick}
-                            handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} />
+                        <EditModalCandidate candidates={candidates} setCandidates={setCandidates} handleSaveClick={handleSaveClick}
+                            handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} setSelectedCandidate={setSelectedCandidate} />
 
                     </div>
                 </Modal>

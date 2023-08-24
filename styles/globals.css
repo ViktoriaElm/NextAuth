@@ -40,7 +40,9 @@ h2 {
     color: gray;
 }
 
-.save, .cancel, .input-status {
+.save,
+.cancel,
+.input-status {
     border: none;
     border-bottom: 1px dotted rgb(214, 214, 214);
     outline: none;
@@ -51,7 +53,18 @@ h2 {
     align-items: center;
 }
 
-.input-status, .span-status {
+.input-status,
+.span-status {
+    border-radius: 3px;
+}
+
+.span-comment {
+    /* margin-top: -2px; */
+    font-size: 13px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding: 6px 10px;
+    background-color: #bcf4d3;
     border-radius: 3px;
 }
 
@@ -59,7 +72,7 @@ h2 {
     padding: 5px;
     margin-right: 5px;
     background-color: rgb(243, 243, 243);
-    }
+}
 
 .span-status {
     margin-left: 3px;
@@ -71,10 +84,10 @@ h2 {
     font-size: 13px;
 }
 
-.li-comments {
+/* .li-comments {
     font-size: 12px;
     list-style-type: none;
-}
+} */
 
 .save {
     color: rgb(19, 200, 19);
@@ -104,6 +117,18 @@ h2 {
     width: 100%;
 }
 
+.edit-input.comment {
+    margin-top: -2px;
+    padding: 6px;
+    /* margin-bottom: 5px; */
+}
+
+.save.btn-comment,
+.cancel.btn-comment {
+    margin-top: -7px;
+    height: 29px;
+}
+
 textarea {
     height: 85px;
 }
@@ -124,19 +149,19 @@ body {
 /* modal */
 
 .modal {
-height: 100vh;
-width: 100vw;
-padding-top: 10px;
-background-color: rgba(0, 0, 0, 0.4);
-position: fixed;
-top: 0px;
-left: 0;
-display: flex;
-align-items: center;
-justify-content: flex-end;
-opacity: 0;
-pointer-events: none;
-transition: 0.5s;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
 
 }
 
@@ -229,7 +254,7 @@ transition: 0.5s;
 .input-fullname {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
 .head_candidate,
@@ -256,10 +281,10 @@ transition: 0.5s;
     height: 40px;
 }
 
-.add-input.comment {
+/* .add-input.comment {
     height: 30px;
     width: 100%;
-}
+} */
 
 .head_candidate h4 {
     margin-bottom: 10px;

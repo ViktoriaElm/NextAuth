@@ -301,8 +301,11 @@ export default function Base() {
                 <Modal active={modalActive} setActive={setModalActive}>
                     <div key={selectedCandidate.id} className="cv-modal">
 
-                        <EditModalCandidate candidates={candidates} setCandidates={setCandidates} handleSaveClick={handleSaveClick}
-                            handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} setEditing={setEditing} editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} setSelectedCandidate={setSelectedCandidate} />
+                        <EditModalCandidate candidates={candidates} setCandidates={setCandidates} 
+                        handleSaveClick={handleSaveClick}
+                            handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing} 
+                            setEditing={setEditing} 
+                            editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} setSelectedCandidate={setSelectedCandidate} />
 
                     </div>
                 </Modal>

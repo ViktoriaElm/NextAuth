@@ -3,10 +3,9 @@ import { StatusCandidate as PrismaStatusCandidate } from "../prisma/Enums"
 
 export default function ModalStatusRow(props) {
 
-    const { handleSaveClick, candidates, setCandidates, selectedCandidate, setSelectedCandidate } = props;
+    const { candidates, setCandidates, selectedCandidate, setSelectedCandidate } = props;
 
     const [selectedValue, setSelectedValue] = useState(PrismaStatusCandidate.new);
-    // const [editing, setEditing] = useState(false);
     const [editingComment, setEditingComment] = useState(false);
     const [editedComment, setEditedComment] = useState({
         id: "",
@@ -28,7 +27,6 @@ export default function ModalStatusRow(props) {
         comment: "",
         statusCandidate: "",
     });
-    // const [candidates, setCandidates] = useState({});
 
     const api = '/api/restricted/candidate';
 
@@ -125,10 +123,6 @@ export default function ModalStatusRow(props) {
         <option key={value} value={value}>{value}</option>
     ));
 
-    // const handleInputClick = () => {
-    //     setEditing(!editingComment);
-    // };
-
     const handleItemClick = (e) => {
         setSelectedValue(e.target.value);
     };
@@ -141,7 +135,6 @@ export default function ModalStatusRow(props) {
                     <select
                         type="text"
                         value={selectedValue}
-                        // onClick={handleInputClick}
                         className="input-status"
                         onChange={handleItemClick}
                     >

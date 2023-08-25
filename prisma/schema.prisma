@@ -52,8 +52,6 @@ model User {
   accounts      Account[]
   sessions      Session[]
   Candidate     Candidate[]
-  Vacancy       Vacancy[]
-  // Comment       Comment[]
   Templates     Templates[]
 }
 
@@ -65,41 +63,18 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Vacancy {
-  id            String      @id @unique @default(cuid())
-  tags          Tag[]
-  statusVacancy String?
-  idCustomer    Customer?
-  authorId      User        @relation(fields: [userId], references: [id])
-  // createdAt     DateTime    @default(now())
-  title         String?
-  salaryFrom    String?
-  salaryTo      String?
-  body          String?
-  duties        String?
-  requirement   String?
-  conditions    String?
-  userId        String
-  comment       String?
-  Candidate     Candidate[]
-}
-
 model Candidate {
-  id              String   @id @unique @default(cuid())
-  tags            Tag[]
+  id              String  @id @unique @default(cuid())
   statusCandidate String?
-  pinnedToVacancy Vacancy? @relation(fields: [vacancyId], references: [id])
-  author          User?    @relation(fields: [userId], references: [id])
-  // createdAt       DateTime @default(now())
+  author          User?   @relation(fields: [userId], references: [id])
   address         String?
   lastName        String?
   firstName       String?
   patronymic      String?
   age             Int?
-  email           String?  @unique
-  phoneNumber     String?  @unique
-  telegram        String?  @unique
-  // urls            Urls[]
+  email           String? @unique
+  phoneNumber     String? @unique
+  telegram        String? @unique
   urls            String?
   body            String?
   profile         String?
@@ -110,39 +85,16 @@ model Candidate {
   projects        String?
   sertificates    String?
   hobby           String?
-  // comment         Comment?         @relation(fields: [commentId], references: [id])
-  vacancyId       String?
+  vacancy         String?
   userId          String
   comment         String?
-  // commentId       String?
   Urls            Urls[]
 }
 
 model Customer {
-  id        String  @id @unique @default(cuid())
-  idVacancy Vacancy @relation(fields: [vacancyId], references: [id])
-  email     String? @unique
-  name      String?
-  vacancyId String  @unique
-}
-
-// model Comment {
-//   id        String      @id @unique @default(cuid())
-//   author    User        @relation(fields: [userId], references: [id])
-//   createdAt DateTime    @default(now())
-//   body      String?
-//   Candidate Candidate[]
-//   userId    String
-// }
-
-model Tag {
-  id          String     @id @unique @default(cuid())
-  label       String?    @unique
-  createdAt   DateTime   @default(now())
-  Vacancy     Vacancy?   @relation(fields: [vacancyId], references: [id])
-  vacancyId   String?
-  Candidate   Candidate? @relation(fields: [candidateId], references: [id])
-  candidateId String?
+  id    String  @id @unique @default(cuid())
+  email String? @unique
+  name  String?
 }
 
 model Templates {
@@ -160,29 +112,3 @@ model Urls {
   url         String?   @unique
   candidateId String
 }
-
-// enum StatusVacancy {
-//   inProgress
-//   important
-//   archive
-// }
-
-// enum StatusCandidate {
-//   new
-//   firstLetter
-//   secondLetter
-//   screeningInterview
-//   underConsideration
-//   technicalInterview
-//   testTask
-//   lifeCoding
-//   securityCheck
-//   waitingOffer
-//   signedOffer
-//   notAcceptedOffer
-//   hired
-//   completedTrialPeriod
-//   notCompletedTrialPeriod
-//   rejection
-//   reserve
-// }

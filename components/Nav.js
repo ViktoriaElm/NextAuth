@@ -29,14 +29,14 @@ export default function Nav() {
               </Link>
             </div>
             <div className="menu">
-              <Link href="/vacancy">
+              <Link href="/vacancies">
                 <div className="btn-menu">
                   <h5>Вакансии</h5>
                 </div>
               </Link>
             </div>
             <div className="menu">
-              <Link href="/Reports">
+              <Link href="/reports">
                 <div className="btn-menu">
                   <h5>Отчеты</h5>
                 </div>

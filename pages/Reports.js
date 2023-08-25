@@ -1,5 +1,6 @@
 
 export default function Reports() {
-    return(<>
-    <h3>Страница находится в разработке</h3> </>)
+    return(<div className="soon">
+    <h3>Скоро здесь появится страница отчетов...</h3>
+    </div>)
 }

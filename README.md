@@ -1,38 +1,141 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# nextauth
 
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+
+  <h3 align="center">CRM recruitment</h3>
+
+  <p align="center">
+    CRM for recruitment automation
+    <br />
+    <a href="https://nextauth-ruddy.vercel.app/">View Demo</a>
+    <br />
+    <a href="https://github.com/ViktoriaElm/nextauth">GitHub</a>
+  </p>
+</div>
+
+
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#Project-stages">Project stages</a></li>
+  </ol>
+</details>
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+There are many CRMs for automating recruitment, but I didn't find one that really fits my needs, so I'm building my own application based on my experience both in-house and in a recruitment agency.
+
+Here's why:
+Everyone needs harmony between work and personal life. In order to achieve this, it is necessary to automate routine processes as much as possible.
+Recruiters should use a recruiting app to avoid:
+* wasting time manually sending out messages,
+* filling out dozens of tables on third-party services to report,
+* accounting of vacancies and customers on third-party services, 
+* accounting of candidates and their promotion through the funnel on third-party services.
+
+Of course, this application may not be suitable for some teams, as the selection processes may differ, so I will be glad to receive recommendations from you to expand or refine the functionality.
+
+<p align="right">(<a href="#nextjs-crm-recruitment">back to top</a>)</p>
+
+
+### Built With
+
+This section lists all the main frameworks/libraries used to build the project.
+
+* [Next.js]
+* [NextAuth.js]
+* [React.js]
+* [Prisma]
+
+<p align="right">(<a href="#nextauth">back to top</a>)</p>
+
+
+<!-- GETTING STARTED -->
 ## Getting Started
 
-First, run the development server:
+Instructions for setting up a project locally.
+To run a local copy, follow these simple steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This is an example of how to list things you need to use the software and how to install them.
+* pnpm
+  ```sh
+  pnpm create next-app --ts --eslint --use-pnpm --no-app --no-src-dir --import-alias "@/*"
+  ```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+1. Clone the repo
+   ```sh
+   git clone https://github.com/ViktoriaElm/nextauth.git
+   ```
+2. Install PNPM packages
+   ```sh
+   pnpm install
+   ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<p align="right">(<a href="#nextauth">back to top</a>)</p>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+<!-- USAGE EXAMPLES -->
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+There will be useful examples of how the project can be used.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<p align="right">(<a href="#nextauth">back to top</a>)</p>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+<!-- ROADMAP -->
+## Roadmap
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] Add API to Installation section
+- [ ] Add examples to Usage section
+- [ ] Add contact section
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+<!-- PROJECT STAGES -->
+## Project stages
+
+* Templates - 100%,
+* UI - 98%,
+* Prisma DB - 100%,
+* NextAuth - 100%,
+* API - 100%,
+* Admin pannel - 90%,
+* Candidates - 100%,
+* Vacancies - 0%,
+* Reports - 0%,
+* Templates - 0%.
+
+<p align="right">(<a href="#nextauth">back to top</a>)</p>
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[Next.js]: https://nextjs.org/
+[NextAuth.js]: https://next-auth.js.org/
+[React.js]: https://reactjs.org/
+[Prisma]: https://www.prisma.io/

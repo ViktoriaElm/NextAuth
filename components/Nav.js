@@ -56,16 +56,16 @@ export default function Nav() {
                 </div>
               </Link>
             </div>
-           
+
             {'admin' === session?.user?.role ?
-             <div className="menu">
-              <Link href="/admin">
-                <div className="btn-menu">
-                <h5>Админ</h5>
-                </div>
-              </Link>
-            </div> : ''
-             }    
+              <div className="menu">
+                <Link href="/admin">
+                  <div className="btn-menu">
+                    <h5>Админ</h5>
+                  </div>
+                </Link>
+              </div> : ''
+            }
 
           </div>
           <div className="menu-exit">

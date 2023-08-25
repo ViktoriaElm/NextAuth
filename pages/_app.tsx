@@ -17,14 +17,14 @@ export default function App({ Component,
     <main className="login-container">
       {/* <Component {...pageProps} /> */}
       <Component {...pageProps} />
-        
-        {isMyAccountVisible && (
-          <a href={pages[0].src}>{pages[0].name}</a>
-        )}
 
-        {isAdminVisible && (
-          <a href={pages[1].src}>{pages[1].name}</a>
-        )}
+      {isMyAccountVisible && (
+        <a href={pages[0].src}>{pages[0].name}</a>
+      )}
+
+      {isAdminVisible && (
+        <a href={pages[1].src}>{pages[1].name}</a>
+      )}
 
     </main>
   </SessionProvider>;

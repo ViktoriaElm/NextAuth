@@ -156,7 +156,7 @@ export default function ModalStatusRow(props) {
 
                     {/* Статусы в работе */}
 
-                   
+
 
                     {/* статусы оригинал */}
 

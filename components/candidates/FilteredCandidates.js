@@ -29,11 +29,11 @@ export default function FilteredCandidates({ setModalActive, setSelectedCandidat
             <td onClick={() => {
                 setModalActive(true);
             }} className="status td-base">
-               {/* {statuses} */}
-               Статус
+                {/* {statuses} */}
+                Статус
             </td>
-            <td 
-            className="comment td-base">
+            <td
+                className="comment td-base">
                 {candidate.comment}
             </td>
         </tr>

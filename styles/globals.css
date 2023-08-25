@@ -235,6 +235,7 @@ body {
 }
 
 .add-candidate {
+    margin-top: 15px;
     margin-bottom: 10px;
     width: 98%;
     justify-content: space-between;
@@ -275,6 +276,11 @@ body {
 
 .head_candidate a {
     font-size: 13px;
+}
+
+.add-input {
+    margin-right: 1px;
+    outline: none;
 }
 
 .add-input.text {

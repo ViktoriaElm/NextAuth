@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   if (session && 'admin' === session.user.role) {
     try {
       return res.status(200)
-        .json( await prisma.user.findMany());
+        .json(await prisma.user.findMany());
     } catch (error) {
       console.log(__filename, error);
       res.status(500).send({ error });

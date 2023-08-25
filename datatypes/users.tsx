@@ -9,11 +9,11 @@ export const columns: columnsElement<User>[] =
       name: key,
       getVal: (fkey => {
         switch (fkey) {
-          case'image':
+          case 'image':
             // eslint-disable-next-line react/display-name
-            return ({image}: User) => image ? <img src={image} className="icon" alt={''} /> : '-';
+            return ({ image }: User) => image ? <img src={image} className="icon" alt={''} /> : '-';
           case 'emailVerified':
-            return ({emailVerified}: User) => emailVerified ? emailVerified.toLocaleString(): '' ;
+            return ({ emailVerified }: User) => emailVerified ? emailVerified.toLocaleString() : '';
           default:
             return (obj: User) => obj[fkey];
         }

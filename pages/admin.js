@@ -35,6 +35,6 @@ export default function Admin() {
     </div>;
     if (loading) return (<>
 
-    <h4 className='admin-title'>Проверка прав, подождите...{loading}</h4>
+        <h4 className='admin-title'>Проверка прав, подождите...{loading}</h4>
     </>);
 }

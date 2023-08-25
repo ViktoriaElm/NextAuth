@@ -1,6 +1,6 @@
 export default function Loading() {
-    return(<>
-    <div className='loading-container'>
+    return (<>
+        <div className='loading-container'>
             <div className='loading-common'>
                 <div className='loading-input'>
                     <input />

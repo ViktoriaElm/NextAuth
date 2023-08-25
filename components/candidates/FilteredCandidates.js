@@ -13,7 +13,7 @@ export default function FilteredCandidates({ setModalActive, setSelectedCandidat
                 setModalActive(true);
             }}
                 className="td-base">
-                вакансия
+                {candidate.vacancy}
             </td>
             <td onClick={() => {
                 setModalActive(true);

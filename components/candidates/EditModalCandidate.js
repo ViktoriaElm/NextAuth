@@ -51,8 +51,17 @@ export default function EditModalCandidate({
             ) : selectedCandidate.firstName !== '' && <h2>{selectedCandidate.firstName}</h2>}
         </div>
 
-        <div className="head-candidate">
-            <h6>Frontend разработчик</h6>
+        <div
+            className="head-candidate input-firstname"
+            onDoubleClick={() => handleEditClick(selectedCandidate)}>
+            {editing && editedCandidate.id === selectedCandidate.id ? (
+                <input
+                    className='edit-input edit-input-vacancy'
+                    type="text"
+                    value={editedCandidate.vacancy}
+                    placeholder='Вакансия...'
+                    onChange={e => setEditedCandidate({ ...editedCandidate, vacancy: e.target.value })} />
+            ) : selectedCandidate.vacancy !== '' && <h6>{selectedCandidate.vacancy}</h6>}
         </div>
 
         <div

@@ -35,13 +35,13 @@ export default function Nav() {
                 </div>
               </Link>
             </div>
-            <div className="menu">
+            {/* <div className="menu">
               <Link href="/reports">
                 <div className="btn-menu">
                   <h5>Отчеты</h5>
                 </div>
               </Link>
-            </div>
+            </div> */}
             {/* <div class="menu">
               <Link href="/">
                 <div className="btn-menu">

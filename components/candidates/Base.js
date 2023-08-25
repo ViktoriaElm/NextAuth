@@ -25,6 +25,7 @@ export default function Base() {
         address: "",
         lastName: "",
         firstName: "",
+        vacancy: "",
         email: "",
         phoneNumber: "",
         telegram: "",
@@ -44,6 +45,7 @@ export default function Base() {
     const [id, setId] = useState('');
     const [lastName, setLastName] = useState('');
     const [firstName, setFirstName] = useState('');
+    const [vacancy, setVacancy] = useState('');
     const [address, setAddress] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [telegram, setTelegram] = useState('');
@@ -91,6 +93,7 @@ export default function Base() {
             !value
             || candidate?.lastName?.toLowerCase().includes(value.toLocaleLowerCase())
             || candidate?.firstName?.toLowerCase().includes(value.toLocaleLowerCase())
+            || candidate?.vacancy?.toLowerCase().includes(value.toLocaleLowerCase())
             || candidate?.address?.toLowerCase().includes(value.toLocaleLowerCase())
             || candidate?.email?.toLowerCase().includes(value.toLocaleLowerCase())
             || candidate?.phoneNumber?.toLowerCase().includes(value.toLocaleLowerCase())
@@ -114,6 +117,7 @@ export default function Base() {
             address: candidate.address,
             lastName: candidate.lastName,
             firstName: candidate.firstName,
+            vacancy: candidate.vacancy,
             email: candidate.email,
             phoneNumber: candidate.phoneNumber,
             telegram: candidate.telegram,
@@ -176,6 +180,7 @@ export default function Base() {
                         address: "",
                         lastName: "",
                         firstName: "",
+                        vacancy: "",
                         email: "",
                         phoneNumber: "",
                         telegram: "",
@@ -207,6 +212,7 @@ export default function Base() {
             // id: id,
             lastName: lastName,
             firstName: firstName,
+            vacancy: vacancy,
             address: address,
             phoneNumber: phoneNumber,
             telegram: telegram,
@@ -265,6 +271,7 @@ export default function Base() {
                             setId={setId}
                             setLastName={setLastName}
                             setFirstName={setFirstName}
+                            setVacancy={setVacancy}
                             setAddress={setAddress}
                             setPhoneNumber={setPhoneNumber}
                             setTelegram={setTelegram}
@@ -292,7 +299,20 @@ export default function Base() {
 
                 {filteredCandidates && filteredCandidates.map((candidate) => (
                     <Fragment key={candidate?.id}>
-                        <FilteredCandidates key={filteredCandidates.id} filteredCandidates={filteredCandidates} setModalActive={setModalActive} setSelectedCandidate={setSelectedCandidate} candidate={candidate} lastName={lastName} firstName={firstName} address={address} phoneNumber={phoneNumber} email={email} selectedCandidate={selectedCandidate} />
+                        <FilteredCandidates
+                            key={filteredCandidates.id}
+                            filteredCandidates={filteredCandidates}
+                            setModalActive={setModalActive}
+                            setSelectedCandidate={setSelectedCandidate}
+                            candidate={candidate}
+                            // lastName={lastName} 
+                            // firstName={firstName} 
+                            // vacancy={vacancy} 
+                            // address={address} 
+                            // phoneNumber={phoneNumber} 
+                            // email={email} 
+                            selectedCandidate={selectedCandidate}
+                        />
                     </Fragment>
                 ))}
             </table>
@@ -303,9 +323,14 @@ export default function Base() {
 
                         <EditModalCandidate candidates={candidates} setCandidates={setCandidates}
                             handleSaveClick={handleSaveClick}
-                            handleEditClick={handleEditClick} selectedCandidate={selectedCandidate} editing={editing}
+                            handleEditClick={handleEditClick}
+                            selectedCandidate={selectedCandidate}
+                            editing={editing}
                             setEditing={setEditing}
-                            editedCandidate={editedCandidate} setEditedCandidate={setEditedCandidate} setSelectedCandidate={setSelectedCandidate} />
+                            editedCandidate={editedCandidate}
+                            setEditedCandidate={setEditedCandidate}
+                            setSelectedCandidate={setSelectedCandidate}
+                        />
 
                     </div>
                 </Modal>

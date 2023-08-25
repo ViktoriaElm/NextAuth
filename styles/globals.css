@@ -59,11 +59,10 @@ h2 {
 }
 
 .span-comment {
-    /* margin-top: -2px; */
     font-size: 13px;
     margin-bottom: 5px;
-    margin-left: 10px;
-    padding: 6px 10px;
+    margin-left: 5px;
+    padding: 6px 10px 6px 15px;
     background-color: #bcf4d3;
     border-radius: 3px;
 }
@@ -112,18 +111,16 @@ h2 {
 }
 
 .edit-input {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding: 5px;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    padding: 6px 15px 6px 10px;
     border: 1px dotted rgb(214, 214, 214);
     border-radius: 3px;
     width: 100%;
 }
 
 .edit-input.comment {
-    margin-top: -2px;
     padding: 6px;
-    /* margin-bottom: 5px; */
 }
 
 .save.btn-comment,

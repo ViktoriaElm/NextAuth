@@ -29,21 +29,21 @@ export default function Nav() {
               </Link>
             </div>
             <div className="menu">
-              <Link href="/vacancies">
+              <Link href="/soon">
                 <div className="btn-menu">
                   <h5>Вакансии</h5>
                 </div>
               </Link>
             </div>
             <div className="menu">
-              <Link href="/reports">
+              <Link href="/soon">
                 <div className="btn-menu">
                   <h5>Отчеты</h5>
                 </div>
               </Link>
             </div>
             <div class="menu">
-              <Link href="/">
+              <Link href="/soon">
                 <div className="btn-menu">
                   <h5>Шаблоны</h5>
                 </div>

@@ -125,7 +125,7 @@ There will be useful examples of how the project can be used.
 * NextAuth - 100%,
 * API - 100%,
 * Admin pannel - 90%,
-* Candidates - 100%,
+* Candidates - 90%,
 * Vacancies - 0%,
 * Reports - 0%,
 * Templates - 0%.

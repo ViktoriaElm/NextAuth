@@ -1,5 +1,3 @@
-// import { statuses } from "../ModalStatusRow"
-
 export default function FilteredCandidates({ setModalActive, setSelectedCandidate, candidate }) {
     return (<tbody>
         <tr onClick={() => setSelectedCandidate(candidate)} >

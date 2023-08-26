@@ -111,6 +111,7 @@ export default function EditModalCandidate({candidates, setCandidates, handleEdi
         <div
             className="head-candidate input-fullname"
             onDoubleClick={() => handleEditClick(selectedCandidate)}>
+                <h6>Ссылки на источники:&nbsp;</h6>
             {editing && editedCandidate.id === selectedCandidate.id ? (
                 <input
                     className='edit-input'

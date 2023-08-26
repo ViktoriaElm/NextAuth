@@ -322,12 +322,6 @@ export default function Base() {
                             setModalActive={setModalActive}
                             setSelectedCandidate={setSelectedCandidate}
                             candidate={candidate}
-                            // lastName={lastName} 
-                            // firstName={firstName} 
-                            // vacancy={vacancy} 
-                            // address={address} 
-                            // phoneNumber={phoneNumber} 
-                            // email={email} 
                             selectedCandidate={selectedCandidate}
                         />
                     </Fragment>

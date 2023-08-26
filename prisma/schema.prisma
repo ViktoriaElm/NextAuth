@@ -74,7 +74,7 @@ model Candidate {
   age             Int?
   email           String? @unique
   phoneNumber     String? @unique
-  telegram        String? @unique
+  telegram        String?
   urls            String?
   body            String?
   profile         String?

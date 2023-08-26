@@ -7,7 +7,6 @@ export default function ModalStatusRow(props) {
 
     const [selectedValue, setSelectedValue] = useState(PrismaStatusCandidate.new);
     const [editingComment, setEditingComment] = useState(false);
-    // const [editingStatus, setEditingStatus] = useState(false);
     const [editedComment, setEditedComment] = useState({
         id: "",
         address: "",
@@ -28,26 +27,6 @@ export default function ModalStatusRow(props) {
         comment: "",
         statusCandidate: "",
     });
-    // const [editedStatus, setEditedStatus] = useState({
-    //     id: "",
-    //     address: "",
-    //     lastName: "",
-    //     firstName: "",
-    //     email: "",
-    //     phoneNumber: "",
-    //     telegram: "",
-    //     urls: "",
-    //     profile: "",
-    //     experience: "",
-    //     education: "",
-    //     skills: "",
-    //     languages: "",
-    //     projects: "",
-    //     sertificates: "",
-    //     hobby: "",
-    //     comment: "",
-    //     statusCandidate: "",
-    // });
 
     const api = '/api/restricted/candidate';
 
@@ -139,7 +118,6 @@ export default function ModalStatusRow(props) {
         }
     };
 
-
     const statuses = Object.values(PrismaStatusCandidate).map((value) => (
         <option key={value} value={value}>{value}</option>
     ));
@@ -153,13 +131,6 @@ export default function ModalStatusRow(props) {
             <div className="input-status-row">
                 <div className="input-status-td">
 
-
-                    {/* Статусы в работе */}
-
-
-
-                    {/* статусы оригинал */}
-
                     <select
                         type="text"
                         value={selectedValue}
@@ -168,9 +139,6 @@ export default function ModalStatusRow(props) {
                     >
                         {statuses}
                     </select>
-
-
-                    {/* Комментарии готовы!!! */}
 
                     <div
                         className="head-candidate input-fullname"

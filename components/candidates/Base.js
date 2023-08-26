@@ -286,6 +286,23 @@ export default function Base() {
                             setSertificates={setSertificates}
                             setHobby={setHobby}
                             setComment={setComment}
+                            lastName={lastName}
+                            firstName={firstName}
+                            address={address}
+                            comment={comment}
+                            hobby={hobby}
+                            sertificates={sertificates}
+                            projects={projects}
+                            languages={languages}
+                            skills={skills}
+                            education={education}
+                            experience={experience}
+                            profile={profile}
+                            urls={urls}
+                            email={email}
+                            telegram={telegram}
+                            phoneNumber={phoneNumber}
+                            vacancy={vacancy}
                         />
                     </form>
                 </div>

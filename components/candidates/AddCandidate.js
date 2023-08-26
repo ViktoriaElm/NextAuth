@@ -2,7 +2,7 @@
 export default function AddCandidate(props) {
 
     const {
-        setLastName, setFirstName, setAddress, setPhoneNumber, setTelegram, setEmail, setUrls, setProfile, setExperience, setEducation, setSkills, setLanguages, setProjects, setSertificates, setHobby, setComment, lastName, firstName, address, comment, hobby, sertificates, projects, languages, skills, education, experience, profile, urls, email, telegram, phoneNumber, vacancy
+        setLastName, setFirstName, setAddress, setVacancy, setPhoneNumber, setTelegram, setEmail, setUrls, setProfile, setExperience, setEducation, setSkills, setLanguages, setProjects, setSertificates, setHobby, setComment, lastName, firstName, address, comment, hobby, sertificates, projects, languages, skills, education, experience, profile, urls, email, telegram, phoneNumber, vacancy
     } = props;
 
     return (<>
@@ -33,7 +33,7 @@ export default function AddCandidate(props) {
             <input className="add-input"
                 type="text"
                 value={vacancy}
-                onChange={(e) => setAddress(e.target.value)}
+                onChange={(e) => setVacancy(e.target.value)}
                 name="vacancy"
                 placeholder='Вакансия'
             />

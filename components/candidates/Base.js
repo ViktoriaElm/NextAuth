@@ -1,6 +1,5 @@
 import { useEffect, useState, Fragment } from "react";
-import { useSession } from "next-auth/react";
-
+// import { useSession } from "next-auth/react";
 
 import Modal from '../modal/Modal';
 import AddModal from '../modal/AddModal';
@@ -13,14 +12,7 @@ import AddCandidate from '../candidates/AddCandidate';
 import EditModalCandidate from '../candidates/EditModalCandidate';
 
 export default function Base() {
-    const { data: session } = useSession();
-    const [value, setValue] = useState('');
-    const [modalActive, setModalActive] = useState(false);
-    const [modalAdd, setModalAdd] = useState(false);
-    const [candidates, setCandidates] = useState({});
-    const [selectedCandidate, setSelectedCandidate] = useState(null);
-    const [editing, setEditing] = useState(false);
-    const [editedCandidate, setEditedCandidate] = useState({
+    const defaultCandidate = {
         id: "",
         address: "",
         lastName: "",
@@ -29,18 +21,26 @@ export default function Base() {
         email: "",
         phoneNumber: "",
         telegram: "",
-        urls: "",
+        urls: [],
         profile: "",
-        experience: "",
-        education: "",
-        skills: "",
-        languages: "",
-        projects: "",
-        sertificates: "",
+        experience: [],
+        education: [],
+        skills: [],
+        languages: [],
+        projects: [],
+        sertificates: [],
         hobby: "",
         comment: "",
         statusCandidate: "",
-    });
+    };
+    // const { data: session } = useSession();
+    const [value, setValue] = useState('');
+    const [modalActive, setModalActive] = useState(false);
+    const [modalAdd, setModalAdd] = useState(false);
+    const [candidates, setCandidates] = useState({});
+    const [selectedCandidate, setSelectedCandidate] = useState(null);
+    const [editing, setEditing] = useState(false);
+    const [editedCandidate, setEditedCandidate] = useState(defaultCandidate);
 
     const [id, setId] = useState('');
     const [lastName, setLastName] = useState('');
@@ -87,27 +87,22 @@ export default function Base() {
         const sortCandidates = copyCandidates.sort((a, b) => { return a[coll] > b[coll] ? 1 : -1 });
         setCandidates(sortCandidates)
     }
+
     console.debug('before filteredCandidates, candidates=', candidates);
     const filteredCandidates = Array.isArray(candidates) ? candidates?.filter(candidate => {
+        if (!value) {
+            return true;
+        }
+        const lowerCaseValue = value.toLowerCase();
+        const fieldsToCheck = [
+            'lastName', 'firstName', 'vacancy', 'address', 'email', 'phoneNumber', 'telegram', 'profile', 'experience', 'education', 'skills', 'languages', 'projects', 'comment'
+        ]
         return (
-            !value
-            || candidate?.lastName?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.firstName?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.vacancy?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.address?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.email?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.phoneNumber?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.telegram?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.profile?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.experience?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.education?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.skills?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.languages?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.projects?.toLowerCase().includes(value.toLocaleLowerCase())
-            || candidate?.comment?.toLowerCase().includes(value.toLocaleLowerCase())
+            fieldsToCheck.some(field => {
+                return candidate[field]?.toLowerCase().includes(lowerCaseValue)
+            })
         );
     }) : [];
-
 
     // редактирование
     const handleEditClick = (candidate) => {
@@ -175,27 +170,7 @@ export default function Base() {
                 })
                 .then(() => {
                     setCandidates([...candidates]);
-                    setEditedCandidate({
-                        id: "",
-                        address: "",
-                        lastName: "",
-                        firstName: "",
-                        vacancy: "",
-                        email: "",
-                        phoneNumber: "",
-                        telegram: "",
-                        urls: "",
-                        profile: "",
-                        experience: "",
-                        education: "",
-                        skills: "",
-                        languages: "",
-                        projects: "",
-                        sertificates: "",
-                        hobby: "",
-                        comment: "",
-                        statusCandidate: "",
-                    });
+                    setEditedCandidate(defaultCandidate);
                 })
                 .catch(error => console.log(error));
         }
@@ -203,57 +178,9 @@ export default function Base() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         console.log(lastName, firstName, address, phoneNumber, telegram, email, urls, profile, experience, education, skills, languages, projects, sertificates, hobby, comment);
-
-
-
-        const candidateData = {
-            // id: id,
-            lastName: lastName,
-            firstName: firstName,
-            vacancy: vacancy,
-            address: address,
-            phoneNumber: phoneNumber,
-            telegram: telegram,
-            email: email,
-            urls: urls,
-            profile: profile,
-            experience: experience,
-            education: education,
-            skills: skills,
-            languages: languages,
-            projects: projects,
-            sertificates: sertificates,
-            hobby: hobby,
-            comment: comment,
-            userId: session.user.id
-        }
-
-        const postCandidate = await fetch('/api/restricted/candidate', {
-
-            method: 'POST',
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            },
-            body: JSON.stringify(candidateData),
-        })
-            // const candidate = await fetch(api, candidateData); 
-            // console.log(candidateData);
-            .then(response => {
-                if (response.status !== 201) {
-                    return
-                } else {
-                    return response.json();
-                }
-            })
-            .then((newCandidate/* пока не берем */) => {
-                setCandidates((candidates) => [...candidates, candidateData]);
-            })
-            .catch((err) => {
-                console.error('postCandidate err=', err);
-            })
     }
+
     console.debug('Base.js render filteredCandidates=', filteredCandidates);
     return (<>
         <div className="main-top">
@@ -268,6 +195,7 @@ export default function Base() {
                     <form method="post" className="add-form"
                         onSubmit={handleSubmit}>
                         <AddCandidate
+                            handleChange={handleChange}
                             setId={setId}
                             setLastName={setLastName}
                             setFirstName={setFirstName}

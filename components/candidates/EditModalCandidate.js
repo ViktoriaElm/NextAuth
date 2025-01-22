@@ -1,6 +1,20 @@
 import ModalStatusRow from '../ModalStatusRow'
+import styles from "@/styles/editModal.module.css"
 
 export default function EditModalCandidate({ candidates, setCandidates, handleEditClick, selectedCandidate, editing, setEditing, editedCandidate, setEditedCandidate, setSelectedCandidate, handleSaveClick }) {
+
+    const renderInput = (isEdting, editedCandidate, field, placeholder) => {
+        return (isEdting) ? (
+            <input
+            className={`${styles.edit_input} styles.edit_input_${field}`}
+                type="text"
+                value={editedCandidate[field]}
+                placeholder={placeholder}
+                onChange={e => setEditedCandidate({ ...editedCandidate, [field]: e.target.value })} />
+
+        ) : selectedCandidate[field] !== '' && <h2>{selectedCandidate[field]}</h2>;
+    }
+
     return (<>
         <div className='edit-buttons'>
             {editing && editedCandidate.id === selectedCandidate.id ? (
@@ -15,9 +29,8 @@ export default function EditModalCandidate({ candidates, setCandidates, handleEd
 
         {/* ------------------------------------------------- */}
 
-        {/* новый див обернуть каждую редактируемую область */}
+        {/* див - обернуть каждую редактируемую область */}
         <div>
-
             <div
                 className='box-edit-button'>
                 {/* новая кнопка для редактирования ПДн */}
@@ -31,130 +44,19 @@ export default function EditModalCandidate({ candidates, setCandidates, handleEd
                 }
             </div>
 
-
-
-
             <div
                 className="head-candidate input-lastname"
-            // onDoubleClick={() => handleEditClick(selectedCandidate)}
             >
-                {editing && editedCandidate.id === selectedCandidate.id ? (
-                    <input
-                        className='edit-input edit-input-last'
-                        type="text"
-                        value={editedCandidate.lastName}
-                        placeholder='Фамилия...'
-                        onChange={e => setEditedCandidate({ ...editedCandidate, lastName: e.target.value })} />
-
-                ) : selectedCandidate.lastName !== '' && <h2>{selectedCandidate.lastName}</h2>}
+                {renderInput(editing && editedCandidate.id === selectedCandidate.id, editedCandidate, 'lastName', 'Фамилия...')}
+                {renderInput(editing && editedCandidate.id === selectedCandidate.id, editedCandidate, 'firstName', 'Имя...')}
+                {renderInput(editing && editedCandidate.id === selectedCandidate.id, editedCandidate, 'vacancy', 'Вакансия...')}
+                {renderInput(editing && editedCandidate.id === selectedCandidate.id, editedCandidate, 'address', 'Адрес...')}
+                {renderInput(editing && editedCandidate.id === selectedCandidate.id, editedCandidate, 'phoneNumber', 'Номер телефона...')}
+                {renderInput(editing && editedCandidate.id === selectedCandidate.id, editedCandidate, 'telegram', 'Telegram...')}
+                {renderInput(editing && editedCandidate.id === selectedCandidate.id, editedCandidate, 'email', 'Email...')}
+                {renderInput(editing && editedCandidate.id === selectedCandidate.id, editedCandidate, 'urls', 'Ссылка на резюме...')}
             </div>
-
-            <div
-                className="head-candidate input-firstname"
-            // onDoubleClick={() => handleEditClick(selectedCandidate)}
-            >
-                {editing && editedCandidate.id === selectedCandidate.id ? (
-                    <input
-                        className='edit-input edit-input-first'
-                        type="text"
-                        value={editedCandidate.firstName}
-                        placeholder='Имя...'
-                        onChange={e => setEditedCandidate({ ...editedCandidate, firstName: e.target.value })} />
-                ) : selectedCandidate.firstName !== '' && <h2>{selectedCandidate.firstName}</h2>}
-            </div>
-
-            <div
-                className="head-candidate input-firstname"
-            // onDoubleClick={() => handleEditClick(selectedCandidate)}
-            >
-                {editing && editedCandidate.id === selectedCandidate.id ? (
-                    <input
-                        className='edit-input edit-input-vacancy'
-                        type="text"
-                        value={editedCandidate.vacancy}
-                        placeholder='Вакансия...'
-                        onChange={e => setEditedCandidate({ ...editedCandidate, vacancy: e.target.value })} />
-                ) : selectedCandidate.vacancy !== '' && <h6>{selectedCandidate.vacancy}</h6>}
-            </div>
-
-            <div
-                className="head-candidate input-fullname"
-            // onDoubleClick={() => handleEditClick(selectedCandidate)}
-            >
-                {editing && editedCandidate.id === selectedCandidate.id ? (
-                    <input
-                        className='edit-input'
-                        type="text"
-                        value={editedCandidate.address}
-                        placeholder='Адрес...'
-                        onChange={e => setEditedCandidate({ ...editedCandidate, address: e.target.value })} />
-                ) : selectedCandidate.address !== '' && <h6>{selectedCandidate.address}</h6>}
-            </div>
-
-            <div
-                className="head-candidate input-fullname"
-            // onDoubleClick={() => handleEditClick(selectedCandidate)}
-            >
-                <h6>Телефон / WhatsApp:&nbsp;</h6>
-                {editing && editedCandidate.id === selectedCandidate.id ? (
-                    <input
-                        className='edit-input'
-                        type="text"
-                        value={editedCandidate.phoneNumber}
-                        placeholder='Номер телефона...'
-                        onChange={e => setEditedCandidate({ ...editedCandidate, phoneNumber: e.target.value })} />
-                ) : selectedCandidate.phoneNumber !== '' && <h5>{selectedCandidate.phoneNumber}</h5>}
-            </div>
-
-            <div
-                className="head-candidate input-fullname"
-            // onDoubleClick={() => handleEditClick(selectedCandidate)}
-            >
-                <h6>Telegram:&nbsp;</h6>
-                {editing && editedCandidate.id === selectedCandidate.id ? (
-                    <input
-                        className='edit-input'
-                        type="text"
-                        value={editedCandidate.telegram}
-                        placeholder='Telegram...'
-                        onChange={e => setEditedCandidate({ ...editedCandidate, telegram: e.target.value })} />
-                ) : selectedCandidate.telegram !== '' && <h5>{selectedCandidate.telegram}</h5>}
-            </div>
-
-            <div
-                className="head-candidate input-fullname"
-            // onDoubleClick={() => handleEditClick(selectedCandidate)}
-            >
-                <h6>E-mail:&nbsp;</h6>
-                {editing && editedCandidate.id === selectedCandidate.id ? (
-                    <input
-                        className='edit-input'
-                        type="text"
-                        value={editedCandidate.email}
-                        placeholder='Email...'
-                        onChange={e => setEditedCandidate({ ...editedCandidate, email: e.target.value })} />
-                ) : selectedCandidate.email !== '' && <h5>{selectedCandidate.email}</h5>}
-            </div>
-
-            <div
-                className="head-candidate input-fullname"
-            // onDoubleClick={() => handleEditClick(selectedCandidate)}
-            >
-                <h6>Ссылка на резюме:&nbsp;</h6>
-                {editing && editedCandidate.id === selectedCandidate.id ? (
-                    <input
-                        className='edit-input'
-                        type="text"
-                        value={editedCandidate.urls}
-                        placeholder='Ссылка на резюме...'
-                        onChange={e => setEditedCandidate({ ...editedCandidate, urls: e.target.value })} />
-                ) : selectedCandidate.urls !== '' && <h5>{selectedCandidate.urls}</h5>}
-            </div>
-
-            {/* конец нового дива */}
         </div>
-
-        {/* --------------------------------------------------- */}
 
         <ModalStatusRow candidates={candidates} setCandidates={setCandidates} setSelectedCandidate={setSelectedCandidate} selectedCandidate={selectedCandidate} />
 
@@ -173,10 +75,6 @@ export default function EditModalCandidate({ candidates, setCandidates, handleEd
                 ) : ('')
                 }
             </div>
-
-
-
-
 
             <div className='edit-buttons'>
                 {editing && editedCandidate.id === selectedCandidate.id ? (

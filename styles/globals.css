@@ -131,19 +131,19 @@ h2 {
     justify-content: flex-end;
 }
 
-.edit-input {
+/* .edit-input {
     margin-top: 2px;
     margin-bottom: 8px;
     padding: 6px 15px 6px 10px;
     border: 1px dotted rgb(214, 214, 214);
     border-radius: 3px;
     width: 100%;
-}
+} */
 
 .edit-input.comment {
     padding: 6px;
 }
-/* 
+/*
 .save.btn-comment,
 .cancel.btn-comment {
     margin-top: -7px;
@@ -154,11 +154,11 @@ textarea {
     height: 85px;
 }
 
-.edit-input-last,
+/* .edit-input-last,
 .edit-input-first {
     font-size: 20px;
     width: 98%;
-}
+} */
 
 body {
     display: flex;
@@ -291,9 +291,10 @@ body {
     margin-bottom: 10px;
 }
 
-.input-firstname {
+/* .input-firstname */
+/* .firstName {
     margin-bottom: 10px;
-}
+} */
 
 .head_candidate a {
     font-size: 13px;

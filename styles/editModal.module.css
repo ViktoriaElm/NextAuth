@@ -1,0 +1,18 @@
+.edit_input {
+    margin-top: 2px;
+    margin-bottom: 8px;
+    padding: 6px 15px 6px 10px;
+    border: 1px dotted rgb(214, 214, 214);
+    border-radius: 3px;
+    width: 100%;
+}
+
+.firstName {
+    margin-bottom: 10px;
+}
+
+.edit_input_lastName,
+.edit_input_firstName {
+    font-size: 20px;
+    width: 98%;
+}

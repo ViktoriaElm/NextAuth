@@ -3,16 +3,29 @@ import styles from "@/styles/editModal.module.css"
 
 export default function EditModalCandidate({ candidates, setCandidates, handleEditClick, selectedCandidate, editing, setEditing, editedCandidate, setEditedCandidate, setSelectedCandidate, handleSaveClick }) {
 
-    const renderInput = (isEdting, editedCandidate, field, placeholder) => {
-        return (isEdting) ? (
+    const renderInput = (isEditing, editedCandidate, field, placeholder) => {
+        return (isEditing) ? (
             <input
-            className={`${styles.edit_input} styles.edit_input_${field}`}
+                className={`${styles.edit_input} styles.edit_input_${field}`}
                 type="text"
                 value={editedCandidate[field]}
                 placeholder={placeholder}
                 onChange={e => setEditedCandidate({ ...editedCandidate, [field]: e.target.value })} />
 
         ) : selectedCandidate[field] !== '' && <h2>{selectedCandidate[field]}</h2>;
+    }
+
+    const renderTextArea = ({ isEditing, placeholder, field, editedCandidate, selectedCandidate, setEditedCandidate }) => {
+        return (isEditing ? (
+            <textarea
+                className='edit-input textarea'
+                type="text"
+                value={editedCandidate[field]}
+                placeholder={placeholder}
+                onChange={e => setEditedCandidate({ ...editedCandidate, [field]: e.target.value })}
+            />
+        ) : (selectedCandidate[field] !== '' && <p>{selectedCandidate[field]}</p>)
+        )
     }
 
     return (<>
@@ -27,13 +40,9 @@ export default function EditModalCandidate({ candidates, setCandidates, handleEd
             ) : ('')}
         </div>
 
-        {/* ------------------------------------------------- */}
-
-        {/* див - обернуть каждую редактируемую область */}
         <div>
             <div
                 className='box-edit-button'>
-                {/* новая кнопка для редактирования ПДн */}
                 {!editing ? (
                     <button
                         className='edit-button'
@@ -60,7 +69,6 @@ export default function EditModalCandidate({ candidates, setCandidates, handleEd
 
         <ModalStatusRow candidates={candidates} setCandidates={setCandidates} setSelectedCandidate={setSelectedCandidate} selectedCandidate={selectedCandidate} />
 
-        {/* Новый див для обертки описания резюме */}
         <div
             className='box-cv-discribing'>
 
@@ -90,117 +98,108 @@ export default function EditModalCandidate({ candidates, setCandidates, handleEd
             <div className='discription-container'>
                 <div
                     className="discription"
-                    onDoubleClick={() => handleEditClick(selectedCandidate)}>
+                >
                     <h4>О себе:</h4>
-                    {editing && editedCandidate.id === selectedCandidate.id ? (
-                        <textarea
-                            className='edit-input textarea'
-                            type="text"
-                            value={editedCandidate.profile}
-                            placeholder='О кандидате...'
-                            onChange={e => setEditedCandidate({ ...editedCandidate, profile: e.target.value })} />
-                    ) : selectedCandidate.profile !== '' && <p>{selectedCandidate.profile}</p>}
+                    {renderTextArea({
+                        isEditing: editing && editedCandidate.id === selectedCandidate.id,
+                        placeholder: 'Введите информацию о себе...',
+                        field: 'profile',
+                        editedCandidate,
+                        selectedCandidate,
+                        setEditedCandidate
+                    })}
                 </div>
             </div>
 
             <div className='discription-container'>
                 <div
-                    className="discription"
-                    onDoubleClick={() => handleEditClick(selectedCandidate)}>
+                    className="discription">
                     <h4>Опыт:</h4>
-                    {editing && editedCandidate.id === selectedCandidate.id ? (
-                        <textarea
-                            className='edit-input textarea'
-                            type="text"
-                            value={editedCandidate.experience}
-                            placeholder='Об опыте...'
-                            onChange={e => setEditedCandidate({ ...editedCandidate, experience: e.target.value })} />
-                    ) : selectedCandidate.experience !== '' && <p>{selectedCandidate.experience}</p>}
+                    {renderTextArea({
+                        isEditing: editing && editedCandidate.id === selectedCandidate.id,
+                        placeholder: 'Введите информацию об опыте...',
+                        field: 'experience',
+                        editedCandidate,
+                        selectedCandidate,
+                        setEditedCandidate
+                    })}
                 </div>
             </div>
 
             <div className='discription-container'>
                 <div
-                    className="discription"
-                    onDoubleClick={() => handleEditClick(selectedCandidate)}>
+                    className="discription">
                     <h4>Образование:</h4>
-                    {editing && editedCandidate.id === selectedCandidate.id ? (
-                        <textarea
-                            className='edit-input textarea'
-                            type="text"
-                            cols={100}
-                            value={editedCandidate.education}
-                            placeholder='Об образовании...'
-                            onChange={e => setEditedCandidate({ ...editedCandidate, education: e.target.value })} />
-                    ) : selectedCandidate.education !== '' && <p>{selectedCandidate.education}</p>}
+                    {renderTextArea({
+                        isEditing: editing && editedCandidate.id === selectedCandidate.id,
+                        placeholder: 'Введите информацию об образовании...',
+                        field: 'education',
+                        editedCandidate,
+                        selectedCandidate,
+                        setEditedCandidate
+                    })}
                 </div>
             </div>
 
             <div className='discription-container'>
                 <div
-                    className="discription"
-                    onDoubleClick={() => handleEditClick(selectedCandidate)}>
+                    className="discription">
                     <h4>Навыки:</h4>
-                    {editing && editedCandidate.id === selectedCandidate.id ? (
-                        <textarea
-                            className='edit-input textarea'
-                            type="text"
-                            value={editedCandidate.skills}
-                            placeholder='О навыках...'
-                            onChange={e => setEditedCandidate({ ...editedCandidate, skills: e.target.value })} />
-                    ) : selectedCandidate.skills !== '' && <p>{selectedCandidate.skills}</p>}
+                    {renderTextArea({
+                        isEditing: editing && editedCandidate.id === selectedCandidate.id,
+                        placeholder: 'Введите информацию о навыках...',
+                        field: 'skills',
+                        editedCandidate,
+                        selectedCandidate,
+                        setEditedCandidate
+                    })}
                 </div>
             </div>
 
             <div className='discription-container'>
                 <div
-                    className="discription"
-                    onDoubleClick={() => handleEditClick(selectedCandidate)}>
+                    className="discription">
                     <h4>Языки:</h4>
-                    {editing && editedCandidate.id === selectedCandidate.id ? (
-                        <textarea
-                            className='edit-input textarea'
-                            type="text"
-                            value={editedCandidate.languages}
-                            placeholder='Иностранные языки...'
-                            onChange={e => setEditedCandidate({ ...editedCandidate, languages: e.target.value })} />
-                    ) : selectedCandidate.languages !== '' && <p>{selectedCandidate.languages}</p>}
+                    {renderTextArea({
+                        isEditing: editing && editedCandidate.id === selectedCandidate.id,
+                        placeholder: 'Введите информацию о языках...',
+                        field: 'languages',
+                        editedCandidate,
+                        selectedCandidate,
+                        setEditedCandidate
+                    })}
                 </div>
             </div>
 
             <div className='discription-container'>
                 <div
-                    className="discription"
-                    onDoubleClick={() => handleEditClick(selectedCandidate)}>
+                    className="discription">
                     <h4>Сертификаты:</h4>
-                    {editing && editedCandidate.id === selectedCandidate.id ? (
-                        <textarea
-                            className='edit-input textarea'
-                            type="text"
-                            value={editedCandidate.sertificates}
-                            placeholder='Сертификаты...'
-                            onChange={e => setEditedCandidate({ ...editedCandidate, sertificates: e.target.value })} />
-                    ) : selectedCandidate.sertificates !== '' && <p>{selectedCandidate.sertificates}</p>}
+                    {renderTextArea({
+                        isEditing: editing && editedCandidate.id === selectedCandidate.id,
+                        placeholder: 'Введите информацию о сертификатах...',
+                        field: 'sertificates',
+                        editedCandidate,
+                        selectedCandidate,
+                        setEditedCandidate
+                    })}
                 </div>
             </div>
 
             <div className='discription-container'>
                 <div
-                    className="discription"
-                    onDoubleClick={() => handleEditClick(selectedCandidate)}>
+                    className="discription">
                     <h4>Прочее:</h4>
-                    {editing && editedCandidate.id === selectedCandidate.id ? (
-                        <textarea
-                            className='edit-input textarea'
-                            type="text"
-                            value={editedCandidate.hobby}
-                            placeholder='Хобби...'
-                            onChange={e => setEditedCandidate({ ...editedCandidate, hobby: e.target.value })} />
-                    ) : selectedCandidate.hobby !== '' && <p>{selectedCandidate.hobby}</p>}
+                    {renderTextArea({
+                        isEditing: editing && editedCandidate.id === selectedCandidate.id,
+                        placeholder: 'Введите иную информацию...',
+                        field: 'hobby',
+                        editedCandidate,
+                        selectedCandidate,
+                        setEditedCandidate
+                    })}
                 </div>
             </div>
-
-            {/* Конец нового дива для описания */}
         </div>
     </>)
 }

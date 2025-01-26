@@ -3,15 +3,12 @@ import { StatusCandidate as PrismaStatusCandidate } from "../prisma/Enums"
 
 export default function ModalStatusRow(props) {
 
-    const { candidates, setCandidates, selectedCandidate, setSelectedCandidate } = props;
-
-    const [selectedValue, setSelectedValue] = useState(PrismaStatusCandidate.new);
-    const [editingComment, setEditingComment] = useState(false);
-    const [editedComment, setEditedComment] = useState({
+    const defaultCandidate = {
         id: "",
         address: "",
         lastName: "",
         firstName: "",
+        vacancy: "",
         email: "",
         phoneNumber: "",
         telegram: "",
@@ -26,7 +23,12 @@ export default function ModalStatusRow(props) {
         hobby: "",
         comment: "",
         statusCandidate: "",
-    });
+    };
+
+    const { candidates, setCandidates, selectedCandidate, setSelectedCandidate } = props;
+    const [selectedValue, setSelectedValue] = useState(PrismaStatusCandidate.new);
+    const [editingComment, setEditingComment] = useState(false);
+    const [editedComment, setEditedComment] = useState(defaultCandidate);
 
     const api = '/api/restricted/candidate';
 
@@ -93,26 +95,7 @@ export default function ModalStatusRow(props) {
                 })
                 .then(() => {
                     setCandidates([...candidates]);
-                    setEditedComment({
-                        id: "",
-                        address: "",
-                        lastName: "",
-                        firstName: "",
-                        email: "",
-                        phoneNumber: "",
-                        telegram: "",
-                        urls: "",
-                        profile: "",
-                        experience: "",
-                        education: "",
-                        skills: "",
-                        languages: "",
-                        projects: "",
-                        sertificates: "",
-                        hobby: "",
-                        comment: "",
-                        statusCandidate: "",
-                    });
+                    setEditedComment(defaultCandidate);
                 })
                 .catch(error => console.log(error));
         }
@@ -144,9 +127,7 @@ export default function ModalStatusRow(props) {
                         className="head-candidate input-fullname"
                         onDoubleClick={() => handleEditCommentClick(selectedCandidate)}>
                         {!editingComment && !selectedCandidate.comment ? (
-                            <>
                                 <input className='edit-input' placeholder='Добавьте комментарий...' onClick={() => handleEditCommentClick(selectedCandidate)} />
-                            </>
                         ) : ('')}
 
                         {editingComment && editedComment.id === selectedCandidate.id ? (
@@ -171,8 +152,6 @@ export default function ModalStatusRow(props) {
 
                 <div className='edit-buttons'>
                 </div>
-
-
             </div>
         </>
     )

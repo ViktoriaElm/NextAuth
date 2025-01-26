@@ -21,14 +21,14 @@ export default function Base() {
         email: "",
         phoneNumber: "",
         telegram: "",
-        urls: [],
+        urls: "",
         profile: "",
-        experience: [],
-        education: [],
-        skills: [],
-        languages: [],
-        projects: [],
-        sertificates: [],
+        experience: "",
+        education: "",
+        skills: "",
+        languages: "",
+        projects: "",
+        sertificates: "",
         hobby: "",
         comment: "",
         statusCandidate: "",
@@ -234,7 +234,6 @@ export default function Base() {
                         />
                     </form>
                 </div>
-
             </AddModal>
         </div>
 
@@ -259,7 +258,6 @@ export default function Base() {
             {selectedCandidate && (
                 <Modal active={modalActive} setActive={setModalActive}>
                     <div key={selectedCandidate.id} className="cv-modal">
-
                         <EditModalCandidate candidates={candidates} setCandidates={setCandidates}
                             handleSaveClick={handleSaveClick}
                             handleEditClick={handleEditClick}
@@ -270,7 +268,6 @@ export default function Base() {
                             setEditedCandidate={setEditedCandidate}
                             setSelectedCandidate={setSelectedCandidate}
                         />
-
                     </div>
                 </Modal>
             )}
